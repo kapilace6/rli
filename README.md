@@ -7,7 +7,7 @@ We have been online since F1 2018, and are currently in our __3rd Season__. <br>
 
 Join our Indian F1 Community, even if you don't play :) <br>
 Discord : https://discord.gg/6ASNvWJ <br>
-Steam : https://s.team/chat/nURFadz2 <br>
+Steam : https://s.team/chat/nURFadz2 <br><br>
 
 Source Code is available in Master. <br>
 Production Code is available in Production <br>
