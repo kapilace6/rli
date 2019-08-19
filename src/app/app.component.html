@@ -1,0 +1,14 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+<div *ngIf="loaded < threshold">
+    <p>
+        Loading Page, Please Wait.....
+    </p>
+
+    <!---<img src="https://tesseract.projectnaptha.com/img/eng_bw.png" width="500" height="250">--->
+</div>
+
+<div *ngIf="loaded >= threshold">
+    <router-outlet></router-outlet>
+    <app-footer></app-footer>
+</div>

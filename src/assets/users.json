@@ -1,0 +1,701 @@
+[
+  {
+    "username": "TheMaranelloBaby",
+    "id": 1,
+    "discord": "TheMaranelloBaby#6239",
+    "steam": "https://steamcommunity.com/id/maranellobaby",
+
+    "name": "Adil Chinoy",
+    "age": 24,
+    "location": "JP Nagar, Bengaluru, Karnataka",
+    "number": 49,
+
+    "reserve": false,
+    "active": true,
+    "role": [
+      "Owner",
+      "Steward",
+      "Ferrari"
+    ]
+  },
+
+
+  {
+    "username": "kapilace6",
+    "id": 2,
+    "discord": "kapilace6#5178",
+    "steam": "https://steamcommunity.com/id/kapilace6/",
+    "email": "kapilace6@gmail.com",
+
+    "name": "Kapil Bharath",
+    "age": 21,
+    "location": "Landlinks Township, Mangaluru, Karnataka",
+    "number": 60,
+
+    "reserve": false,
+    "active": true,
+    "role": [
+      "Admin",
+      "Steward",
+      "Mercedes"
+    ]
+  },
+
+  {
+    "id": 3,
+    "discord": "testuser#0876",
+    "active": false
+  },
+
+  {
+    "username": "D4SH",
+    "id": 4,
+    "discord": "Akash#0679",
+    "steam": "https://steamcommunity.com/id/akashv10/",
+
+    "name": "Akash",
+    "reserve": true,
+    "active": true,
+    "role": [
+      "Reserve"
+    ],
+
+    "aka": [
+      "Akash",
+      "OOR | D4SH"
+    ]
+  },
+
+
+  {
+    "username": "The-Real-SD",
+    "id": 5,
+    "discord": "The-Real-SD#8001",
+    "steam": "https://steamcommunity.com/id/SD-inwl/",
+    "email": "subhamf12010@gmail.com",
+
+    "name": "Subham Das",
+    "age": 22,
+    "location": "Barasat, Kolkata, West Bengal",
+    "number": 21,
+
+    "reserve": false,
+    "active": true,
+    "role": [
+      "Admin",
+      "Steward",
+      "Sauber"
+    ],
+
+    "aka": [
+      "RLI | The-Real-SD"
+    ]
+  },
+
+
+  {
+    "username": "SpeedLust",
+    "id": 6,
+    "discord": "sathvik#3814",
+    "steam": "http://s.team/p/cmmn-mfqb/bvjhqhjr",
+    "email": "sathvikreddy0505@gmail.com",
+
+    "name": "Sathvik Reddy",
+    "age": 21,
+    "location": "Bownpally, Hyderabad, Telangana",
+    "number": 66,
+
+    "reserve": false,
+    "active": true,
+    "role": [
+      "Renault"
+    ],
+
+    "aka": [
+      "OOR | SpeedLust",
+      "sathvik reddy",
+      "sathvik(SpeedLust)"
+    ]
+  },
+
+
+  {
+    "username": "Gryphus",
+    "id": 7,
+    "discord": "GryphuS#4240",
+    "steam": "http://steamcommunity.com/id/adijain26",
+
+    "name": "Adil Jain",
+    "reserve": true,
+    "active": true,
+    "role": [
+      "Reserve"
+    ]
+  },
+
+
+  {
+    "username": "idropbodies69",
+    "id": 8,
+    "discord": "idropbodies69#8180",
+    "steam": "https://steamcommunity.com/profiles/76561198827607302/",
+
+    "reserve": true,
+    "active": true,
+    "role": [
+      "Reserve"
+    ]
+  },
+
+
+  {
+    "username": "alonsofan14",
+    "id": 9,
+    "discord": "alonsofan14#5581",
+    "steam": "https://steamcommunity.com/profiles/76561198851536172/",
+
+    "number": 42,
+
+    "name": "Adithya Viswanathan",
+    "reserve": true,
+    "active": true,
+    "role": [
+      "Reserve"
+    ]
+  },
+
+
+
+  {
+    "username": "CrayCray",
+    "id": 10,
+    "discord": "CrayCray#6871",
+    "steam": "https://steamcommunity.com/profiles/76561198086792430/",
+
+    "reserve": true,
+    "active": true,
+    "role": [
+      "Reserve"
+    ]
+  },
+
+
+  {
+    "username": "5zan",
+    "id": 11,
+    "discord": "5zan#1434",
+    "steam": "https://steamcommunity.com/id/5zan74/",
+    "email": "mohammedfaizan74@gmail.com",
+
+    "name": "Mohammed Faizan",
+    "age": 23,
+    "location": "Bengaluru, Karnataka",
+    "number": 74,
+
+    "reserve": false,
+    "active": true,
+    "role": [
+      "Force India"
+    ]
+  },
+
+
+  {
+    "username": "Unlucky",
+    "id": 12,
+    "discord": "Unlucky#7130",
+    "steam": "https://steamcommunity.com/profiles/76561198219357119/",
+
+    "reserve": true,
+    "active": true,
+    "role": [
+      "Reserve"
+    ],
+
+    "aka": [
+      "Unlucky X("
+    ]
+  },
+
+
+  {
+    "username": "chuddibuddy",
+    "id": 13,
+    "discord": "kevin_777#6393",
+    "steam": "https://steamcommunity.com/profiles/76561198832846620/",
+
+    "reserve": true,
+    "active": true,
+    "role": [
+      "Reserve"
+    ],
+
+    "aka": [
+      "kevin_777"
+    ]
+  },
+
+
+  {
+    "username": "Rythm",
+    "id": 14,
+    "discord": "Rythm#3722",
+
+    "reserve": true,
+    "active": false,
+    "role": [
+      "Bots"
+    ]
+  },
+
+
+  {
+    "username": "ad",
+    "id": 15,
+    "discord": "ad#0002",
+
+    "reserve": true,
+    "active": false
+  },
+
+
+  {
+    "username": "ICEMAN",
+    "id": 16,
+    "discord": "ICEMAN#0360",
+    "steam": "https://steamcommunity.com/profiles/76561198813436483",
+
+    "reserve": true,
+    "active": true,
+    "role": [
+      "Reserve"
+    ]
+  },
+
+
+  {
+    "username": "K2K",
+    "id": 17,
+    "discord": "K2K#8166",
+    "steam": "https://steamcommunity.com/profiles/76561198309198487",
+
+    "reserve": true,
+    "active": false
+  },
+
+
+
+  {
+    "username": "SHM",
+    "id": 18,
+    "discord": "SHM#9082",
+    "steam": "https://steamcommunity.com/id/_SHM_/",
+
+    "reserve": true,
+    "active": true,
+    "role": [
+      "Reserve"
+    ]
+  },
+
+
+  {
+    "username": "gnan20",
+    "id": 19,
+    "discord": "gnan20#0319",
+    "steam": "https://steamcommunity.com/profiles/76561198275681714",
+
+    "reserve": false,
+    "active": true,
+    "role": [
+      "Toro Rosso"
+    ]
+  },
+
+
+  {
+    "username": "Rystle",
+    "id": 20,
+    "discord": "Rystle#2080",
+    "steam": "https://steamcommunity.com/id/Rystle/",
+    "email": "rarefx2@gmail.com",
+
+    "age": 18,
+    "location": "Canberra",
+    "number": 16,
+
+    "reserve": false,
+    "active": true,
+    "role": [
+      "Red Bull"
+    ]
+  },
+
+
+  {
+    "username": "Im_A_Myth",
+    "id": 21,
+    "discord": "Im_A_Myth#6459",
+    "steam": "https://steamcommunity.com/id/imamyth/",
+
+    "age": 16,
+    "location": "Chennai, Tamil Nadu",
+
+    "reserve": true,
+    "active": true,
+    "role": [
+      "Reserve"
+    ],
+
+    "aka": [
+      "Legend"
+    ]
+  },
+
+
+  {
+    "username": "aarongavin",
+    "id": 22,
+    "discord": "aarongavin#4920",
+
+    "reserve": true,
+    "active": false,
+    "role": [
+      "Reserve"
+    ],
+
+    "aka": [
+      "I'm Not Here",
+      "Viper"
+    ]
+  },
+
+
+  {
+    "username": "OneSneakyBoi",
+    "id": 23,
+    "discord": "OneSneakyBoi#0597",
+    "steam": "https://steamcommunity.com/profiles/76561198162439774/",
+
+    "age": 16,
+    "number": 99,
+
+    "reserve": false,
+    "active": true,
+    "role": [
+      "Red Bull"
+    ],
+
+    "aka": [
+      "Oxygen"
+    ]
+  },
+
+
+  {
+    "username": "SnackyNinja",
+    "id": 24,
+    "discord": "SnackyNinja#6745",
+    "steam": "https://steamcommunity.com/profiles/76561198213589399/",
+
+    "reserve": true,
+    "active": true,
+    "role": [
+      "Reserve"
+    ],
+
+    "aka": [
+      "OOR | SnackyNinja"
+    ]
+  },
+
+
+  {
+    "username": "Streeter",
+    "id": 25,
+    "discord": "Streeter#5676",
+    "steam": "https://steamcommunity.com/profiles/76561198259897405/",
+
+    "number": 13,
+
+    "reserve": false,
+    "active": true,
+    "role": [
+      "Toro Rosso"
+    ]
+  },
+
+
+  {
+    "username": "BlackSheep",
+    "id": 26,
+    "discord": "BlackSheep#0212",
+    "steam": "https://steamcommunity.com/profiles/76561198063217170/",
+
+    "location": "London, Great Britain",
+    "number": 45,
+
+    "reserve": false,
+    "active": true,
+    "role": [
+      "Williams"
+    ]
+  },
+
+
+  {
+    "username": "Vagary",
+    "id": 27,
+    "discord": "hitesh#6827",
+    "steam": "https://steamcommunity.com/profiles/76561198411368976/",
+
+    "name": "Hitesh",
+    "number": 37,
+
+    "reserve": false,
+    "active": true,
+    "role": [
+      "Ferrari"
+    ],
+
+    "aka": [
+      "hiteshgavini",
+      "hitesh.17"
+    ]
+  },
+
+
+  {
+    "username": "Antonle",
+    "id": 28,
+    "discord": "rANT#8706",
+    "steam": "https://steamcommunity.com/profiles/76561198880096305/",
+
+    "number": 7,
+
+    "reserve": false,
+    "active": true,
+    "role": [
+      "Sauber"
+    ],
+
+    "aka": [
+      "rANT"
+    ]
+  },
+
+
+  {
+    "username": "BaBa.G",
+    "id": 29,
+    "discord": "BaBa.G#1626",
+    "steam": "https://steamcommunity.com/profiles/76561198341877274/",
+
+    "number": 76,
+
+    "reserve": false,
+    "active": true,
+    "role": [
+      "McLaren"
+    ],
+
+    "aka": [
+      "Rammer"
+    ]
+  },
+
+
+  {
+    "username": "RAMB0",
+    "id": 30,
+    "discord": "RAMB0#4631",
+    "steam": "https://steamcommunity.com/id/ramb07/",
+
+    "number": 70,
+
+    "reserve": false,
+    "active": true,
+    "role": [
+      "Haas"
+    ]
+  },
+
+
+  {
+    "username": "The Freeman",
+    "id": 31,
+    "discord": "The Freeman#8154",
+    "steam": "https://steamcommunity.com/id/The__Freeman/",
+    "email": "hritik1509@gmail.com",
+
+    "name": "Hritik",
+    "age": 18,
+    "location": "Punjab",
+    "number": 15,
+
+    "reserve": false,
+    "active": true,
+    "role": [
+      "Mercedes"
+    ]
+  },
+
+
+  {
+    "username": "madhavsajit1",
+    "id": 32,
+    "discord": "madhav908#4585",
+    "steam": "https://steamcommunity.com/profiles/76561198851455173/",
+
+    "location": "Dubai, UAE",
+    "number": 98,
+
+    "reserve": false,
+    "active": true,
+    "role": [
+      "McLaren"
+    ],
+
+    "aka": [
+      "madhav908"
+    ]
+  },
+
+
+
+  {
+    "username": "jcadms",
+    "id": 33,
+    "discord": "jcadms#9809",
+
+    "location": "Great Britain",
+
+    "reserve": true,
+    "active": false
+  },
+
+
+  {
+    "username": "jcadms",
+    "id": 34,
+    "discord": "jcadms#6349",
+
+    "location": "Great Britain",
+
+    "reserve": true,
+    "active": false
+  },
+
+
+  {
+    "username": "Alpha-07",
+    "id": 35,
+    "discord": "hpandya26#9795",
+    "steam": "http://steamcommunity.com/id/alpha-07",
+
+    "number": 22,
+
+    "reserve": true,
+    "active": true,
+    "role": [
+      "Reserve"
+    ],
+
+    "aka": [
+      "hpandya26"
+    ]
+  },
+
+
+  {
+    "username": "shreyas.e",
+    "id": 36,
+    "discord": "shreyas.e#5448",
+
+    "reserve": true,
+    "active": false,
+    "role": [
+      "Reserve"
+    ]
+  },
+
+
+  {
+    "username": "theKC66",
+    "id": 37,
+    "discord": "theKC66#1996",
+    "steam": "http://steamcommunity.com/id/theKC66",
+
+    "number": 6,
+
+    "reserve": false,
+    "active": true,
+    "role": [
+      "Force India"
+    ]
+  },
+
+
+  {
+    "username": "abhi999",
+    "id": 38,
+    "discord": "abhi999#4383",
+    "steam": "https://steamcommunity.com/id/abhi999/",
+
+    "number": 18,
+
+    "reserve": true,
+    "active": true,
+    "role": [
+      "Reserve"
+    ]
+  },
+
+
+  {
+    "username": "Ashutosh_69",
+    "id": 39,
+    "discord": "Ashutosh_69#1000",
+    "steam": "https://steamcommunity.com/id/abhi999/",
+
+    "reserve": true,
+    "active": false
+  },
+
+
+  {
+    "username": "Hriday96",
+    "id": 40,
+    "discord": "Hriday96#1803",
+    "steam": "https://steamcommunity.com/profiles/76561198229184664/",
+
+    "number": 9,
+
+    "reserve": false,
+    "active": true,
+    "role": [
+      "Haas"
+    ]
+  },
+
+
+  {
+    "username": "NinjaZero",
+    "id": 41,
+    "discord": "BlazinAss25#5558",
+    "steam": "https://steamcommunity.com/id/RdB3599/",
+
+    "number": 24,
+
+    "reserve": false,
+    "active": true,
+    "role": [
+      "Renault"
+    ],
+
+    "aka": [
+      "BlazinAss25",
+      "Omae wa Mou Shindeiru"
+    ]
+  }
+]

@@ -1,0 +1,120 @@
+[
+  {
+    "username": "TheMaranelloBaby",
+    "id": 1,
+    "discord": "TheMaranelloBaby#6239",
+    "steam": "https://steamcommunity.com/id/maranellobaby",
+
+    "name": "Adil Chinoy",
+    "age": 24,
+    "location": "JP Nagar, Bengaluru, Karnataka",
+    "number": 49,
+
+    "reserve": false,
+    "active": true,
+    "role": [
+      "Owner",
+      "Steward",
+      "Ferrari"
+    ]
+  },
+
+
+  {
+    "username": "kapilace6",
+    "id": 2,
+    "discord": "kapilace6#5178",
+    "steam": "https://steamcommunity.com/id/kapilace6/",
+    "email": "kapilace6@gmail.com",
+
+    "name": "Kapil Bharath",
+    "age": 21,
+    "location": "Landlinks Township, Mangaluru, Karnataka",
+    "number": 60,
+
+    "reserve": false,
+    "active": true,
+    "role": [
+      "Admin",
+      "Steward",
+      "Mercedes"
+    ]
+  },
+
+  {
+    "id": 3,
+    "discord": "testuser#0876",
+    "active": false
+  },
+
+  {
+    "username": "D4SH",
+    "id": 4,
+    "discord": "Akash#0679",
+    "steam": "https://steamcommunity.com/id/akashv10/",
+
+    "name": "Akash",
+    "reserve": true,
+    "active": true,
+    "role": [
+      "Reserve"
+    ],
+
+    "aka": [
+      "Akash",
+      "OOR | D4SH"
+    ]
+  },
+
+
+  {
+    "username": "The-Real-SD",
+    "id": 5,
+    "discord": "The-Real-SD#8001",
+    "steam": "https://steamcommunity.com/id/SD-inwl/",
+    "email": "subhamf12010@gmail.com",
+
+    "name": "Subham Das",
+    "age": 22,
+    "location": "Barasat, Kolkata, West Bengal",
+    "number": 21,
+
+    "reserve": false,
+    "active": true,
+    "role": [
+      "Admin",
+      "Steward",
+      "Sauber"
+    ],
+
+    "aka": [
+      "RLI | The-Real-SD"
+    ]
+  },
+
+
+  {
+    "username": "SpeedLust",
+    "id": 6,
+    "discord": "sathvik#3814",
+    "steam": "http://s.team/p/cmmn-mfqb/bvjhqhjr",
+    "email": "sathvikreddy0505@gmail.com",
+
+    "name": "Sathvik Reddy",
+    "age": 21,
+    "location": "Bownpally, Hyderabad, Telangana",
+    "number": 66,
+
+    "reserve": false,
+    "active": true,
+    "role": [
+      "Renault"
+    ],
+
+    "aka": [
+      "OOR | SpeedLust",
+      "sathvik reddy",
+      "sathvik(SpeedLust)"
+    ]
+  }
+]
