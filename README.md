@@ -1,5 +1,5 @@
 # Racing League India Website
-Racing League India Official Website - [racingleagueindia.epizy.com]: http://racingleagueindia.epizy.com
+Racing League India Official Website - http://racingleagueindia.epizy.com
 
 The Official Website for the F1 Indian PC League. The League is reserved for Indians.
 We have been online since F1 2018, and are currently in our 3rd season.
