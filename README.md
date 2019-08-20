@@ -12,6 +12,17 @@ Steam : https://s.team/chat/nURFadz2 <br><br>
 Source Code is available in *Master*. <br>
 Production Code is available in *Production*. <br>
 
+For Development Build <br>
+```javascript
+ng build
+```
+<br><br>
+
+For Production Build <br>
+```javascript
+ng build --prod
+```
+<br>
 Front End : Angular - 8.1.0 <br>
 Back End : PHP - 7.3 <br>
 Database : MySQL <br>
