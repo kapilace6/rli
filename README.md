@@ -12,6 +12,8 @@ Steam : https://s.team/chat/nURFadz2 <br><br>
 Source Code is available in *Master*. <br>
 Production Code is available in *Production*. <br>
 
+To Build, you will require node_modules, which is in its own branch
+
 Front End : Angular - 8.1.0 <br>
 Back End : PHP - 7.3 <br>
 Database : MySQL <br>
