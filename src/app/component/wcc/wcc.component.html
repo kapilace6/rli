@@ -1,0 +1,18 @@
+<div *ngIf="ready">
+  <ol>
+      <div *ngFor="let constructor of constructors; index as i">
+          <li>
+              {{ i+1 }} -> {{ constructor.team }} : {{ constructor.points }}
+          </li>
+      </div>
+  </ol>
+
+  <br /><br />
+
+  Seasons : <br />
+  <div *ngFor="let season of seasonsT; index as j">
+      <button (click)=changeSeason(j)>  {{season | titlecase}}  </button>
+  </div>
+</div>
+
+<br /><br /><br />
