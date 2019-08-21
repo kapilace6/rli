@@ -1,4 +1,4 @@
-<div *ngIf="userLoaded">
+<!--<div *ngIf="userLoaded">
     Users : <br />
     {{ users }}
 </div>
@@ -26,22 +26,12 @@
         </div>
     </ol>
 </div>
+-->
 
 <br /><br />
 
-Seasons : <br />
-<div *ngFor="let season of seasonsT; index as j">
-    <button (click)=changeSeason(j)>  
-        {{season | titlecase}}  
-    </button>
-</div>
-
-<br /><br /><br />
-<ul>
-    <div *ngFor="let n of order">
-        <li> {{ n }} </li>
-    </div>
-</ul>
+    <h2> Roster for Season {{ curseason + 1 }} </h2>
+    
 <br /><br />
 <table>
     
@@ -61,6 +51,25 @@ Seasons : <br />
             <!---<td *ngFor="let track of seasonC" width="150" style="text-align:center"> {{ season1[j][track] }} </td>-->
     </tr>
 </table>
+
+<br /><br />
+
+Seasons : <br />
+<div *ngFor="let season of seasonsT; index as j">
+    <button (click)=changeSeason(j)>  
+        {{season | titlecase}}  
+    </button>
+</div>
+
+<!--
+<br /><br /><br />
+<ul>
+    <div *ngFor="let n of order">
+        <li> {{ n }} </li>
+    </div>
+</ul>
+-->
+
  <!---
 <div *ngFor="let user of users; index as j">
     <tr *ngIf="user.active">
