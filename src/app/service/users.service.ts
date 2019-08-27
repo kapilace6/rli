@@ -5,34 +5,34 @@ import { Observable, of } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class UsersService {
 
-    //xmlhttp: XMLHttpRequest;
-    //usersfilepath: string = "assets/users.json";
+//Database Data is Stored in this Service
+export class UsersService {
 
     usersfilepath: any = "server/be.php"; //?db=fdb&table=users";
     userString: string;
 
-    
-     users: any;
-     userdefined: boolean = false;
+    users: any;
+    userdefined: boolean = false;
 
     //s[0] -> pos : 1
-     pointsS: any;
-     pointsSdefined: boolean = false;
-
-     teams: any;
-     teamsdefined: boolean = false;
+    pointsS: any;
+    pointsSdefined: boolean = false;
+    
+    teams: any;
+    teamsdefined: boolean = false;
 
     //n1[0] -> id : 1
-     season1: any;
-     season1defined: boolean = false;
+    season1: any;
+    season1defined: boolean = false;
+    
+    //Array of Season Data
+    seasons: any;
 
-     seasons: any;
-
-     //DO NOT SORT
-     flaps: any;
-     flapdefined: boolean = false;
+    //DO NOT SORT
+    //Array of Fastest Lap Data
+    flaps: any;
+    flapdefined: boolean = false;
 
     constructor(private http: HttpClient) {
     }
@@ -53,6 +53,16 @@ export class UsersService {
         let headers = new HttpHeaders();
         headers.append('Content-Type', 'application/json');
 
+        //POST Request to be.php
+        /*
+            mode  -> 1 denotes Request for Table Data
+                     2 denotes Request for Array of Columns from a Specified 'table'
+                     3 denotes Request for Array of Table Names from a Specified 'db'
+
+            db    -> denotes Database Name
+            table -> denotes Table Name
+            sort  -> [Optional] Sorts Query Result by Specified Option
+         */
         let susers = this.http.post<any>(this.usersfilepath, JSON.stringify(
         {
             "mode": 1,
@@ -86,12 +96,14 @@ export class UsersService {
         return this.teams;
     }
 
+    //Returns only a Specific Season Data
     getSeason(season: number): any {
         //console.log('Returning Season 1');
         //console.log(this.seasons[season]);
         return this.seasons[season];
     }
 
+    //Returns only a Specific Season of Fastest Laps
     getFlaps(season: number): any {
         //console.log('Returning Fastest Lap');
         //console.log(this.flaps[season - 1]);

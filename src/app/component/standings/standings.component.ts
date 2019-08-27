@@ -131,6 +131,7 @@ export class StandingsComponent implements OnInit {
         */
     }
 
+    //Change Numbers associated with Non-Finishes to Strings
     dnfs(): void {
         for (let i = 0; i < this.season.length; i++)
             for (let track of this.seasonC)
@@ -139,6 +140,7 @@ export class StandingsComponent implements OnInit {
                 else if (this.season[i][track] == 23) this.season[i][track] = "DSQ";
     }
 
+    //Component Resetting when Season is Changed
     changeSeason(s: number): void {
         if(this.curseason == s) return;
         this.curseason = s;
@@ -148,6 +150,7 @@ export class StandingsComponent implements OnInit {
         this.sort();
     }
 
+    //Component Execution Starts Here :
     ngOnInit() {
         this.get();
         this.dnfs();

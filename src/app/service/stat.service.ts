@@ -5,6 +5,8 @@ import { ColumnsService } from './columns.service';
 @Injectable({
   providedIn: 'root'
 })
+
+//Statistics derived from the DB are computed and Stored in this Service
 export class StatService {
 
   //DO NOT SORT
@@ -17,17 +19,19 @@ export class StatService {
   users: any;
   teams: any;
 
-  /*Structure of a particular season
+  /*Structure of a particular season for Constructors
     {
         team: string,
         member: Array<number>,
         points: number
-    }*/
-  constructors: any;        //0 based index
-  reserves: Array<Array<number>>;  //0 based index
-  order: Array<number>;     //0 based index
+    }
+  */
+  constructors: any;                //0 based index
+  reserves: Array<Array<number>>;   //0 based index
+  order: Array<number>;             //0 based index
 
-  constructor(private columnsService: ColumnsService, private usersService: UsersService) { }
+  constructor(private columnsService: ColumnsService, private usersService: UsersService) { 
+  }
 
   begin_compute(): void {
     this.init();
@@ -39,6 +43,7 @@ export class StatService {
     this.users = this.usersService.getUsers();
     this.teams = this.usersService.getTeams();
 
+    //All Sorting is done by Indices, so a new Array is always Created for each
     this.order = new Array(this.users.length);
         for(let i = 0; i < this.users.length; i++)
             this.order[i] = i;
@@ -89,6 +94,7 @@ export class StatService {
 	  this.flapusersdefined = true;
   }
 
+  //Sorts 'order' by Teams in Alphabetical Order, and Drivers within by Points
   teamsort(curseason: number): void {
     this.order = new Array(this.users.length);
         for(let i = 0; i < this.users.length; i++)
@@ -144,34 +150,42 @@ export class StatService {
             if(l < r) return -1;
             else return 1;
         }	
-  });*/
+    });*/
+  }
 
-
-}
-
+  //Creates 'constructors' Object
   construct_teams(): void {
     //console.log('Constructing Teams');
 
     this.constructors = new Array(this.columnsService.seasonsT.length);
     this.reserves = new Array(this.columnsService.seasonsT.length);
+
+    //Iterate through Each Season
     for(let i = 0; i < this.columnsService.seasonsT.length; i++) {
+      //Create a new Array for each Season
       this.constructors[i] = new Array();
       this.reserves[i] = new Array();
 
+      //Sort by Teams for that Season
       this.teamsort(i);
 
       let prev = "", k = -1;
       for(let j = 0; j < this.order.length; j++) {
         let T = this.teams[this.order[j]][this.columnsService.teamsC[i]];
+
+        //Ignore Users who have not participated in that season
         if(T == "None")
           continue;
 
+        //A Separate Array for Reserve Drivers
         if(T == "Reserve") {
           this.reserves[i].push(this.order[j]);
           continue;
         }
 
-  
+        //Since it is Sorted by Team Name, if the current team differs from prev,
+        //it indicates that we that team is populated. Hence, he increment k
+        //k is the index of constructors[i]
         if(T != prev) {
           k++;
           this.constructors[i].push({
@@ -181,6 +195,7 @@ export class StatService {
           });
         }  
 
+        //Add the Points of the Driver into the Constructor
         this.constructors[i][k].points += this.points[i][this.order[j]];
         this.constructors[i][k].member.push(this.order[j]);
         prev = T;
@@ -191,6 +206,7 @@ export class StatService {
     //console.log(this.constructors);
   }
 
+  //Sort the Constructors by Points
   sort_teams(): void {
     for(let i = 0; i < this.columnsService.seasonsT.length; i++) {
       this.constructors[i].sort((leftside, rightside) => {
@@ -215,7 +231,7 @@ export class StatService {
   }
 
 
-  //Get Functions
+  //Get Functions for a Particular Season
   getPoints(season: number): any {
     //console.log('Returning Points');
     //console.log(this.points[season]);

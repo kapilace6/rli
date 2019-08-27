@@ -9,13 +9,20 @@ import { TesseractWorker, OSD, PSM } from 'tesseract.js';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
+//Flow is to Load Data from 'fdb' first, which contains { Users, Points and Teams }
+//followed by Loading the Columns and Table Metadata
+//folloed by Loading Data about each Season, which contains { Seasons, Fastest Laps }
+
 export class AppComponent implements OnInit {
   
+    //threshold denotes the number of Units of Data to be loaded before the App is ready to display the contents
+    //loaded denotes the number of Loaded Units of Data.
     sometext: string = "Awesome, it Works";
     loaded: number = 0;
-    threshold: number = 6;      //Set for the Tables & Columns in fdb
+    threshold: number = 6;                                  //Set for the Tables & Columns in fdb
 
-    //constructor(private usersService: UsersService) {
+    //Program Starts Here : 
     constructor(private columnsService: ColumnsService, private usersService: UsersService, private statService: StatService) {
         this.sometext = "";
 
@@ -32,12 +39,7 @@ export class AppComponent implements OnInit {
                 this.usersService.users = users;
                 this.usersService.userdefined = true;
 
-                //console.log('Users from Users : ');
-                //console.log(JSON.stringify(this.usersService.users));
-
                 this.loaded++;
-                //console.log(this.loaded);
-
                 this.computeStats();
             }
         );
@@ -52,12 +54,7 @@ export class AppComponent implements OnInit {
 
                 this.usersService.pointsSdefined = true;
 
-                //console.log('Points System from Users : ');
-                //console.log(JSON.stringify(this.usersService.pointsS));
-
                 this.loaded++;
-                //console.log(this.loaded);
-
                 this.computeStats();
             }
         );
@@ -69,12 +66,7 @@ export class AppComponent implements OnInit {
                 this.usersService.teams = teams;
                 this.usersService.teamsdefined = true;
 
-                //console.log('Teams from Users : ');
-                //console.log(JSON.stringify(this.usersService.teams));
-
                 this.loaded++;
-                //console.log(this.loaded);
-
                 this.computeStats();
             }
         );
@@ -89,12 +81,7 @@ export class AppComponent implements OnInit {
               this.columnsService.usersC = users;
               this.columnsService.userCdefined = true;
 
-              //console.log('Users from Columns : ');
-              //console.log(JSON.stringify(this.columnsService.usersC));
-
               this.loaded++;
-              //console.log(this.loaded);
-
               this.computeStats();
           }
       );
@@ -107,12 +94,7 @@ export class AppComponent implements OnInit {
               
               this.columnsService.teamsCdefined = true;
 
-              //console.log('Teams from Columns : ');
-              //console.log(JSON.stringify(this.columnsService.teamsC));
-
               this.loaded++;
-              //console.log(this.loaded);
-
               this.computeStats();
           }
       );
@@ -123,13 +105,9 @@ export class AppComponent implements OnInit {
             this.columnsService.seasonsT = seasons;
             this.columnsService.seasonsTdefined = true;
 
-            //console.log('Seasons Tables from Columns : ');
-            //console.log(JSON.stringify(this.columnsService.seasonsT));
-
             this.loaded++;
-            //console.log(this.loaded);
-
             this.threshold += (this.columnsService.seasonsT.length * 3) - 1;
+            
             this.computeStats();
             this.LoadSeasons();
         });    
@@ -143,18 +121,15 @@ export class AppComponent implements OnInit {
             //Get Season i Table
             this.usersService.getO("seasons", this.columnsService.seasonsT[i], "id").subscribe(
                 seasons => {
-                //need id, because sorting using id
-                this.usersService.season1 = seasons;
-                this.usersService.season1defined = true;
+                
+                    //need id, because sorting using id
+                    this.usersService.season1 = seasons;
+                    this.usersService.season1defined = true;
 
-                //console.log('Season ' + (i+1) + ' from Users : ');
-                //console.log(JSON.stringify(this.usersService.season1));
+                    this.loaded++;
 
-                this.loaded++;
-                //console.log(this.loaded);
-
-                this.usersService.seasons[i] = seasons;
-                this.computeStats();
+                    this.usersService.seasons[i] = seasons;
+                    this.computeStats();
             });
         }
 
@@ -165,18 +140,15 @@ export class AppComponent implements OnInit {
             //Get Season i Columns
             this.columnsService.getC("seasons", this.columnsService.seasonsT[i]).subscribe(
                 seasons => {
-                //need id, because sorting using id
-                let S = seasons;
-                S.shift();
+                
+                    //shift removes the first element from the Array, i.e., "id"
+                    let S = seasons;
+                    S.shift();
 
-                //console.log('Season ' + (i+1) + ' from Columns : ');
-                //console.log(JSON.stringify(S));
+                    this.loaded++;
 
-                this.loaded++;
-                //console.log(this.loaded);
-
-                this.columnsService.seasonsC[i] = S;
-                this.computeStats();
+                    this.columnsService.seasonsC[i] = S;
+                    this.computeStats();
             });
         }
 
@@ -187,15 +159,10 @@ export class AppComponent implements OnInit {
             //Get Fastest Lap i Table
             this.usersService.getO("fastest_laps", this.columnsService.seasonsT[i]).subscribe(
                 flap => {
-                this.usersService.flaps[i-1] = flap;
+                    this.usersService.flaps[i-1] = flap;
 
-                //console.log('Fastest Lap ' + (i+1) + ' from Users : ');
-                //console.log(JSON.stringify(flap));
-
-                this.loaded++;
-                //console.log(this.loaded);
-
-                this.computeStats();
+                    this.loaded++;
+                    this.computeStats();
             });
         }
     }

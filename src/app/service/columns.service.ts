@@ -6,6 +6,7 @@ import { Observable, of } from 'rxjs';
     providedIn: 'root'
 })
 
+//Metadata, i.e. Column and Table Data is Stored in this Service
 export class ColumnsService {
 
     //xmlhttp: XMLHttpRequest;
@@ -29,8 +30,6 @@ export class ColumnsService {
     //season1 should have the same columns as fastest_laps
 
     constructor(private http: HttpClient) {
-        
-        //console.log('Requested for all Columns');
     }
 
     isdefined(v: string) {
@@ -42,6 +41,7 @@ export class ColumnsService {
         return false;
     }
 
+    //Get Column Observable
     getC(db: string, table: string): Observable<any> {
         //console.log(table + '\'s Columns being requested');
 
@@ -64,6 +64,7 @@ export class ColumnsService {
         return susers;
     }
 
+    //Get Tables Observable
     getT(db: string): Observable<any> {
         //console.log(db + '\'s Tables being requested');
 
@@ -102,6 +103,7 @@ export class ColumnsService {
         return this.teamsC;
     }
 
+    //Returns only a Specific Season Columns
     getSeasonC(season: number): any {
         //console.log('Returning Season 1');
         //console.log(this.seasonsC[season]);
