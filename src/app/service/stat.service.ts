@@ -30,6 +30,8 @@ export class StatService {
   reserves: Array<Array<number>>;   //0 based index
   order: Array<number>;             //0 based index
 
+
+
   constructor(private columnsService: ColumnsService, private usersService: UsersService) { 
   }
 
@@ -72,7 +74,28 @@ export class StatService {
 
     //console.log(this.points);
     this.pointsdefined = true;
-  } 
+  }
+
+  //Sort by Points, or Better Finishes
+  pointsort(left: number, right: number, curseason: number): any {
+    if (this.points[curseason][left] > this.points[curseason][right]) return -1;
+    else if(this.points[curseason][left] < this.points[curseason][right]) return 1;
+
+    let leftwing = new Array(22); leftwing.fill(0);
+    let rightwing = new Array(22); rightwing.fill(0);
+
+    for (let track of this.columnsService.seasonsC[curseason]) {
+      leftwing[this.usersService.seasons[curseason][left][track] - 1]++;
+      rightwing[this.usersService.seasons[curseason][right][track] - 1]++;
+    }
+    
+    for (let i = 0; i < leftwing.length; ++i) {
+      if(leftwing[i] > rightwing[i]) return -1;
+      else if(leftwing[i] < rightwing[i]) return 1;
+    }
+
+    return -1;
+  }
 
   //Populates the Fastest Lap Index, as well as Adds to Points
   populate_flap(): void {
@@ -105,8 +128,9 @@ export class StatService {
       let r = this.teams[ri][this.columnsService.teamsC[curseason]];
 
       if(l == r) {
-        if (this.points[curseason][li] > this.points[curseason][ri]) return -1;
-        else return 1;
+        return this.pointsort(li, ri, curseason);
+        //if (this.points[curseason][li] > this.points[curseason][ri]) return -1;
+        //else return 1;
       }
       else {
         if(l < r) return -1;
