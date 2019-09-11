@@ -1120,7 +1120,7 @@ var TeamsComponent = /** @class */ (function () {
         this.reserves = this.statService.getReserves(this.curseason);
         this.order = new Array(this.usersService.seasons[this.curseason].length);
         for (var i = 0; i < this.usersService.seasons[this.curseason]; i++)
-            this.order[i] = this.usersService.seasons[this.curseason][i].id;
+            this.order[i] = this.usersService.seasons[this.curseason][i].id - 1;
     };
     TeamsComponent.prototype.ngOnInit = function () {
         this.get();
