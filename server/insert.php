@@ -1,4 +1,4 @@
- <?php
+<?php
 $servername = "sql312.epizy.com";
 $username = "epiz_23890428";
 $password = "quc2bfkcJxGqB";
@@ -17,7 +17,7 @@ $post = json_decode($post_data);
 
 //Create Qualy Table
 if($post->mode == 1)
-    $sql = "CREATE TABLE `epiz_23890428_qualy`.`" . $_GET['season'] . "|" . $_GET['track'] . "` (
+    $sql = "CREATE TABLE `epiz_23890428_qualy`.`" . $post->season . "|" . $post->track . "` (
 		`pos` INT( 6 ) NOT NULL ,
 		`id` INT( 11 ) NOT NULL ,
 		`team` VARCHAR( 40 ) NULL DEFAULT NULL ,
@@ -29,7 +29,7 @@ if($post->mode == 1)
 
 //Create Race Table
 else if($post->mode == 2)
-    $sql = "CREATE TABLE `epiz_23890428_race`.`" . $_GET['season'] . "|" . $_GET['track'] . "` (
+    $sql = "CREATE TABLE `epiz_23890428_race`.`" . $post->season . "|" . $post->track . "` (
 		`pos` INT( 6 ) NOT NULL ,
 		`id` INT( 11 ) NOT NULL ,
 		`team` VARCHAR( 40 ) NOT NULL ,
@@ -44,7 +44,7 @@ else if($post->mode == 2)
 
 //Create Tables amd Columns for New Season
 else if($post->mode == 3) {
-    $sql_flap = "CREATE TABLE `epiz_23890428_fastest_laps`.`" . $_GET['season'] . "` (
+    $sql_flap = "CREATE TABLE `epiz_23890428_fastest_laps`.`" . $post->season . "` (
 		`track` INT( 6 ) NOT NULL ,
 		`id` INT( 11 ) NOT NULL ,
 		`lap` INT( 11 ) NULL ,
@@ -54,9 +54,9 @@ else if($post->mode == 3) {
 		) ENGINE = MYISAM ;";
 
    $sql_teams = "ALTER TABLE `epiz_23890428_fdb`.`teams` 
-		 ADD `" . $_GET['season'] . "` VARCHAR( 40 ) NULL DEFAULT 'None';";
+		 ADD `" . $post->season . "` VARCHAR( 40 ) NULL DEFAULT 'None';";
 
-   $sql_seasons = "CREATE TABLE `epiz_23890428_seasons`.`" . $_GET['season'] . "` (
+   $sql_seasons = "CREATE TABLE `epiz_23890428_seasons`.`" . $post->season . "` (
 		 `id` INT( 11 ) NOT NULL ,
 		 PRIMARY KEY ( `id` ) 
 		 ) ENGINE = MYISAM ;";
