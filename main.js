@@ -1120,7 +1120,7 @@ var TeamsComponent = /** @class */ (function () {
         this.reserves = this.statService.getReserves(this.curseason);
         this.order = new Array(this.usersService.seasons[this.curseason].length);
         for (var i = 0; i < this.usersService.seasons[this.curseason]; i++)
-            this.order[i] = this.usersService.seasons[this.curseason].id;
+            this.order[i] = this.usersService.seasons[this.curseason][i].id;
     };
     TeamsComponent.prototype.ngOnInit = function () {
         this.get();
@@ -1585,7 +1585,7 @@ var StatService = /** @class */ (function () {
         var _this = this;
         this.order = new Array(this.usersService.seasons[curseason].length);
         for (var i = 0; i < this.usersService.seasons[curseason]; i++)
-            this.order[i] = this.usersService.seasons[curseason].id;
+            this.order[i] = this.usersService.seasons[curseason][i].id;
         this.order.sort(function (li, ri) {
             var l = _this.teams[li][_this.columnsService.teamsC[curseason]];
             var r = _this.teams[ri][_this.columnsService.teamsC[curseason]];
