@@ -932,37 +932,50 @@ var StandingsComponent = /** @class */ (function () {
         this.teamsLoaded = true;
         this.teamsC = this.columnsService.getTeamsC();
         this.teamsCLoaded = true;
-        this.order = new Array(this.users.length);
-        for (var i = 0; i < this.users.length; i++)
-            this.order[i] = i;
+        /*this.order = new Array(this.users.length);
+        for(let i = 0; i < this.users.length; i++)
+            this.order[i] = i;*/
+        this.order = new Array(this.season.length);
+        for (var i = 0; i < this.season.length; i++)
+            this.order[i] = this.season[i].id;
     };
     //Sorting based on Points
     StandingsComponent.prototype.sort = function () {
-        var _this = this;
         //-1 means L before R
+        /*
+        this.order.sort((l, r) => {
+            if(!this.users[r].active) return -1;
+            if(this.points[l] > this.points[r]) return -1;
+            if(this.points[l] < this.points[r]) return 1;
+
+            //Pull None further
+            if(this.teams[l][this.teamsC[this.curseason]] == "None") return 1;
+            if(this.teams[r][this.teamsC[this.curseason]] == "None") return -1;
+            
+            //Pull Reserve further
+            if(this.teams[r][this.teamsC[this.curseason]] == "Reserve") return -1;
+            return 1;
+        });
+        */
+        var _this = this;
         this.order.sort(function (l, r) {
-            if (!_this.users[r].active)
-                return -1;
             if (_this.points[l] > _this.points[r])
                 return -1;
             if (_this.points[l] < _this.points[r])
                 return 1;
-            //Pull None further
-            if (_this.teams[l][_this.teamsC[_this.curseason]] == "None")
-                return 1;
-            if (_this.teams[r][_this.teamsC[_this.curseason]] == "None")
-                return -1;
             //Pull Reserve further
             if (_this.teams[r][_this.teamsC[_this.curseason]] == "Reserve")
                 return -1;
             return 1;
         });
+        /*
         console.log(this.teamsC[this.curseason]);
-        while (!this.users[this.order[this.order.length - 1]].active ||
+        while(!this.users[this.order[this.order.length - 1]].active ||
             this.teams[this.order[this.order.length - 1]][this.teamsC[this.curseason]] == "None") {
-            console.log(this.order.pop());
-            console.log("Next last guy is : " + this.users[this.order[this.order.length - 1]].username);
-        }
+                console.log(this.order.pop());
+                console.log("Next last guy is : " + this.users[this.order[this.order.length - 1]].username);
+            }
+        */
         console.log('The Order : ');
         console.log(this.order);
         /*
@@ -1105,9 +1118,9 @@ var TeamsComponent = /** @class */ (function () {
         this.points = this.statService.getPoints(this.curseason);
         this.constructors = this.statService.getConstructors(this.curseason);
         this.reserves = this.statService.getReserves(this.curseason);
-        this.order = new Array(this.users.length);
-        for (var i = 0; i < this.users.length; i++)
-            this.order[i] = i;
+        this.order = new Array(this.usersService.seasons[this.curseason].length);
+        for (var i = 0; i < this.usersService.seasons[this.curseason]; i++)
+            this.order[i] = this.usersService.seasons[this.curseason].id;
     };
     TeamsComponent.prototype.ngOnInit = function () {
         this.get();
@@ -1121,10 +1134,7 @@ var TeamsComponent = /** @class */ (function () {
             var l = _this.teams[li][_this.teamsC[_this.curseason]];
             var r = _this.teams[ri][_this.teamsC[_this.curseason]];
             if (l == r) {
-                if (_this.points[li] > _this.points[ri])
-                    return -1;
-                else
-                    return 1;
+                return _this.statService.pointsort(li, ri, _this.curseason);
             }
             else {
                 if (l < r)
@@ -1573,9 +1583,9 @@ var StatService = /** @class */ (function () {
     //Sorts 'order' by Teams in Alphabetical Order, and Drivers within by Points
     StatService.prototype.teamsort = function (curseason) {
         var _this = this;
-        this.order = new Array(this.users.length);
-        for (var i = 0; i < this.users.length; i++)
-            this.order[i] = i;
+        this.order = new Array(this.usersService.seasons[curseason].length);
+        for (var i = 0; i < this.usersService.seasons[curseason]; i++)
+            this.order[i] = this.usersService.seasons[curseason].id;
         this.order.sort(function (li, ri) {
             var l = _this.teams[li][_this.columnsService.teamsC[curseason]];
             var r = _this.teams[ri][_this.columnsService.teamsC[curseason]];
