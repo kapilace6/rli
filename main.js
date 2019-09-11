@@ -932,9 +932,6 @@ var StandingsComponent = /** @class */ (function () {
         this.teamsLoaded = true;
         this.teamsC = this.columnsService.getTeamsC();
         this.teamsCLoaded = true;
-        /*this.order = new Array(this.users.length);
-        for(let i = 0; i < this.users.length; i++)
-            this.order[i] = i;*/
         this.order = new Array(this.season.length);
         for (var i = 0; i < this.season.length; i++)
             this.order[i] = this.season[i].id - 1;
@@ -975,27 +972,6 @@ var StandingsComponent = /** @class */ (function () {
                 console.log(this.order.pop());
                 console.log("Next last guy is : " + this.users[this.order[this.order.length - 1]].username);
             }
-        */
-        console.log('The Order : ');
-        console.log(this.order);
-        /*
-        this.users.sort((leftside, rightside): number => {
-            let l = leftside, r = rightside;
-            console.log(l.username + " , " + r.username);
-
-            if(!leftside.active) return 1;
-            if (this.points[leftside.id - 1] > this.points[rightside.id - 1]) return -1;
-            else return 1;
-        });
-
-        this.season.sort((leftside, rightside): number => {
-            let l = leftside, r = rightside;
-            console.log(this.users[leftside.id - 1].username + " v " + this.users[leftside.id - 1].username);
-
-            if(!this.users[leftside.id - 1].active) return 1;
-            if (this.points[leftside.id - 1] > this.points[rightside.id - 1]) return -1;
-            else return 1;
-        });
         */
     };
     //Change Numbers associated with Non-Finishes to Strings
@@ -1095,19 +1071,6 @@ var TeamsComponent = /** @class */ (function () {
         //get users from fdb, users
         //get teams from fdb, teams
         //get teamsC from fdb, teams
-        /*
-        this.users = JSON.stringify(this.usersService.getUsers());
-        this.userLoaded = true;
-
-        this.season1 = JSON.stringify(this.usersService.getSeason1());
-        this.season1Loaded = true;
-
-        this.season1C = JSON.stringify(this.columnsService.getSeason1C());
-        this.season1CLoaded = true;
-
-        this.pointsS = JSON.stringify(this.usersService.getPoints());
-        this.pointsSLoaded = true;
-        */
         this.users = this.usersService.getUsers();
         this.userLoaded = true;
         this.teams = this.usersService.getTeams();
@@ -1143,38 +1106,6 @@ var TeamsComponent = /** @class */ (function () {
                     return 1;
             }
         });
-        /*this.teams.sort((leftside, rightside) => {
-            if(leftside.id < rightside.id) return -1;
-            else return 1;
-        });
-
-        this.users.sort((leftside, rightside) => {
-            let l = this.teams[leftside.id - 1][this.teamsC[this.curseason]];
-            let r = this.teams[rightside.id - 1][this.teamsC[this.curseason]];
-
-            if(l == r) {
-                if(this.points[leftside.id - 1] > this.points[rightside.id - 1]) return -1;
-                else return 1;
-            }
-            else {
-                if(l < r) return -1;
-                else return 1;
-            }
-        });
-
-        this.teams.sort((leftside, rightside) => {
-            let l = leftside[this.teamsC[this.curseason]];
-            let r = rightside[this.teamsC[this.curseason]];
-            
-            if(l == r) {
-                if (this.points[leftside.id - 1] > this.points[rightside.id - 1]) return -1;
-                else return 1;
-            }
-            else {
-                if(l < r) return -1;
-                else return 1;
-            }
-        });*/
     };
     TeamsComponent.prototype.changeSeason = function (s) {
         if (this.curseason == s)
@@ -1523,8 +1454,6 @@ var StatService = /** @class */ (function () {
         this.reserves = new Array();
     };
     StatService.prototype.compute_points = function () {
-        //console.log('Computing Points');
-        //console.log(this.usersService.seasons);
         var Tlength = this.columnsService.seasonsT.length;
         this.points = new Array();
         for (var i = 0; i < Tlength; i++) {
@@ -1537,7 +1466,6 @@ var StatService = /** @class */ (function () {
                 }
         }
         this.populate_flap();
-        //console.log(this.points);
         this.pointsdefined = true;
     };
     //Sort by Points, or Better Finishes
@@ -1565,7 +1493,6 @@ var StatService = /** @class */ (function () {
     };
     //Populates the Fastest Lap Index, as well as Adds to Points
     StatService.prototype.populate_flap = function () {
-        //console.log('Populating Fastest Laps');
         //Assume Column Structure is same as Season Table, excluding "one"
         this.flapusers = new Array(this.columnsService.seasonsT.length);
         for (var i = 0; i < this.columnsService.seasonsT.length - 1; i++) {
@@ -1583,15 +1510,13 @@ var StatService = /** @class */ (function () {
     StatService.prototype.teamsort = function (curseason) {
         var _this = this;
         this.order = new Array(this.usersService.seasons[curseason].length);
-        for (var i = 0; i < this.usersService.seasons[curseason]; i++)
+        for (var i = 0; i < this.usersService.seasons[curseason].length; i++)
             this.order[i] = this.usersService.seasons[curseason][i].id - 1;
         this.order.sort(function (li, ri) {
             var l = _this.teams[li][_this.columnsService.teamsC[curseason]];
             var r = _this.teams[ri][_this.columnsService.teamsC[curseason]];
             if (l == r) {
                 return _this.pointsort(li, ri, curseason);
-                //if (this.points[curseason][li] > this.points[curseason][ri]) return -1;
-                //else return 1;
             }
             else {
                 if (l < r)
@@ -1600,46 +1525,9 @@ var StatService = /** @class */ (function () {
                     return 1;
             }
         });
-        console.log('Stat Order : ' + curseason);
-        console.log(this.order);
-        //console.log('Team Sort ' + curseason);
-        /*
-        this.teams.sort((leftside, rightside) => {
-            if(leftside.id < rightside.id) return -1;
-            else return 1;
-        });
-    
-        this.users.sort((leftside, rightside) => {
-            let l = this.teams[leftside.id - 1][this.columnsService.teamsC[curseason]];
-            let r = this.teams[rightside.id - 1][this.columnsService.teamsC[curseason]];
-    
-            if(l == r) {
-                if(this.points[curseason][leftside.id - 1] > this.points[curseason][rightside.id - 1]) return -1;
-                else return 1;
-            }
-            else {
-                if(l < r) return -1;
-                else return 1;
-            }
-        });
-    
-        this.teams.sort((leftside, rightside) => {
-            let l = leftside[this.columnsService.teamsC[curseason]];
-            let r = rightside[this.columnsService.teamsC[curseason]];
-            
-            if(l == r) {
-                if (this.points[curseason][leftside.id - 1] > this.points[curseason][rightside.id - 1]) return -1;
-                else return 1;
-            }
-            else {
-                if(l < r) return -1;
-                else return 1;
-            }
-        });*/
     };
     //Creates 'constructors' Object
     StatService.prototype.construct_teams = function () {
-        //console.log('Constructing Teams');
         this.constructors = new Array(this.columnsService.seasonsT.length);
         this.reserves = new Array(this.columnsService.seasonsT.length);
         //Iterate through Each Season
@@ -1649,6 +1537,7 @@ var StatService = /** @class */ (function () {
             this.reserves[i] = new Array();
             //Sort by Teams for that Season
             this.teamsort(i);
+            console.log(this.teams);
             var prev = "", k = -1;
             for (var j = 0; j < this.order.length; j++) {
                 var T = this.teams[this.order[j]][this.columnsService.teamsC[i]];
@@ -1678,7 +1567,6 @@ var StatService = /** @class */ (function () {
             }
         }
         this.sort_teams();
-        //console.log(this.constructors);
     };
     //Sort the Constructors by Points
     StatService.prototype.sort_teams = function () {
