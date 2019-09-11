@@ -52,8 +52,6 @@ export class StatService {
   }
 
   compute_points(): void {
-    //console.log('Computing Points');
-    //console.log(this.usersService.seasons);
     let Tlength = this.columnsService.seasonsT.length;
     
     this.points = new Array();
@@ -68,8 +66,6 @@ export class StatService {
     }
   
     this.populate_flap();
-
-    //console.log(this.points);
     this.pointsdefined = true;
   }
 
@@ -96,8 +92,6 @@ export class StatService {
 
   //Populates the Fastest Lap Index, as well as Adds to Points
   populate_flap(): void {
-	  //console.log('Populating Fastest Laps');
-
 	  //Assume Column Structure is same as Season Table, excluding "one"
 	  this.flapusers = new Array(this.columnsService.seasonsT.length);
       for (let i = 0; i < this.columnsService.seasonsT.length - 1; i++) {
@@ -117,7 +111,7 @@ export class StatService {
   //Sorts 'order' by Teams in Alphabetical Order, and Drivers within by Points
   teamsort(curseason: number): void {
     this.order = new Array(this.usersService.seasons[curseason].length);
-        for(let i = 0; i < this.usersService.seasons[curseason]; i++)
+        for(let i = 0; i < this.usersService.seasons[curseason].length; i++)
             this.order[i] = this.usersService.seasons[curseason][i].id - 1;
 
     this.order.sort((li, ri) => {
@@ -126,58 +120,16 @@ export class StatService {
 
       if(l == r) {
         return this.pointsort(li, ri, curseason);
-        //if (this.points[curseason][li] > this.points[curseason][ri]) return -1;
-        //else return 1;
       }
       else {
         if(l < r) return -1;
         else return 1;
       }	
     });
-
-    console.log('Stat Order : ' + curseason);
-    console.log(this.order);
-
-    //console.log('Team Sort ' + curseason);
-    /*
-    this.teams.sort((leftside, rightside) => {
-        if(leftside.id < rightside.id) return -1;
-        else return 1;
-    });
-
-    this.users.sort((leftside, rightside) => {
-        let l = this.teams[leftside.id - 1][this.columnsService.teamsC[curseason]];
-        let r = this.teams[rightside.id - 1][this.columnsService.teamsC[curseason]];
-
-        if(l == r) {
-            if(this.points[curseason][leftside.id - 1] > this.points[curseason][rightside.id - 1]) return -1;
-            else return 1;
-        }
-        else {
-            if(l < r) return -1;
-            else return 1;
-        }
-    });
-
-    this.teams.sort((leftside, rightside) => {
-        let l = leftside[this.columnsService.teamsC[curseason]];
-        let r = rightside[this.columnsService.teamsC[curseason]];
-        
-        if(l == r) {
-            if (this.points[curseason][leftside.id - 1] > this.points[curseason][rightside.id - 1]) return -1;
-            else return 1;
-        }
-        else {
-            if(l < r) return -1;
-            else return 1;
-        }	
-    });*/
   }
 
   //Creates 'constructors' Object
   construct_teams(): void {
-    //console.log('Constructing Teams');
-
     this.constructors = new Array(this.columnsService.seasonsT.length);
     this.reserves = new Array(this.columnsService.seasonsT.length);
 
@@ -189,6 +141,8 @@ export class StatService {
 
       //Sort by Teams for that Season
       this.teamsort(i);
+
+      console.log(this.teams);
 
       let prev = "", k = -1;
       for(let j = 0; j < this.order.length; j++) {
@@ -224,7 +178,6 @@ export class StatService {
     }
     
     this.sort_teams();
-    //console.log(this.constructors);
   }
 
   //Sort the Constructors by Points

@@ -42,20 +42,6 @@ export class TeamsComponent implements OnInit {
         //get teams from fdb, teams
         //get teamsC from fdb, teams
 
-        /*
-        this.users = JSON.stringify(this.usersService.getUsers());
-        this.userLoaded = true;
-
-        this.season1 = JSON.stringify(this.usersService.getSeason1());
-        this.season1Loaded = true;
-
-        this.season1C = JSON.stringify(this.columnsService.getSeason1C());
-        this.season1CLoaded = true;
-
-        this.pointsS = JSON.stringify(this.usersService.getPoints());
-        this.pointsSLoaded = true;
-        */
-
         this.users = this.usersService.getUsers();
         this.userLoaded = true;
 
@@ -96,39 +82,6 @@ export class TeamsComponent implements OnInit {
                 else return 1;
             }	
 	    });
-        
-        /*this.teams.sort((leftside, rightside) => {
-            if(leftside.id < rightside.id) return -1;
-            else return 1;
-        });
-
-        this.users.sort((leftside, rightside) => {
-            let l = this.teams[leftside.id - 1][this.teamsC[this.curseason]];
-            let r = this.teams[rightside.id - 1][this.teamsC[this.curseason]];
-
-            if(l == r) {
-                if(this.points[leftside.id - 1] > this.points[rightside.id - 1]) return -1;
-                else return 1;
-            }
-            else {
-                if(l < r) return -1;
-                else return 1;
-            }
-        });
-
-	    this.teams.sort((leftside, rightside) => {
-            let l = leftside[this.teamsC[this.curseason]];
-            let r = rightside[this.teamsC[this.curseason]];
-            
-            if(l == r) {
-                if (this.points[leftside.id - 1] > this.points[rightside.id - 1]) return -1;
-                else return 1;
-            }
-	    	else {
-                if(l < r) return -1;
-                else return 1;
-            }	
-	    });*/
     }
 
     changeSeason(s: number): void {

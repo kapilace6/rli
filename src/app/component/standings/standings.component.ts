@@ -77,9 +77,6 @@ export class StandingsComponent implements OnInit {
         this.teamsC = this.columnsService.getTeamsC();
         this.teamsCLoaded = true;
 
-        /*this.order = new Array(this.users.length);
-        for(let i = 0; i < this.users.length; i++)
-            this.order[i] = i;*/
         this.order = new Array(this.season.length);
         for(let i = 0; i < this.season.length; i++)
             this.order[i] = this.season[i].id - 1;
@@ -121,29 +118,6 @@ export class StandingsComponent implements OnInit {
                 console.log(this.order.pop());
                 console.log("Next last guy is : " + this.users[this.order[this.order.length - 1]].username);
             }
-        */
-
-        console.log('The Order : ');
-        console.log(this.order);
-
-        /*
-        this.users.sort((leftside, rightside): number => {
-            let l = leftside, r = rightside;
-            console.log(l.username + " , " + r.username);
-
-            if(!leftside.active) return 1;
-            if (this.points[leftside.id - 1] > this.points[rightside.id - 1]) return -1;
-            else return 1;
-        });
-
-        this.season.sort((leftside, rightside): number => {
-            let l = leftside, r = rightside;
-            console.log(this.users[leftside.id - 1].username + " v " + this.users[leftside.id - 1].username);
-
-            if(!this.users[leftside.id - 1].active) return 1;
-            if (this.points[leftside.id - 1] > this.points[rightside.id - 1]) return -1;
-            else return 1;
-        });
         */
     }
 
