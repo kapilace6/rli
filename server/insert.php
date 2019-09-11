@@ -67,5 +67,5 @@ else
     echo 'Invalid Parameters <br><br>';
 
 $result = $conn->query($sql);
-echo $result;
+echo $sql;
 ?> 
