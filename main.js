@@ -937,7 +937,7 @@ var StandingsComponent = /** @class */ (function () {
             this.order[i] = i;*/
         this.order = new Array(this.season.length);
         for (var i = 0; i < this.season.length; i++)
-            this.order[i] = this.season[i].id;
+            this.order[i] = this.season[i].id - 1;
     };
     //Sorting based on Points
     StandingsComponent.prototype.sort = function () {
@@ -1584,7 +1584,7 @@ var StatService = /** @class */ (function () {
         var _this = this;
         this.order = new Array(this.usersService.seasons[curseason].length);
         for (var i = 0; i < this.usersService.seasons[curseason]; i++)
-            this.order[i] = this.usersService.seasons[curseason][i].id;
+            this.order[i] = this.usersService.seasons[curseason][i].id - 1;
         this.order.sort(function (li, ri) {
             var l = _this.teams[li][_this.columnsService.teamsC[curseason]];
             var r = _this.teams[ri][_this.columnsService.teamsC[curseason]];
@@ -1660,7 +1660,7 @@ var StatService = /** @class */ (function () {
                     this.reserves[i].push(this.order[j]);
                     continue;
                 }
-                //Since it is Sorted by Team Name, if the current team differs from prev,
+                //Since it is Sorted by Team Name, if the cur`rent team differs from prev,
                 //it indicates that we that team is populated. Hence, he increment k
                 //k is the index of constructors[i]
                 if (T != prev) {
