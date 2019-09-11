@@ -53,7 +53,6 @@ export class StandingsComponent implements OnInit {
 
         this.users = this.usersService.getUsers();
         this.userLoaded = true;
-        console.log(this.users);
 
         this.season = this.usersService.getSeason(this.curseason);
         this.seasonLoaded = true;
@@ -67,7 +66,6 @@ export class StandingsComponent implements OnInit {
         if(this.curseason == 0) this.flapdefined = false;
         else {
             this.flapuser = this.statService.getFlapUsers(this.curseason);
-            console.log(this.flapuser);
             this.flapdefined = true;
         }
         

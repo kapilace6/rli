@@ -142,8 +142,6 @@ export class StatService {
       //Sort by Teams for that Season
       this.teamsort(i);
 
-      console.log(this.teams);
-
       let prev = "", k = -1;
       for(let j = 0; j < this.order.length; j++) {
         let T = this.teams[this.order[j]][this.columnsService.teamsC[i]];
