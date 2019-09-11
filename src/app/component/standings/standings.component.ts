@@ -82,7 +82,7 @@ export class StandingsComponent implements OnInit {
             this.order[i] = i;*/
         this.order = new Array(this.season.length);
         for(let i = 0; i < this.season.length; i++)
-            this.order[i] = this.season[i].id;
+            this.order[i] = this.season[i].id - 1;
     }
 
     //Sorting based on Points

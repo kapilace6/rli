@@ -118,7 +118,7 @@ export class StatService {
   teamsort(curseason: number): void {
     this.order = new Array(this.usersService.seasons[curseason].length);
         for(let i = 0; i < this.usersService.seasons[curseason]; i++)
-            this.order[i] = this.usersService.seasons[curseason][i].id;
+            this.order[i] = this.usersService.seasons[curseason][i].id - 1;
 
     this.order.sort((li, ri) => {
       let l = this.teams[li][this.columnsService.teamsC[curseason]];
@@ -204,7 +204,7 @@ export class StatService {
           continue;
         }
 
-        //Since it is Sorted by Team Name, if the current team differs from prev,
+        //Since it is Sorted by Team Name, if the cur`rent team differs from prev,
         //it indicates that we that team is populated. Hence, he increment k
         //k is the index of constructors[i]
         if(T != prev) {
