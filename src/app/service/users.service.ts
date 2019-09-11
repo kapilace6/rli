@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable, of, ObservableLike } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -75,6 +75,25 @@ export class UsersService {
         });
 
         return susers;    
+    }
+
+    insertSeason(season_name: String): Observable<any> {
+
+        this.usersfilepath = "server/insert.php";
+        
+        let headers = new HttpHeaders();
+        headers.append('Content-Type', 'application/json');
+
+        let newseason = this.http.post<any>(this.usersfilepath, JSON.stringify(
+        {
+            "mode": 3,
+            "season": season_name
+        }), 
+        {
+            headers: headers
+        });
+
+        return newseason;    
     }
 
     //Get Table Functions

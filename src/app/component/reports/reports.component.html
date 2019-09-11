@@ -1,3 +1,7 @@
-<p>
-  reports works!
-</p>
+<input type="text" [(ngModel)]="season_name" /> <br />
+
+<button (click)=callInsertion(season_name)>  
+  Create New Season : {{ season_name }}  
+</button>
+
+{{ status }}

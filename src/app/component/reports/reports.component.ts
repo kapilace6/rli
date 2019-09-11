@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UsersService } from '../../service/users.service';
 
 @Component({
   selector: 'app-reports',
@@ -7,7 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReportsComponent implements OnInit {
 
-  constructor() { }
+  season_name: String = "Replace me with Season Name";
+  status: String = "";
+
+  callInsertion(season: String): void {
+    this.usersService.insertSeason(season).subscribe(
+      season => {
+          this.status = "Success";
+          
+          console.log(season);
+          console.log(JSON.stringify(season));
+      }
+    );
+  }
+
+  constructor(private usersService: UsersService) { }
 
   ngOnInit() {
   }

@@ -110,3 +110,24 @@ export class ColumnsService {
         return this.seasonsC[season];
     }
 }
+
+/*
+ 	1 	track   Primary 	varchar(30) 	latin1_swedish_ci 		No 	None
+
+	2 	id 	int(11) 			No 	None 			Change Change 	Drop Drop 	
+
+    More More
+
+	3 	lap 	int(11) 			No 	None 			Change Change 	Drop Drop 	
+
+    More More
+
+	4 	time 	varchar(11) 	latin1_swedish_ci 		No 	None 			Change Change 	Drop Drop 	
+
+    More More
+
+	5 	tyre 	varchar(15) 	latin1_swedish_ci 		No 	None 			Change Change 	Drop Drop 	
+
+    More More
+
+*/
