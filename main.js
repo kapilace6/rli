@@ -51,7 +51,7 @@ module.exports = "<div style=\"text-align:center\">\r\n    <h1>\r\n        Welco
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n1. Create a New Season : <br />\nSeason : <input type=\"text\" [(ngModel)]=\"season_name\" /> \n\n<br /><br />\n<button (click)=insertSeason()>  \n  Create New Season : {{ season_name }}  \n</button>\n\n<br /><br /><br />\n\n2. Create a Qualy / Race Table : <br />\nSeason : <input type=\"text\" [(ngModel)]=\"season_name\" /> <br />\nTrack : <input type=\"text\" [(ngModel)]=\"track_name\" /> \n\n<br /><br />\n<button (click)=insertResult(1)>  \n  Create New Qualy Table  \n</button>\n<button (click)=insertResult(2)>  \n  Create New Race Table  \n</button>\n\n<br /><br /><br />\n<input type=\"text\" [(ngModel)]=\"pin\" />\n\n<br /><br />\n{{ status }}\n\n<br /><br /><br />\n"
+module.exports = "\n1. Create a New Season : <br />\nSeason : <input type=\"text\" [(ngModel)]=\"season_name\" /> \n\n<br /><br />\n<button (click)=insertSeason()>  \n  Create New Season : {{ season_name }}  \n</button>\n\n<br /><br /><br />\n\n2. Create a Qualy / Race Table : <br />\nSeason : <input type=\"text\" [(ngModel)]=\"season_name\" /> <br />\nTrack : <input type=\"text\" [(ngModel)]=\"track_name\" /> \n\n<br /><br />\n<button (click)=insertResult(1)>  \n  Create New Qualy Table  \n</button>\n<button (click)=insertResult(2)>  \n  Create New Race Table  \n</button>\n\n<br /><br /><br />\n<input type=\"text\" [(ngModel)]=\"pin\" />\n\n<br /><br />`\n{{ status }}\n\n<br /><br /><br />\n"
 
 /***/ }),
 
