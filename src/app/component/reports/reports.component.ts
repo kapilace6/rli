@@ -9,15 +9,21 @@ import { UsersService } from '../../service/users.service';
 export class ReportsComponent implements OnInit {
 
   season_name: String = "Replace me with Season Name";
+  track_name: String = "Replace me with Track Name";
   status: String = "";
 
-  callInsertion(season: String): void {
-    this.usersService.insertSeason(season).subscribe(
+  insertSeason(): void {
+    this.usersService.insertSeason(this.season_name).subscribe(
       season => {
           this.status = "Success";
-          
-          console.log(season);
-          console.log(JSON.stringify(season));
+      }
+    );
+  }
+
+  insertResult(mode: Number): void {
+    this.usersService.insertResult(mode, this.season_name, this.track_name).subscribe(
+      result => {
+        this.status = "Success";
       }
     );
   }

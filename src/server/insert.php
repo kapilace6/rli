@@ -17,30 +17,30 @@ $post = json_decode($post_data);
 
 //Create Qualy Table
 if($post->mode == 1)
-    $sql = "CREATE TABLE `epiz_23890428_qualy`.`" . $post->season . "|" . $post->track . "` (
-		`pos` INT( 6 ) NOT NULL ,
-		`id` INT( 11 ) NOT NULL ,
-		`team` VARCHAR( 40 ) NULL DEFAULT NULL ,
-		`time` VARCHAR( 15 ) NOT NULL DEFAULT '-',
-		`tyre` VARCHAR( 15 ) NOT NULL ,
-		PRIMARY KEY ( `pos` ) ,
-		UNIQUE (`id`)
-		) ENGINE = MYISAM ;";
+    $sql = "CREATE TABLE `epiz_23890428_qualy`.`" . $post->season . "|" . $post->track . "` (" .
+		"`pos` INT( 6 ) NOT NULL ," .
+		"`id` INT( 11 ) NOT NULL ," .
+		"`team` VARCHAR( 40 ) NULL DEFAULT NULL ," .
+		"`time` VARCHAR( 15 ) NOT NULL DEFAULT '-'," .
+		"`tyre` VARCHAR( 15 ) NOT NULL ," .
+		"PRIMARY KEY ( `pos` ) ," .
+		"UNIQUE (`id`)" .
+		") ENGINE = MYISAM ;";
 
 //Create Race Table
 else if($post->mode == 2)
-    $sql = "CREATE TABLE `epiz_23890428_race`.`" . $post->season . "|" . $post->track . "` (
-		`pos` INT( 6 ) NOT NULL ,
-		`id` INT( 11 ) NOT NULL ,
-		`team` VARCHAR( 40 ) NOT NULL ,
-		`grid` INT( 6 ) NOT NULL ,
-		`stop` INT( 6 ) NOT NULL ,
-		`best` VARCHAR( 15 ) NOT NULL DEFAULT '-',
-		`time` VARCHAR( 15 ) NOT NULL DEFAULT 'DNF',
-		`tyres` VARCHAR( 20 ) NOT NULL DEFAULT '-',
-		PRIMARY KEY ( `pos` ) ,
-		UNIQUE (`id`)
-		) ENGINE = MYISAM ; ";
+    $sql = "CREATE TABLE `epiz_23890428_race`.`" . $post->season . "|" . $post->track . "` (" .
+		"`pos` INT( 6 ) NOT NULL ," .
+		"`id` INT( 11 ) NOT NULL ," .
+		"`team` VARCHAR( 40 ) NOT NULL ," .
+		"`grid` INT( 6 ) NOT NULL ," .
+		"`stop` INT( 6 ) NOT NULL ," .
+		"`best` VARCHAR( 15 ) NOT NULL DEFAULT '-'," .
+		"`time` VARCHAR( 15 ) NOT NULL DEFAULT 'DNF'," .
+		"`tyres` VARCHAR( 20 ) NOT NULL DEFAULT '-'," .
+		"PRIMARY KEY ( `pos` ) ," .
+		"UNIQUE (`id`)" .
+		") ENGINE = MYISAM ; ";
 
 //Create Tables amd Columns for New Season
 else if($post->mode == 3) {

@@ -78,7 +78,6 @@ export class UsersService {
     }
 
     insertSeason(season_name: String): Observable<any> {
-
         this.usersfilepath = "server/insert.php";
         
         let headers = new HttpHeaders();
@@ -94,6 +93,25 @@ export class UsersService {
         });
 
         return newseason;    
+    }
+
+    insertResult(mode: Number, season_name: String, track_name: String): Observable<any> {
+        this.usersfilepath = "server/insert.php";
+        
+        let headers = new HttpHeaders();
+        headers.append('Content-Type', 'application/json');
+
+        let sresult = this.http.post<any>(this.usersfilepath, JSON.stringify(
+        {
+            "mode": mode,
+            "season": season_name,
+            "track": track_name
+        }), 
+        {
+            headers: headers
+        });
+
+        return sresult; 
     }
 
     //Get Table Functions

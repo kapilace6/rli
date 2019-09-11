@@ -1,7 +1,19 @@
-<input type="text" [(ngModel)]="season_name" /> <br />
+Season : <input type="text" [(ngModel)]="season_name" /> <br />
 
-<button (click)=callInsertion(season_name)>  
+<button (click)=insertSeason()>  
   Create New Season : {{ season_name }}  
 </button>
 
+<br /><br />
+Season : <input type="text" [(ngModel)]="season_name" /> <br />
+Track : <input type="text" [(ngModel)]="track_name" /> <br />
+
+<button (click)=insertResult(1)>  
+  Create New Qualy Table  
+</button>
+<button (click)=insertResult(2)>  
+  Create New Race Table  
+</button>
+
+<br /><br />
 {{ status }}
