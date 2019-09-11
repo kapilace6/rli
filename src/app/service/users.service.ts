@@ -80,6 +80,11 @@ export class UsersService {
     insertSeason(season_name: String): Observable<any> {
 
         this.usersfilepath = "server/insert.php";
+        console.log(JSON.stringify(
+            {
+                "mode": 3,
+                "season": season_name
+            }));
         
         let headers = new HttpHeaders();
         headers.append('Content-Type', 'application/json');
