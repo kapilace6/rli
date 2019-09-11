@@ -51,7 +51,7 @@ module.exports = "<div style=\"text-align:center\">\r\n    <h1>\r\n        Welco
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  reports works!\n</p>\n"
+module.exports = "<input type=\"text\" [(ngModel)]=\"season_name\" /> <br />\n\n<button (click)=callInsertion(season_name)>  \n  Create New Season : {{ season_name }}  \n</button>\n\n{{ status }}\n"
 
 /***/ }),
 
@@ -726,20 +726,36 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ReportsComponent", function() { return ReportsComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _service_users_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../service/users.service */ "./src/app/service/users.service.ts");
+
 
 
 var ReportsComponent = /** @class */ (function () {
-    function ReportsComponent() {
+    function ReportsComponent(usersService) {
+        this.usersService = usersService;
+        this.season_name = "Replace me with Season Name";
+        this.status = "";
     }
+    ReportsComponent.prototype.callInsertion = function (season) {
+        var _this = this;
+        this.usersService.insertSeason(season).subscribe(function (season) {
+            _this.status = "Success";
+            console.log(season);
+            console.log(JSON.stringify(season));
+        });
+    };
     ReportsComponent.prototype.ngOnInit = function () {
     };
+    ReportsComponent.ctorParameters = function () { return [
+        { type: _service_users_service__WEBPACK_IMPORTED_MODULE_2__["UsersService"] }
+    ]; };
     ReportsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-reports',
             template: __webpack_require__(/*! raw-loader!./reports.component.html */ "./node_modules/raw-loader/index.js!./src/app/component/reports/reports.component.html"),
             styles: [__webpack_require__(/*! ./reports.component.css */ "./src/app/component/reports/reports.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_service_users_service__WEBPACK_IMPORTED_MODULE_2__["UsersService"]])
     ], ReportsComponent);
     return ReportsComponent;
 }());
@@ -1428,6 +1444,26 @@ var ColumnsService = /** @class */ (function () {
     return ColumnsService;
 }());
 
+/*
+    1 	track   Primary 	varchar(30) 	latin1_swedish_ci 		No 	None
+
+    2 	id 	int(11) 			No 	None 			Change Change 	Drop Drop
+
+    More More
+
+    3 	lap 	int(11) 			No 	None 			Change Change 	Drop Drop
+
+    More More
+
+    4 	time 	varchar(11) 	latin1_swedish_ci 		No 	None 			Change Change 	Drop Drop
+
+    More More
+
+    5 	tyre 	varchar(15) 	latin1_swedish_ci 		No 	None 			Change Change 	Drop Drop
+
+    More More
+
+*/ 
 
 
 /***/ }),
@@ -1756,6 +1792,18 @@ var UsersService = /** @class */ (function () {
             headers: headers
         });
         return susers;
+    };
+    UsersService.prototype.insertSeason = function (season_name) {
+        this.usersfilepath = "server/insert.php";
+        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]();
+        headers.append('Content-Type', 'application/json');
+        var newseason = this.http.post(this.usersfilepath, JSON.stringify({
+            "mode": 3,
+            "season": season_name
+        }), {
+            headers: headers
+        });
+        return newseason;
     };
     //Get Table Functions
     UsersService.prototype.getUsers = function () {
