@@ -1529,13 +1529,12 @@ var StatService = /** @class */ (function () {
         this.points = new Array();
         for (var i = 0; i < Tlength; i++) {
             this.points[i] = new Array(this.users.length);
-            for (var j = 0; j < this.users.length; j++) {
-                this.points[i][j] = 0;
+            this.points[i].fill(0);
+            for (var j = 0; j < this.usersService.seasons[i].length; j++)
                 for (var _i = 0, _a = this.columnsService.seasonsC[i]; _i < _a.length; _i++) {
                     var track = _a[_i];
-                    this.points[i][j] += this.usersService.pointsS[this.usersService.seasons[i][j][track] - 1].feature;
+                    this.points[i][this.usersService.seasons[i][j].id - 1] += this.usersService.pointsS[this.usersService.seasons[i][j][track] - 1].feature;
                 }
-            }
         }
         this.populate_flap();
         //console.log(this.points);
