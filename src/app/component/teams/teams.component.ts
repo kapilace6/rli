@@ -73,7 +73,7 @@ export class TeamsComponent implements OnInit {
 
         this.order = new Array(this.usersService.seasons[this.curseason].length);
         for(let i = 0; i < this.usersService.seasons[this.curseason]; i++)
-            this.order[i] = this.usersService.seasons[this.curseason].id;
+            this.order[i] = this.usersService.seasons[this.curseason][i].id;
     }
 
     ngOnInit() {

@@ -121,7 +121,7 @@ export class StatService {
   teamsort(curseason: number): void {
     this.order = new Array(this.usersService.seasons[curseason].length);
         for(let i = 0; i < this.usersService.seasons[curseason]; i++)
-            this.order[i] = this.usersService.seasons[curseason].id;
+            this.order[i] = this.usersService.seasons[curseason][i].id;
 
     this.order.sort((li, ri) => {
       let l = this.teams[li][this.columnsService.teamsC[curseason]];
