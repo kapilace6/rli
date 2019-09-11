@@ -11,8 +11,12 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+//echo "<script> console.log('PHP Script says Hi!'); </script>";
+$post_data = file_get_contents('php://input');
+$post = json_decode($post_data);
+
 //Create Qualy Table
-if($_GET['mode'] == 1)
+if($post->mode == 1)
     $sql = "CREATE TABLE `epiz_23890428_qualy`.`" . $_GET['season'] . "|" . $_GET['track'] . "` (
 		`pos` INT( 6 ) NOT NULL ,
 		`id` INT( 11 ) NOT NULL ,
@@ -24,7 +28,7 @@ if($_GET['mode'] == 1)
 		) ENGINE = MYISAM ;";
 
 //Create Race Table
-else if($_GET['mode'] == 2)
+else if($post->mode == 2)
     $sql = "CREATE TABLE `epiz_23890428_race`.`" . $_GET['season'] . "|" . $_GET['track'] . "` (
 		`pos` INT( 6 ) NOT NULL ,
 		`id` INT( 11 ) NOT NULL ,
@@ -39,7 +43,7 @@ else if($_GET['mode'] == 2)
 		) ENGINE = MYISAM ;";
 
 //Create Tables amd Columns for New Season
-else if($_GET['mode'] == 3) {
+else if($post->mode == 3) {
     $sql_flap = "CREATE TABLE `epiz_23890428_fastest_laps`.`" . $_GET['season'] . "` (
 		`track` INT( 6 ) NOT NULL ,
 		`id` INT( 11 ) NOT NULL ,
