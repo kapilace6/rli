@@ -30,8 +30,6 @@ export class StatService {
   reserves: Array<Array<number>>;   //0 based index
   order: Array<number>;             //0 based index
 
-
-
   constructor(private columnsService: ColumnsService, private usersService: UsersService) { 
   }
 
@@ -61,13 +59,12 @@ export class StatService {
     this.points = new Array();
     for (let i = 0; i < Tlength; i++) {
       this.points[i] = new Array(this.users.length);
+      this.points[i].fill(0);
 
-      for(let j = 0; j < this.users.length; j++) {    
-        this.points[i][j] = 0;
-        
+      for(let j = 0; j < this.usersService.seasons[i].length; j++)     
         for (let track of this.columnsService.seasonsC[i])
-            this.points[i][j] += this.usersService.pointsS[this.usersService.seasons[i][j][track] - 1].feature;
-      }
+            this.points[i][this.usersService.seasons[i][j].id - 1] += this.usersService.pointsS[this.usersService.seasons[i][j][track] - 1].feature;
+      
     }
   
     this.populate_flap();
