@@ -1,4 +1,4 @@
- <?php
+<?php
 $servername = "sql312.epizy.com";
 $username = "epiz_23890428";
 $password = "quc2bfkcJxGqB";
@@ -11,9 +11,13 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+//echo "<script> console.log('PHP Script says Hi!'); </script>";
+$post_data = file_get_contents('php://input');
+$post = json_decode($post_data);
+
 //Create Qualy Table
-if($_GET['mode'] == 1)
-    $sql = "CREATE TABLE `epiz_23890428_qualy`.`" . $_GET['season'] . "|" . $_GET['track'] . "` (
+if($post->mode == 1)
+    $sql = "CREATE TABLE `epiz_23890428_qualy`.`" . $post->season . "|" . $post->track . "` (
 		`pos` INT( 6 ) NOT NULL ,
 		`id` INT( 11 ) NOT NULL ,
 		`team` VARCHAR( 40 ) NULL DEFAULT NULL ,
@@ -23,9 +27,9 @@ if($_GET['mode'] == 1)
 		UNIQUE (`id`)
 		) ENGINE = MYISAM ;";
 
-//Column Mode
-else if($_GET['mode'] == 2)
-    $sql = "CREATE TABLE `epiz_23890428_race`.`" . $_GET['season'] . "|" . $_GET['track'] . "` (
+//Create Race Table
+else if($post->mode == 2)
+    $sql = "CREATE TABLE `epiz_23890428_race`.`" . $post->season . "|" . $post->track . "` (
 		`pos` INT( 6 ) NOT NULL ,
 		`id` INT( 11 ) NOT NULL ,
 		`team` VARCHAR( 40 ) NOT NULL ,
@@ -37,6 +41,28 @@ else if($_GET['mode'] == 2)
 		PRIMARY KEY ( `pos` ) ,
 		UNIQUE (`id`)
 		) ENGINE = MYISAM ;";
+
+//Create Tables amd Columns for New Season
+else if($post->mode == 3) {
+    $sql_flap = "CREATE TABLE `epiz_23890428_fastest_laps`.`" . $post->season . "` (
+		`track` INT( 6 ) NOT NULL ,
+		`id` INT( 11 ) NOT NULL ,
+		`lap` INT( 11 ) NULL ,
+		`time` VARCHAR( 11 ) NULL ,
+		`tyre` VARCHAR( 15 ) NULL ,
+		PRIMARY KEY ( `track` ) 
+		) ENGINE = MYISAM ;";
+
+   $sql_teams = "ALTER TABLE `epiz_23890428_fdb`.`teams` 
+		 ADD `" . $post->season . "` VARCHAR( 40 ) NULL DEFAULT 'None';";
+
+   $sql_seasons = "CREATE TABLE `epiz_23890428_seasons`.`" . $post->season . "` (
+		 `id` INT( 11 ) NOT NULL ,
+		 PRIMARY KEY ( `id` ) 
+		 ) ENGINE = MYISAM ;";
+
+   $sql = $sql_flap . $sql_teams . $sql_seasons;
+}
 else
     echo 'Invalid Parameters <br><br>';
 
