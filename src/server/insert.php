@@ -66,6 +66,12 @@ else if($post->mode == 3) {
 else
     echo 'Invalid Parameters <br><br>';
 
-$result = $conn->query($sql);
-echo $sql;
+$result = $conn->multi_query($sql);
+
+if($result)
+	http_response_code(201);
+else
+	http_response_code(400);
+
+echo json_encode(new stdClass);
 ?> 
