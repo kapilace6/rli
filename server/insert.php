@@ -40,26 +40,26 @@ else if($post->mode == 2)
 		`tyres` VARCHAR( 20 ) NOT NULL DEFAULT '-',
 		PRIMARY KEY ( `pos` ) ,
 		UNIQUE (`id`)
-		) ENGINE = MYISAM ;";
+		) ENGINE = MYISAM ; ";
 
 //Create Tables amd Columns for New Season
 else if($post->mode == 3) {
-    $sql_flap = "CREATE TABLE `epiz_23890428_fastest_laps`.`" . $post->season . "` (
-		`track` INT( 6 ) NOT NULL ,
-		`id` INT( 11 ) NOT NULL ,
-		`lap` INT( 11 ) NULL ,
-		`time` VARCHAR( 11 ) NULL ,
-		`tyre` VARCHAR( 15 ) NULL ,
-		PRIMARY KEY ( `track` ) 
-		) ENGINE = MYISAM ;";
+    $sql_flap = "CREATE TABLE `epiz_23890428_fastest_laps`.`" . $post->season . "` (" . 
+		"`track` INT( 6 ) NOT NULL ," .
+		"`id` INT( 11 ) NOT NULL ," .
+		"`lap` INT( 11 ) NULL ," .
+		"`time` VARCHAR( 11 ) NULL ," .
+		"`tyre` VARCHAR( 15 ) NULL ," .
+		"PRIMARY KEY ( `track` ) " .
+		") ENGINE = MYISAM ; "; 
 
-   $sql_teams = "ALTER TABLE `epiz_23890428_fdb`.`teams` 
-		 ADD `" . $post->season . "` VARCHAR( 40 ) NULL DEFAULT 'None';";
+   $sql_teams = "ALTER TABLE `epiz_23890428_fdb`.`teams` " .
+		 "ADD `" . $post->season . "` VARCHAR( 40 ) NULL DEFAULT 'None'; ";
 
-   $sql_seasons = "CREATE TABLE `epiz_23890428_seasons`.`" . $post->season . "` (
-		 `id` INT( 11 ) NOT NULL ,
-		 PRIMARY KEY ( `id` ) 
-		 ) ENGINE = MYISAM ;";
+   $sql_seasons = "CREATE TABLE `epiz_23890428_seasons`.`" . $post->season . "` (" .
+		 "`id` INT( 11 ) NOT NULL ," .
+		 "PRIMARY KEY ( `id` ) " .
+		 ") ENGINE = MYISAM ;";
 
    $sql = $sql_flap . $sql_teams . $sql_seasons;
 }
@@ -67,5 +67,5 @@ else
     echo 'Invalid Parameters <br><br>';
 
 $result = $conn->query($sql);
-echo $sql;
+echo $result;
 ?> 

@@ -1795,10 +1795,6 @@ var UsersService = /** @class */ (function () {
     };
     UsersService.prototype.insertSeason = function (season_name) {
         this.usersfilepath = "server/insert.php";
-        console.log(JSON.stringify({
-            "mode": 3,
-            "season": season_name
-        }));
         var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]();
         headers.append('Content-Type', 'application/json');
         var newseason = this.http.post(this.usersfilepath, JSON.stringify({
