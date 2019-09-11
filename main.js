@@ -29,7 +29,7 @@ module.exports = "\r\n<div *ngIf=\"userLoaded\">\r\n        <ol>\r\n            
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n  <a routerLink=\"home\"> Home </a>  <br />\n  <a routerLink=\"standings\"> Standings </a> <br />\n  <a routerLink=\"wdc\"> Driver's Championship </a> <br />\n  <a routerLink=\"wcc\"> Constructor's Championship </a> <br />\n  <a routerLink=\"reports\"> Report Incident </a> <br />\n  <a routerLink=\"teams\"> Teams </a> <br />\n  <a routerLink=\"season1\"> Season 1 </a> <br />\n  <a routerLink=\"results\">Race Results </a> <br />\n  <a routerLink=\"drivers\"> Driver Stats </a> <br />\n</div>\n"
+module.exports = "<div>\n  <a routerLink=\"home\"> Home </a>  <br />\n  <a routerLink=\"standings\"> Standings </a> <br />\n  <a routerLink=\"wdc\"> Driver's Championship </a> <br />\n  <a routerLink=\"wcc\"> Constructor's Championship </a> <br />\n  <a routerLink=\"reports\"> Admin Panel </a> <br />\n  <a routerLink=\"teams\"> Teams </a> <br />\n  <a routerLink=\"season1\"> Season 1 </a> <br />\n  <a routerLink=\"results\">Race Results </a> <br />\n  <a routerLink=\"drivers\"> Driver Stats </a> <br />\n</div>\n"
 
 /***/ }),
 
@@ -51,7 +51,7 @@ module.exports = "<div style=\"text-align:center\">\r\n    <h1>\r\n        Welco
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "Season : <input type=\"text\" [(ngModel)]=\"season_name\" /> <br />\n\n<button (click)=insertSeason()>  \n  Create New Season : {{ season_name }}  \n</button>\n\n<br /><br />\nSeason : <input type=\"text\" [(ngModel)]=\"season_name\" /> <br />\nTrack : <input type=\"text\" [(ngModel)]=\"track_name\" /> <br />\n\n<button (click)=insertResult(1)>  \n  Create New Qualy Table  \n</button>\n<button (click)=insertResult(2)>  \n  Create New Race Table  \n</button>\n\n<br /><br />\n{{ status }}\n"
+module.exports = "\n1. Create a New Season : <br />\nSeason : <input type=\"text\" [(ngModel)]=\"season_name\" /> \n\n<br /><br />\n<button (click)=insertSeason()>  \n  Create New Season : {{ season_name }}  \n</button>\n\n<br /><br /><br />\n\n2. Create a Qualy / Race Table : <br />\nSeason : <input type=\"text\" [(ngModel)]=\"season_name\" /> <br />\nTrack : <input type=\"text\" [(ngModel)]=\"track_name\" /> \n\n<br /><br />\n<button (click)=insertResult(1)>  \n  Create New Qualy Table  \n</button>\n<button (click)=insertResult(2)>  \n  Create New Race Table  \n</button>\n\n<br /><br /><br />\n<input type=\"text\" [(ngModel)]=\"pin\" />\n\n<br /><br />\n{{ status }}\n\n<br /><br /><br />\n"
 
 /***/ }),
 
@@ -727,6 +727,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _service_users_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../service/users.service */ "./src/app/service/users.service.ts");
+/* harmony import */ var crypto_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! crypto-js */ "./node_modules/crypto-js/index.js");
+/* harmony import */ var crypto_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(crypto_js__WEBPACK_IMPORTED_MODULE_3__);
+
 
 
 
@@ -736,18 +739,30 @@ var ReportsComponent = /** @class */ (function () {
         this.season_name = "Replace me with Season Name";
         this.track_name = "Replace me with Track Name";
         this.status = "";
+        this.pin = "Enter 6 Digit PIN Here";
+        this.shapin = "f2978ea1ceaef7962f641fec7e7a4f943a821e4a98bb81a70e21419ea839ca7b";
     }
     ReportsComponent.prototype.insertSeason = function () {
         var _this = this;
-        this.usersService.insertSeason(this.season_name).subscribe(function (season) {
-            _this.status = "Success";
-        });
+        if (crypto_js__WEBPACK_IMPORTED_MODULE_3__["SHA256"](this.pin) == this.shapin) {
+            this.usersService.insertSeason(this.season_name).subscribe(function (season) {
+                _this.status = "Success";
+            });
+        }
+        else {
+            this.status = "Incorrect PIN";
+        }
     };
     ReportsComponent.prototype.insertResult = function (mode) {
         var _this = this;
-        this.usersService.insertResult(mode, this.season_name, this.track_name).subscribe(function (result) {
-            _this.status = "Success";
-        });
+        if (crypto_js__WEBPACK_IMPORTED_MODULE_3__["SHA256"](this.pin) == this.shapin) {
+            this.usersService.insertResult(mode, this.season_name, this.track_name).subscribe(function (result) {
+                _this.status = "Success";
+            });
+        }
+        else {
+            this.status = "Incorrect PIN";
+        }
     };
     ReportsComponent.prototype.ngOnInit = function () {
     };
@@ -914,7 +929,6 @@ var StandingsComponent = /** @class */ (function () {
         //get teams from fdb, teams
         this.users = this.usersService.getUsers();
         this.userLoaded = true;
-        console.log(this.users);
         this.season = this.usersService.getSeason(this.curseason);
         this.seasonLoaded = true;
         this.seasonC = this.columnsService.getSeasonC(this.curseason);
@@ -925,7 +939,6 @@ var StandingsComponent = /** @class */ (function () {
             this.flapdefined = false;
         else {
             this.flapuser = this.statService.getFlapUsers(this.curseason);
-            console.log(this.flapuser);
             this.flapdefined = true;
         }
         this.teams = this.usersService.getTeams();
@@ -1537,7 +1550,6 @@ var StatService = /** @class */ (function () {
             this.reserves[i] = new Array();
             //Sort by Teams for that Season
             this.teamsort(i);
-            console.log(this.teams);
             var prev = "", k = -1;
             for (var j = 0; j < this.order.length; j++) {
                 var T = this.teams[this.order[j]][this.columnsService.teamsC[i]];
