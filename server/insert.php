@@ -23,7 +23,7 @@ if($_GET['mode'] == 1)
 		UNIQUE (`id`)
 		) ENGINE = MYISAM ;";
 
-//Column Mode
+//Create Race Table
 else if($_GET['mode'] == 2)
     $sql = "CREATE TABLE `epiz_23890428_race`.`" . $_GET['season'] . "|" . $_GET['track'] . "` (
 		`pos` INT( 6 ) NOT NULL ,
@@ -37,6 +37,28 @@ else if($_GET['mode'] == 2)
 		PRIMARY KEY ( `pos` ) ,
 		UNIQUE (`id`)
 		) ENGINE = MYISAM ;";
+
+//Create Tables amd Columns for New Season
+else if($_GET['mode'] == 3) {
+    $sql_flap = "CREATE TABLE `epiz_23890428_fastest_laps`.`" . $_GET['season'] . "` (
+		`track` INT( 6 ) NOT NULL ,
+		`id` INT( 11 ) NOT NULL ,
+		`lap` INT( 11 ) NULL ,
+		`time` VARCHAR( 11 ) NULL ,
+		`tyre` VARCHAR( 15 ) NULL ,
+		PRIMARY KEY ( `track` ) 
+		) ENGINE = MYISAM ;";
+
+   $sql_teams = "ALTER TABLE `epiz_23890428_fdb`.`teams` 
+		 ADD `" . $_GET['season'] . "` VARCHAR( 40 ) NULL DEFAULT 'None';";
+
+   $sql_seasons = "CREATE TABLE `epiz_23890428_seasons`.`" . $_GET['season'] . "` (
+		 `id` INT( 11 ) NOT NULL ,
+		 PRIMARY KEY ( `id` ) 
+		 ) ENGINE = MYISAM ;";
+
+   $sql = $sql_flap . $sql_teams . $sql_seasons;
+}
 else
     echo 'Invalid Parameters <br><br>';
 
