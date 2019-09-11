@@ -77,15 +77,19 @@ export class StandingsComponent implements OnInit {
         this.teamsC = this.columnsService.getTeamsC();
         this.teamsCLoaded = true;
 
-        this.order = new Array(this.users.length);
+        /*this.order = new Array(this.users.length);
         for(let i = 0; i < this.users.length; i++)
-            this.order[i] = i;
+            this.order[i] = i;*/
+        this.order = new Array(this.season.length);
+        for(let i = 0; i < this.season.length; i++)
+            this.order[i] = this.season[i].id;
     }
 
     //Sorting based on Points
     sort(): void {
 
         //-1 means L before R
+        /*
         this.order.sort((l, r) => {
             if(!this.users[r].active) return -1;
             if(this.points[l] > this.points[r]) return -1;
@@ -99,13 +103,25 @@ export class StandingsComponent implements OnInit {
             if(this.teams[r][this.teamsC[this.curseason]] == "Reserve") return -1;
             return 1;
         });
+        */
+        
+        this.order.sort((l, r) => {
+            if(this.points[l] > this.points[r]) return -1;
+            if(this.points[l] < this.points[r]) return 1;
 
+            //Pull Reserve further
+            if(this.teams[r][this.teamsC[this.curseason]] == "Reserve") return -1;
+            return 1;
+        });
+        
+        /*
         console.log(this.teamsC[this.curseason]);
         while(!this.users[this.order[this.order.length - 1]].active || 
             this.teams[this.order[this.order.length - 1]][this.teamsC[this.curseason]] == "None") {
                 console.log(this.order.pop());
                 console.log("Next last guy is : " + this.users[this.order[this.order.length - 1]].username);
             }
+        */
 
         console.log('The Order : ');
         console.log(this.order);

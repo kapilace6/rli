@@ -71,9 +71,9 @@ export class TeamsComponent implements OnInit {
         this.constructors = this.statService.getConstructors(this.curseason);
         this.reserves = this.statService.getReserves(this.curseason);
 
-        this.order = new Array(this.users.length);
-        for(let i = 0; i < this.users.length; i++)
-            this.order[i] = i;
+        this.order = new Array(this.usersService.seasons[this.curseason].length);
+        for(let i = 0; i < this.usersService.seasons[this.curseason]; i++)
+            this.order[i] = this.usersService.seasons[this.curseason].id;
     }
 
     ngOnInit() {
@@ -89,8 +89,7 @@ export class TeamsComponent implements OnInit {
             let r = this.teams[ri][this.teamsC[this.curseason]];
             
             if(l == r) {
-                if (this.points[li] > this.points[ri]) return -1;
-                else return 1;
+                return this.statService.pointsort(li, ri, this.curseason);
             }
 	    	else {
                 if(l < r) return -1;
