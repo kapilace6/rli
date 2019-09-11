@@ -51,7 +51,7 @@ module.exports = "<div style=\"text-align:center\">\r\n    <h1>\r\n        Welco
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<input type=\"text\" [(ngModel)]=\"season_name\" /> <br />\n\n<button (click)=callInsertion(season_name)>  \n  Create New Season : {{ season_name }}  \n</button>\n\n{{ status }}\n"
+module.exports = "Season : <input type=\"text\" [(ngModel)]=\"season_name\" /> <br />\n\n<button (click)=insertSeason()>  \n  Create New Season : {{ season_name }}  \n</button>\n\n<br /><br />\nSeason : <input type=\"text\" [(ngModel)]=\"season_name\" /> <br />\nTrack : <input type=\"text\" [(ngModel)]=\"track_name\" /> <br />\n\n<button (click)=insertResult(1)>  \n  Create New Qualy Table  \n</button>\n<button (click)=insertResult(2)>  \n  Create New Race Table  \n</button>\n\n<br /><br />\n{{ status }}\n"
 
 /***/ }),
 
@@ -734,14 +734,19 @@ var ReportsComponent = /** @class */ (function () {
     function ReportsComponent(usersService) {
         this.usersService = usersService;
         this.season_name = "Replace me with Season Name";
+        this.track_name = "Replace me with Track Name";
         this.status = "";
     }
-    ReportsComponent.prototype.callInsertion = function (season) {
+    ReportsComponent.prototype.insertSeason = function () {
         var _this = this;
-        this.usersService.insertSeason(season).subscribe(function (season) {
+        this.usersService.insertSeason(this.season_name).subscribe(function (season) {
             _this.status = "Success";
-            console.log(season);
-            console.log(JSON.stringify(season));
+        });
+    };
+    ReportsComponent.prototype.insertResult = function (mode) {
+        var _this = this;
+        this.usersService.insertResult(mode, this.season_name, this.track_name).subscribe(function (result) {
+            _this.status = "Success";
         });
     };
     ReportsComponent.prototype.ngOnInit = function () {
@@ -1804,6 +1809,19 @@ var UsersService = /** @class */ (function () {
             headers: headers
         });
         return newseason;
+    };
+    UsersService.prototype.insertResult = function (mode, season_name, track_name) {
+        this.usersfilepath = "server/insert.php";
+        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]();
+        headers.append('Content-Type', 'application/json');
+        var sresult = this.http.post(this.usersfilepath, JSON.stringify({
+            "mode": mode,
+            "season": season_name,
+            "track": track_name
+        }), {
+            headers: headers
+        });
+        return sresult;
     };
     //Get Table Functions
     UsersService.prototype.getUsers = function () {
