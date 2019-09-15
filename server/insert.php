@@ -85,7 +85,7 @@ else if($post->mode == 4) {
    $sql_user = "INSERT INTO `epiz_23890428_fdb`.`users` (" . $username_prefix . " `id` " . 
 		$name_prefix . $discord_prefix . $steam_prefix . $location_prefix . $number_prefix . 
 		$role_prefix . $aka_prefix . ") VALUES (" . $username_suffix . $post->id . $discord_suffix . 
-		$steam_suffix .  $location_suffix . $number_suffix . $role_suffix . $aka_suffix . "); ";
+		$steam_suffix . $location_suffix . $number_suffix . $role_suffix . $aka_suffix . "); ";
 
    $sql_teams = "INSERT INTO `epiz_23890428_fdb`.`teams` (`id`) VALUES (" . $post->id . "); ";
 
