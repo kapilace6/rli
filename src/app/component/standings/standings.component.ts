@@ -104,6 +104,7 @@ export class StandingsComponent implements OnInit {
             if(this.points[l] > this.points[r]) return -1;
             if(this.points[l] < this.points[r]) return 1;
 
+            console.log(this.teams[r][this.teamsC[this.curseason]] + 'o' + l +', ' + r);
             //Pull Reserve further
             if(this.teams[r][this.teamsC[this.curseason]] == "Reserve") return -1;
             return 1;
