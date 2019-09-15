@@ -12,13 +12,13 @@ if ($conn->connect_error) {
 }
 
 function nil($prop) {
-	if(is_null($prop)) echo "NULL";
-	else echo "'" . $prop . "'";
+	if(is_null($prop)) return "NULL";
+	else return "'" . $prop . "'";
 }
 
 function niln($num) {
-	if(is_null($num)) echo "NULL";
-	echo $num;
+	if(is_null($num)) return "NULL";
+	return $num;
 }
 
 //echo "<script> console.log('PHP Script says Hi!'); </script>";
