@@ -60,11 +60,8 @@ export class StatService {
       this.points[i].fill(0);
 
       for(let j = 0; j < this.usersService.seasons[i].length; j++)     
-        for (let track of this.columnsService.seasonsC[i]) {
-            console.log(this.usersService.seasons[i][j].id + ', ' + i + ', ' + j);
-            console.log(this.usersService.seasons[i][j][track]);
+        for (let track of this.columnsService.seasonsC[i]) 
             this.points[i][this.usersService.seasons[i][j].id - 1] += this.usersService.pointsS[this.usersService.seasons[i][j][track] - 1].feature;
-        }
     }
   
     this.populate_flap();
@@ -116,8 +113,13 @@ export class StatService {
         for(let i = 0; i < this.usersService.seasons[curseason].length; i++)
             this.order[i] = this.usersService.seasons[curseason][i].id - 1;
 
+    console.log('Order: ');
+    console.log(this.order);
+
+    console.log('Teams: ' + curseason);
+    console.log(this.teams[curseason]);
     this.order.sort((li, ri) => {
-      console.log(this.teams[ri][this.columnsService.teamsC[curseason]] + '; ' + li + ', ' + ri);
+      console.log('L->' +this.teams[li][this.columnsService.teamsC[curseason]] + '; ' + li + ', ' + ri + '; R->' +this.teams[ri][this.columnsService.teamsC[curseason]]);
       let l = this.teams[li][this.columnsService.teamsC[curseason]];
       let r = this.teams[ri][this.columnsService.teamsC[curseason]];
 
