@@ -119,6 +119,7 @@ export class StatService {
             console.log(this.usersService.seasons[curseason][i].id + ', ' + curseason + ', ' + i + ';;');
         }
 
+        console.log('Reached Here');
     this.order.sort((li, ri) => {
       let l = this.teams[li][this.columnsService.teamsC[curseason]];
       let r = this.teams[ri][this.columnsService.teamsC[curseason]];
@@ -180,6 +181,7 @@ export class StatService {
       }
     }
     
+    console.log('ere too');
     this.sort_teams();
   }
 
