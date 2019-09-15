@@ -66,9 +66,9 @@ else if($post->mode == 3) {
 else if($post->mode == 4) {
    $sql_user = "INSERT INTO `epiz_23890428_fdb`.`users` (`username`, `id`, " . 
 		"`name`, `discord`, `steam`, `location`, `number`, `active`, " .
-		"`role`, `aka`) VALUES (" . $post->username . ", " . $post->id . ", " . $post->name . ", " .
-		$post->discord . ", " . $post->steam . ", " . $post->location . ", " .
-		$post->number . ", " . $post->active . ", " . $post->role . ", " . $post->aka . "); ";
+		"`role`, `aka`) VALUES ('" . $post->username . "', " . $post->id . ", '" . $post->name . "', '" .
+		$post->discord . "', '" . $post->steam . "', '" . $post->location . "', " .
+		$post->number . ", '" . $post->active . "', '" . $post->role . "', '" . $post->aka . "'); ";
 
    $sql_teams = "INSERT INTO `teams` (`id`) VALUES (" . $post->id . "); ";
 
@@ -77,7 +77,8 @@ else if($post->mode == 4) {
 else
     echo 'Invalid Parameters <br><br>';
 
-echo $sql; 
+echo $sql;
+echo $post->id == null; 
 $result = $conn->multi_query($sql);
 
 if($result)
