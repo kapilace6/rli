@@ -16,7 +16,7 @@ export class AdminComponent implements OnInit {
   pin: String = "Enter 6 Digit PIN Here";
   shapin: String = "f2978ea1ceaef7962f641fec7e7a4f943a821e4a98bb81a70e21419ea839ca7b";
 
-  newuser: any;
+  newuser: User;
 
   insertSeason(): void {
     if(CryptoJS.SHA256(this.pin) == this.shapin) {
@@ -43,7 +43,8 @@ export class AdminComponent implements OnInit {
   }
 
   insertUser(): void {
-    /*if(CryptoJS.SHA256(this.pin) == this.shapin) {
+    this.newuser.number = +this.newuser.number;
+    if(CryptoJS.SHA256(this.pin) == this.shapin) {
       this.usersService.insertUser(this.newuser).subscribe(
         result => {
           this.status = "Success";
@@ -51,23 +52,36 @@ export class AdminComponent implements OnInit {
       );
     } else {
       this.status = "Incorrect PIN";
-    }*/
+    }
 
     console.log(this.newuser);
   }
 
-  constructor(private usersService: UsersService) { 
-    this.newuser.username = "example";
-    this.newuser.name = "Example Lastname";
-    this.newuser.discord = "example#1243";
-    this.newuser.steam = "http://steamcommunity.com/id/example";
-    this.newuser.location = "State, City, Place";
-    this.newuser.number = 6969;
-    this.newuser.role = "Nil";
-    this.newuser.aka = "Nein";
+  constructor(private usersService: UsersService) {
+    this.newuser = {
+      username: null,
+      name: null,
+      discord: null,
+      steam: null,
+      location: null,
+      number: null,
+      role: null,
+      aka: null
+    };
   }
 
   ngOnInit() {
   }
 
+}
+
+interface User {
+  username: String,
+  name: String,
+  discord: String,
+  steam: String,
+  location: String,
+  number: Number,
+  role: String,
+  aka: String
 }
