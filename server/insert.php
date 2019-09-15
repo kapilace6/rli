@@ -80,7 +80,7 @@ else if($post->mode == 4) {
 		nil($post->discord) . ", " . nil($post->steam) . ", " . nil($post->location) . ", " .
 		niln($post->number) . ", " . nil($post->active) . ", " . nil($post->role) . ", " . nil($post->aka) . "); ";
 
-   $sql_teams = "INSERT INTO `teams` (`id`) VALUES (" . $post->id . "); ";
+   $sql_teams = "INSERT INTO `epiz_23890428_fdb`.`teams` (`id`) VALUES (" . $post->id . "); ";
 
    $sql = $sql_user . $sql_teams;
 }
