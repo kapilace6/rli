@@ -11,6 +11,17 @@ module.exports = "<!--The content below is only a placeholder and can be replace
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/index.js!./src/app/component/admin/admin.component.html":
+/*!********************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/component/admin/admin.component.html ***!
+  \********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<br />\n\n1. Create a New Season : <br />\nSeason : <input type=\"text\" [(ngModel)]=\"season_name\" /> \n\n<br /><br />\n<button (click)=insertSeason()>  \n  Create New Season : {{ season_name }}  \n</button>\n\n<br /><br /><br />\n\n2. Create a Qualy / Race Table : <br />\nSeason : <input type=\"text\" [(ngModel)]=\"season_name\" /> <br />\nTrack : <input type=\"text\" [(ngModel)]=\"track_name\" /> \n\n<br /><br />\n<button (click)=insertResult(1)>  \n  Create New Qualy Table  \n</button>\n<button (click)=insertResult(2)>  \n  Create New Race Table  \n</button>\n\n<br /><br /><br />\n<input type=\"text\" [(ngModel)]=\"pin\" />\n\n<br /><br />\n{{ status }}\n\n<br /><br /><br />\n"
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/index.js!./src/app/component/drivers/drivers.component.html":
 /*!************************************************************************************!*\
   !*** ./node_modules/raw-loader!./src/app/component/drivers/drivers.component.html ***!
@@ -29,7 +40,7 @@ module.exports = "\r\n<div *ngIf=\"userLoaded\">\r\n        <ol>\r\n            
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n  <a routerLink=\"home\"> Home </a>  <br />\n  <a routerLink=\"standings\"> Standings </a> <br />\n  <a routerLink=\"wdc\"> Driver's Championship </a> <br />\n  <a routerLink=\"wcc\"> Constructor's Championship </a> <br />\n  <a routerLink=\"reports\"> Admin Panel </a> <br />\n  <a routerLink=\"teams\"> Teams </a> <br />\n  <a routerLink=\"season1\"> Season 1 </a> <br />\n  <a routerLink=\"results\">Race Results </a> <br />\n  <a routerLink=\"drivers\"> Driver Stats </a> <br />\n</div>\n"
+module.exports = "<div>\n  <a routerLink=\"home\"> Home </a>  <br />\n  <a routerLink=\"standings\"> Standings </a> <br />\n  <a routerLink=\"wdc\"> Driver's Championship </a> <br />\n  <a routerLink=\"wcc\"> Constructor's Championship </a> <br />\n  <a routerLink=\"admin\"> Admin Panel </a> <br />\n  <a routerLink=\"teams\"> Teams </a> <br />\n  <a routerLink=\"season1\"> Season 1 </a> <br />\n  <a routerLink=\"results\">Race Results </a> <br />\n  <a routerLink=\"drivers\"> Driver Stats </a> <br />\n</div>\n"
 
 /***/ }),
 
@@ -41,17 +52,6 @@ module.exports = "<div>\n  <a routerLink=\"home\"> Home </a>  <br />\n  <a route
 /***/ (function(module, exports) {
 
 module.exports = "<div style=\"text-align:center\">\r\n    <h1>\r\n        Welcome to {{ title }}!\r\n    </h1>\r\n    <!---<img src=\"assets/FI_RLI.JPG\" />-->\r\n    <img [src]=\"homeimage\">\r\n</div>\r\n\r\n<input type=\"text\" [(ngModel)]=\"file\" /> <br />\r\n\r\n<br />\r\n{{ file }}\r\n<br />"
-
-/***/ }),
-
-/***/ "./node_modules/raw-loader/index.js!./src/app/component/reports/reports.component.html":
-/*!************************************************************************************!*\
-  !*** ./node_modules/raw-loader!./src/app/component/reports/reports.component.html ***!
-  \************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "\n1. Create a New Season : <br />\nSeason : <input type=\"text\" [(ngModel)]=\"season_name\" /> \n\n<br /><br />\n<button (click)=insertSeason()>  \n  Create New Season : {{ season_name }}  \n</button>\n\n<br /><br /><br />\n\n2. Create a Qualy / Race Table : <br />\nSeason : <input type=\"text\" [(ngModel)]=\"season_name\" /> <br />\nTrack : <input type=\"text\" [(ngModel)]=\"track_name\" /> \n\n<br /><br />\n<button (click)=insertResult(1)>  \n  Create New Qualy Table  \n</button>\n<button (click)=insertResult(2)>  \n  Create New Race Table  \n</button>\n\n<br /><br /><br />\n<input type=\"text\" [(ngModel)]=\"pin\" />\n\n<br /><br />`\n{{ status }}\n\n<br /><br /><br />\n"
 
 /***/ }),
 
@@ -165,7 +165,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _component_drivers_drivers_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./component/drivers/drivers.component */ "./src/app/component/drivers/drivers.component.ts");
 /* harmony import */ var _component_results_results_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./component/results/results.component */ "./src/app/component/results/results.component.ts");
 /* harmony import */ var _component_season1_season1_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./component/season1/season1.component */ "./src/app/component/season1/season1.component.ts");
-/* harmony import */ var _component_reports_reports_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./component/reports/reports.component */ "./src/app/component/reports/reports.component.ts");
+/* harmony import */ var _component_admin_admin_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./component/admin/admin.component */ "./src/app/component/admin/admin.component.ts");
 
 
 
@@ -188,7 +188,7 @@ var routes = [
     { path: 'drivers', component: _component_drivers_drivers_component__WEBPACK_IMPORTED_MODULE_8__["DriversComponent"] },
     { path: 'results', component: _component_results_results_component__WEBPACK_IMPORTED_MODULE_9__["ResultsComponent"] },
     { path: 'season1', component: _component_season1_season1_component__WEBPACK_IMPORTED_MODULE_10__["Season1Component"] },
-    { path: 'reports', component: _component_reports_reports_component__WEBPACK_IMPORTED_MODULE_11__["ReportsComponent"] }
+    { path: 'admin', component: _component_admin_admin_component__WEBPACK_IMPORTED_MODULE_11__["AdminComponent"] }
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -469,7 +469,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _component_drivers_drivers_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./component/drivers/drivers.component */ "./src/app/component/drivers/drivers.component.ts");
 /* harmony import */ var _component_results_results_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./component/results/results.component */ "./src/app/component/results/results.component.ts");
 /* harmony import */ var _component_season1_season1_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./component/season1/season1.component */ "./src/app/component/season1/season1.component.ts");
-/* harmony import */ var _component_reports_reports_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./component/reports/reports.component */ "./src/app/component/reports/reports.component.ts");
+/* harmony import */ var _component_admin_admin_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./component/admin/admin.component */ "./src/app/component/admin/admin.component.ts");
 
 
 
@@ -502,7 +502,7 @@ var AppModule = /** @class */ (function () {
                 _component_drivers_drivers_component__WEBPACK_IMPORTED_MODULE_13__["DriversComponent"],
                 _component_results_results_component__WEBPACK_IMPORTED_MODULE_14__["ResultsComponent"],
                 _component_season1_season1_component__WEBPACK_IMPORTED_MODULE_15__["Season1Component"],
-                _component_reports_reports_component__WEBPACK_IMPORTED_MODULE_16__["ReportsComponent"],
+                _component_admin_admin_component__WEBPACK_IMPORTED_MODULE_16__["AdminComponent"],
                 _component_home_home_component__WEBPACK_IMPORTED_MODULE_7__["HomeComponent"]
             ],
             imports: [
@@ -516,6 +516,87 @@ var AppModule = /** @class */ (function () {
         })
     ], AppModule);
     return AppModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/component/admin/admin.component.css":
+/*!*****************************************************!*\
+  !*** ./src/app/component/admin/admin.component.css ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudC9hZG1pbi9hZG1pbi5jb21wb25lbnQuY3NzIn0= */"
+
+/***/ }),
+
+/***/ "./src/app/component/admin/admin.component.ts":
+/*!****************************************************!*\
+  !*** ./src/app/component/admin/admin.component.ts ***!
+  \****************************************************/
+/*! exports provided: AdminComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AdminComponent", function() { return AdminComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _service_users_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../service/users.service */ "./src/app/service/users.service.ts");
+/* harmony import */ var crypto_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! crypto-js */ "./node_modules/crypto-js/index.js");
+/* harmony import */ var crypto_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(crypto_js__WEBPACK_IMPORTED_MODULE_3__);
+
+
+
+
+var AdminComponent = /** @class */ (function () {
+    function AdminComponent(usersService) {
+        this.usersService = usersService;
+        this.season_name = "Replace me with Season Name";
+        this.track_name = "Replace me with Track Name";
+        this.status = "";
+        this.pin = "Enter 6 Digit PIN Here";
+        this.shapin = "f2978ea1ceaef7962f641fec7e7a4f943a821e4a98bb81a70e21419ea839ca7b";
+    }
+    AdminComponent.prototype.insertSeason = function () {
+        var _this = this;
+        if (crypto_js__WEBPACK_IMPORTED_MODULE_3__["SHA256"](this.pin) == this.shapin) {
+            this.usersService.insertSeason(this.season_name).subscribe(function (season) {
+                _this.status = "Success";
+            });
+        }
+        else {
+            this.status = "Incorrect PIN";
+        }
+    };
+    AdminComponent.prototype.insertResult = function (mode) {
+        var _this = this;
+        if (crypto_js__WEBPACK_IMPORTED_MODULE_3__["SHA256"](this.pin) == this.shapin) {
+            this.usersService.insertResult(mode, this.season_name, this.track_name).subscribe(function (result) {
+                _this.status = "Success";
+            });
+        }
+        else {
+            this.status = "Incorrect PIN";
+        }
+    };
+    AdminComponent.prototype.ngOnInit = function () {
+    };
+    AdminComponent.ctorParameters = function () { return [
+        { type: _service_users_service__WEBPACK_IMPORTED_MODULE_2__["UsersService"] }
+    ]; };
+    AdminComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-admin',
+            template: __webpack_require__(/*! raw-loader!./admin.component.html */ "./node_modules/raw-loader/index.js!./src/app/component/admin/admin.component.html"),
+            styles: [__webpack_require__(/*! ./admin.component.css */ "./src/app/component/admin/admin.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_service_users_service__WEBPACK_IMPORTED_MODULE_2__["UsersService"]])
+    ], AdminComponent);
+    return AdminComponent;
 }());
 
 
@@ -697,87 +778,6 @@ var HomeComponent = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
     ], HomeComponent);
     return HomeComponent;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/component/reports/reports.component.css":
-/*!*********************************************************!*\
-  !*** ./src/app/component/reports/reports.component.css ***!
-  \*********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudC9yZXBvcnRzL3JlcG9ydHMuY29tcG9uZW50LmNzcyJ9 */"
-
-/***/ }),
-
-/***/ "./src/app/component/reports/reports.component.ts":
-/*!********************************************************!*\
-  !*** ./src/app/component/reports/reports.component.ts ***!
-  \********************************************************/
-/*! exports provided: ReportsComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ReportsComponent", function() { return ReportsComponent; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _service_users_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../service/users.service */ "./src/app/service/users.service.ts");
-/* harmony import */ var crypto_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! crypto-js */ "./node_modules/crypto-js/index.js");
-/* harmony import */ var crypto_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(crypto_js__WEBPACK_IMPORTED_MODULE_3__);
-
-
-
-
-var ReportsComponent = /** @class */ (function () {
-    function ReportsComponent(usersService) {
-        this.usersService = usersService;
-        this.season_name = "Replace me with Season Name";
-        this.track_name = "Replace me with Track Name";
-        this.status = "";
-        this.pin = "Enter 6 Digit PIN Here";
-        this.shapin = "f2978ea1ceaef7962f641fec7e7a4f943a821e4a98bb81a70e21419ea839ca7b";
-    }
-    ReportsComponent.prototype.insertSeason = function () {
-        var _this = this;
-        if (crypto_js__WEBPACK_IMPORTED_MODULE_3__["SHA256"](this.pin) == this.shapin) {
-            this.usersService.insertSeason(this.season_name).subscribe(function (season) {
-                _this.status = "Success";
-            });
-        }
-        else {
-            this.status = "Incorrect PIN";
-        }
-    };
-    ReportsComponent.prototype.insertResult = function (mode) {
-        var _this = this;
-        if (crypto_js__WEBPACK_IMPORTED_MODULE_3__["SHA256"](this.pin) == this.shapin) {
-            this.usersService.insertResult(mode, this.season_name, this.track_name).subscribe(function (result) {
-                _this.status = "Success";
-            });
-        }
-        else {
-            this.status = "Incorrect PIN";
-        }
-    };
-    ReportsComponent.prototype.ngOnInit = function () {
-    };
-    ReportsComponent.ctorParameters = function () { return [
-        { type: _service_users_service__WEBPACK_IMPORTED_MODULE_2__["UsersService"] }
-    ]; };
-    ReportsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-            selector: 'app-reports',
-            template: __webpack_require__(/*! raw-loader!./reports.component.html */ "./node_modules/raw-loader/index.js!./src/app/component/reports/reports.component.html"),
-            styles: [__webpack_require__(/*! ./reports.component.css */ "./src/app/component/reports/reports.component.css")]
-        }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_service_users_service__WEBPACK_IMPORTED_MODULE_2__["UsersService"]])
-    ], ReportsComponent);
-    return ReportsComponent;
 }());
 
 
