@@ -125,19 +125,6 @@ export class UsersService {
         req.id = this.users.length + 1;
         req.mode = 4;
         req.active = 1;
-        //Object.defineProperties(req, {
-        //    mode: { value: 4 },
-        //    active: { value: 1 },
-        //});
-        
-        console.log(req);
-        //if(user.username) req.username = user.username;
-        //if(user.discord)  req.discord = user.discord;
-        //if(user.steam)    req.steam = user.steam;
-        //if(user.location) req.location = user.location;
-        //if(user.number)   req.number = user.number;
-        //if(user.role)     req.role = user.role;        
-        //if(user.aka)      req.aka = user.aka;
 
         let suser = this.http.post<any>(this.usersfilepath, JSON.stringify(req), 
         {

@@ -70,12 +70,9 @@ else if($post->mode == 4) {
 		$post->discord . ", " . $post->steam . ", " . $post->location . ", " .
 		$post->number . ", " . $post->active . ", " . $post->role . ", " . $post->aka . "); ";
 
-   $sql_seasons = "CREATE TABLE `epiz_23890428_seasons`.`" . $post->season . "` (" .
-		 "`id` INT( 11 ) NOT NULL ," .
-		 "PRIMARY KEY ( `id` ) " .
-		 ") ENGINE = MYISAM ;";
+   $sql_teams = "INSERT INTO `teams` (`id`) VALUES (" . $post->id . "); ";
 
-   $sql = $sql_flap . $sql_teams . $sql_seasons;
+   $sql = $sql_user . $sql_teams;
 }
 else
     echo 'Invalid Parameters <br><br>';
