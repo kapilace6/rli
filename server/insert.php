@@ -64,13 +64,30 @@ else if($post->mode == 3) {
    $sql = $sql_flap . $sql_teams . $sql_seasons;
 }
 else if($post->mode == 4) {
-   $sql_user = "INSERT INTO `epiz_23890428_fdb`.`users` (`username`, `id`, " . 
-		"`name`, `discord`, `steam`, `location`, `number`, `active`, " .
-		"`role`, `aka`) VALUES ('" . $post->username . "', " . $post->id . ", '" . $post->name . "', '" .
-		$post->discord . "', '" . $post->steam . "', '" . $post->location . "', " .
-		$post->number . ", '" . $post->active . "', '" . $post->role . "', '" . $post->aka . "'); ";
+   $username_prefix = $username_suffix = "";
+   $name_prefix = $name_suffix = "";
+   $discord_prefix = $discord_suffix = "";
+   $steam_prefix = $steam_suffix = "";
+   $location_prefix = $location_suffix = "";
+   $number_prefix = $number_suffix = "";
+   $role_prefix = $role_suffix = "";
+   $aka_prefix = $aka_suffix = "";
 
-   $sql_teams = "INSERT INTO `teams` (`id`) VALUES (" . $post->id . "); ";
+   if(!is_null($post->username)) $username_prefix = "`username`,", $username_suffix = "'" . $post->username . "', ";
+   if(!is_null($post->name)) $name_prefix = ", `name`", $name_suffix = ", '" . $post->name . "'";
+   if(!is_null($post->discord)) $discord_prefix = ", `location`", $discord_suffix = ", '" . $post->discord . "'";
+   if(!is_null($post->steam)) $steam_prefix = ", `steam`", $steam_suffix = ", '" . $post->steam . "'";
+   if(!is_null($post->location)) $location_prefix = ", `location`", $location_suffix = ", '" . $post->location . "'";
+   if(!is_null($post->number)) $number_prefix = ", `number`", $number_suffix = ", " . $post->number;
+   if(!is_null($post->role)) $role_prefix = ", `role`", $role_suffix = ", '" . $post->role . "'";
+   if(!is_null($post->aka)) $aka_prefix = ", `aka`", $aka_suffix = ", '" . $post->aka . "'";
+
+   $sql_user = "INSERT INTO `epiz_23890428_fdb`.`users` (" . $username_prefix . " `id` " . 
+		$name_prefix . $discord_prefix . $steam_prefix . $location_prefix . $number_prefix . 
+		$role_prefix . $aka_prefix . ") VALUES (" . $username_suffix . $post->id . $discord_suffix . 
+		$steam_suffix .  $location_suffix . $number_suffix . $role_suffix . $aka_suffix . "); ";
+
+   $sql_teams = "INSERT INTO `epiz_23890428_fdb`.`teams` (`id`) VALUES (" . $post->id . "); ";
 
    $sql = $sql_user . $sql_teams;
 }
@@ -78,8 +95,6 @@ else
     echo 'Invalid Parameters <br><br>';
 
 echo $sql;
-if(is_null($post->discord)) echo "Null Bois";
-if($post->discord == "") echo "Empty Boi";
 $result = $conn->multi_query($sql);
 
 if($result)
