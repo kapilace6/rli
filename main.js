@@ -595,7 +595,8 @@ var AdminComponent = /** @class */ (function () {
     };
     AdminComponent.prototype.insertUser = function () {
         var _this = this;
-        this.newuser.number = +this.newuser.number;
+        if (this.newuser.number)
+            this.newuser.number = +this.newuser.number;
         if (crypto_js__WEBPACK_IMPORTED_MODULE_3__["SHA256"](this.pin) == this.shapin) {
             this.usersService.insertUser(this.newuser).subscribe(function (result) {
                 _this.status = "Success";
@@ -604,7 +605,6 @@ var AdminComponent = /** @class */ (function () {
         else {
             this.status = "Incorrect PIN";
         }
-        console.log(this.newuser);
     };
     AdminComponent.prototype.ngOnInit = function () {
     };
@@ -1478,6 +1478,8 @@ var StatService = /** @class */ (function () {
             for (var j = 0; j < this.usersService.seasons[i].length; j++)
                 for (var _i = 0, _a = this.columnsService.seasonsC[i]; _i < _a.length; _i++) {
                     var track = _a[_i];
+                    console.log(this.usersService.seasons[i][j].id + ', ' + i + ', ' + j);
+                    console.log(this.usersService.seasons[i][j][track]);
                     this.points[i][this.usersService.seasons[i][j].id - 1] += this.usersService.pointsS[this.usersService.seasons[i][j][track] - 1].feature;
                 }
         }
@@ -1741,6 +1743,7 @@ var UsersService = /** @class */ (function () {
         var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]();
         headers.append('Content-Type', 'application/json');
         var req = user;
+        req.id = this.users.length + 1;
         req.mode = 4;
         req.active = 1;
         //Object.defineProperties(req, {

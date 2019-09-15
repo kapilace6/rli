@@ -63,6 +63,20 @@ else if($post->mode == 3) {
 
    $sql = $sql_flap . $sql_teams . $sql_seasons;
 }
+else if($post->mode == 4) {
+   $sql_user = "INSERT INTO `epiz_23890428_fdb`.`users` (`username`, `id`, " . 
+		"`name`, `discord`, `steam`, `location`, `number`, `active`, " .
+		"`role`, `aka`) VALUES (" . $post->username . ", " . $post->id . ", " . $post->name . ", " .
+		$post->discord . ", " . $post->steam . ", " . $post->location . ", " .
+		$post->number . ", " . $post->active . ", " . $post->role . ", " . $post->aka . "); ";
+
+   $sql_seasons = "CREATE TABLE `epiz_23890428_seasons`.`" . $post->season . "` (" .
+		 "`id` INT( 11 ) NOT NULL ," .
+		 "PRIMARY KEY ( `id` ) " .
+		 ") ENGINE = MYISAM ;";
+
+   $sql = $sql_flap . $sql_teams . $sql_seasons;
+}
 else
     echo 'Invalid Parameters <br><br>';
 
