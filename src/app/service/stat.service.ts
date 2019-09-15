@@ -79,6 +79,7 @@ export class StatService {
     let rightwing = new Array(22); rightwing.fill(0);
 
     for (let track of this.columnsService.seasonsC[curseason]) {
+      console.log(left + ' --- ' + right);
       console.log(this.usersService.seasons[curseason][left].id + ', ' + left + ', ' + right + '::' + this.usersService.seasons[curseason][right].id);
       leftwing[this.usersService.seasons[curseason][left][track] - 1]++;
       rightwing[this.usersService.seasons[curseason][right][track] - 1]++;
@@ -114,12 +115,11 @@ export class StatService {
   teamsort(curseason: number): void {
     this.order = new Array(this.usersService.seasons[curseason].length);
     console.log(this.usersService.seasons[curseason]);
-        for(let i = 0; i < this.usersService.seasons[curseason].length; i++) {
+        for(let i = 0; i < this.usersService.seasons[curseason].length; i++)
             this.order[i] = this.usersService.seasons[curseason][i].id - 1;
-            console.log(this.usersService.seasons[curseason][i].id + ', ' + curseason + ', ' + i + ';;');
-        }
 
-        console.log('Reached Here');
+        console.log('Order');
+        console.log(this.order);
     this.order.sort((li, ri) => {
       let l = this.teams[li][this.columnsService.teamsC[curseason]];
       let r = this.teams[ri][this.columnsService.teamsC[curseason]];
@@ -181,7 +181,6 @@ export class StatService {
       }
     }
     
-    console.log('ere too');
     this.sort_teams();
   }
 
