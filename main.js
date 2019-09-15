@@ -1478,6 +1478,7 @@ var StatService = /** @class */ (function () {
             for (var j = 0; j < this.usersService.seasons[i].length; j++)
                 for (var _i = 0, _a = this.columnsService.seasonsC[i]; _i < _a.length; _i++) {
                     var track = _a[_i];
+                    console.log(this.usersService.seasons[i][j].id + ', ' + i + ', ' + j + '::');
                     this.points[i][this.usersService.seasons[i][j].id - 1] += this.usersService.pointsS[this.usersService.seasons[i][j][track] - 1].feature;
                 }
         }
@@ -1496,6 +1497,7 @@ var StatService = /** @class */ (function () {
         rightwing.fill(0);
         for (var _i = 0, _a = this.columnsService.seasonsC[curseason]; _i < _a.length; _i++) {
             var track = _a[_i];
+            console.log(this.usersService.seasons[curseason][left].id + ', ' + left + ', ' + right + '::' + this.usersService.seasons[curseason][right].id);
             leftwing[this.usersService.seasons[curseason][left][track] - 1]++;
             rightwing[this.usersService.seasons[curseason][right][track] - 1]++;
         }
@@ -1526,8 +1528,10 @@ var StatService = /** @class */ (function () {
     StatService.prototype.teamsort = function (curseason) {
         var _this = this;
         this.order = new Array(this.usersService.seasons[curseason].length);
-        for (var i = 0; i < this.usersService.seasons[curseason].length; i++)
+        for (var i = 0; i < this.usersService.seasons[curseason].length; i++) {
             this.order[i] = this.usersService.seasons[curseason][i].id - 1;
+            console.log(this.usersService.seasons[curseason][i].id + ', ' + curseason + ', ' + i + ';;');
+        }
         this.order.sort(function (li, ri) {
             var l = _this.teams[li][_this.columnsService.teamsC[curseason]];
             var r = _this.teams[ri][_this.columnsService.teamsC[curseason]];
