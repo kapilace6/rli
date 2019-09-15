@@ -3,11 +3,11 @@ import { UsersService } from '../../service/users.service';
 import * as CryptoJS from 'crypto-js';
 
 @Component({
-  selector: 'app-reports',
-  templateUrl: './reports.component.html',
-  styleUrls: ['./reports.component.css']
+  selector: 'app-admin',
+  templateUrl: './admin.component.html',
+  styleUrls: ['./admin.component.css']
 })
-export class ReportsComponent implements OnInit {
+export class AdminComponent implements OnInit {
 
   season_name: String = "Replace me with Season Name";
   track_name: String = "Replace me with Track Name";

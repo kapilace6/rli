@@ -9,7 +9,7 @@ import { TeamsComponent } from './component/teams/teams.component';
 import { DriversComponent } from './component/drivers/drivers.component';
 import { ResultsComponent } from './component/results/results.component';
 import { Season1Component } from './component/season1/season1.component';
-import { ReportsComponent } from './component/reports/reports.component';
+import { AdminComponent } from './component/admin/admin.component';
 
 const routes: Routes = [
     {path:'', redirectTo:'/home', pathMatch: 'full' },
@@ -22,7 +22,7 @@ const routes: Routes = [
     { path: 'drivers', component: DriversComponent },
     { path: 'results', component: ResultsComponent },
     { path: 'season1', component: Season1Component },
-    { path: 'reports', component: ReportsComponent }
+    { path: 'admin', component: AdminComponent }
 ];
 
 @NgModule({

@@ -15,7 +15,7 @@ import { TeamsComponent } from './component/teams/teams.component';
 import { DriversComponent } from './component/drivers/drivers.component';
 import { ResultsComponent } from './component/results/results.component';
 import { Season1Component } from './component/season1/season1.component';
-import { ReportsComponent } from './component/reports/reports.component';
+import { AdminComponent } from './component/admin/admin.component';
 
 
 @NgModule({
@@ -29,7 +29,7 @@ import { ReportsComponent } from './component/reports/reports.component';
     DriversComponent,
     ResultsComponent,
     Season1Component,
-    ReportsComponent,
+    AdminComponent,
     HomeComponent
   ],
   imports: [
