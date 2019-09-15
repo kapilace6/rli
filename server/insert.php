@@ -78,7 +78,8 @@ else
     echo 'Invalid Parameters <br><br>';
 
 echo $sql;
-echo $post->id == null; 
+if(is_null($post->discord)) echo "Null Bois";
+if($post->discord == "") echo "Empty Boi";
 $result = $conn->multi_query($sql);
 
 if($result)
