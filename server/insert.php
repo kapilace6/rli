@@ -73,14 +73,14 @@ else if($post->mode == 4) {
    $role_prefix = $role_suffix = "";
    $aka_prefix = $aka_suffix = "";
 
-   if(!is_null($post->username)) $username_prefix = "`username`,", $username_suffix = "'" . $post->username . "', ";
-   if(!is_null($post->name)) $name_prefix = ", `name`", $name_suffix = ", '" . $post->name . "'";
-   if(!is_null($post->discord)) $discord_prefix = ", `location`", $discord_suffix = ", '" . $post->discord . "'";
-   if(!is_null($post->steam)) $steam_prefix = ", `steam`", $steam_suffix = ", '" . $post->steam . "'";
-   if(!is_null($post->location)) $location_prefix = ", `location`", $location_suffix = ", '" . $post->location . "'";
-   if(!is_null($post->number)) $number_prefix = ", `number`", $number_suffix = ", " . $post->number;
-   if(!is_null($post->role)) $role_prefix = ", `role`", $role_suffix = ", '" . $post->role . "'";
-   if(!is_null($post->aka)) $aka_prefix = ", `aka`", $aka_suffix = ", '" . $post->aka . "'";
+   if(!is_null($post->username)) { $username_prefix = "`username`,"; $username_suffix = "'" . $post->username . "', "; }
+   if(!is_null($post->name)) { $name_prefix = ", `name`"; $name_suffix = ", '" . $post->name . "'"; }
+   if(!is_null($post->discord)) { $discord_prefix = ", `location`"; $discord_suffix = ", '" . $post->discord . "'"; }
+   if(!is_null($post->steam)) { $steam_prefix = ", `steam`"; $steam_suffix = ", '" . $post->steam . "'"; }
+   if(!is_null($post->location)) { $location_prefix = ", `location`"; $location_suffix = ", '" . $post->location . "'"; }
+   if(!is_null($post->number)) { $number_prefix = ", `number`"; $number_suffix = ", " . $post->number; }
+   if(!is_null($post->role)) { $role_prefix = ", `role`"; $role_suffix = ", '" . $post->role . "'"; }
+   if(!is_null($post->aka)) { $aka_prefix = ", `aka`"; $aka_suffix = ", '" . $post->aka . "'"; }
 
    $sql_user = "INSERT INTO `epiz_23890428_fdb`.`users` (" . $username_prefix . " `id` " . 
 		$name_prefix . $discord_prefix . $steam_prefix . $location_prefix . $number_prefix . 
