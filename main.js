@@ -1533,6 +1533,7 @@ var StatService = /** @class */ (function () {
             this.order[i] = this.usersService.seasons[curseason][i].id - 1;
             console.log(this.usersService.seasons[curseason][i].id + ', ' + curseason + ', ' + i + ';;');
         }
+        console.log('Reached Here');
         this.order.sort(function (li, ri) {
             var l = _this.teams[li][_this.columnsService.teamsC[curseason]];
             var r = _this.teams[ri][_this.columnsService.teamsC[curseason]];
@@ -1586,6 +1587,7 @@ var StatService = /** @class */ (function () {
                 prev = T;
             }
         }
+        console.log('ere too');
         this.sort_teams();
     };
     //Sort the Constructors by Points
