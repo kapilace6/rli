@@ -60,9 +60,11 @@ export class StatService {
       this.points[i].fill(0);
 
       for(let j = 0; j < this.usersService.seasons[i].length; j++)     
-        for (let track of this.columnsService.seasonsC[i]) 
+        for (let track of this.columnsService.seasonsC[i]) {
+          console.log(this.usersService.seasons[i][j].id + ', ' + i + ', ' + j + '::');
             this.points[i][this.usersService.seasons[i][j].id - 1] += this.usersService.pointsS[this.usersService.seasons[i][j][track] - 1].feature;
-    }
+          }
+      }
   
     this.populate_flap();
     this.pointsdefined = true;
@@ -77,6 +79,7 @@ export class StatService {
     let rightwing = new Array(22); rightwing.fill(0);
 
     for (let track of this.columnsService.seasonsC[curseason]) {
+      console.log(this.usersService.seasons[curseason][left].id + ', ' + left + ', ' + right + '::' + this.usersService.seasons[curseason][right].id);
       leftwing[this.usersService.seasons[curseason][left][track] - 1]++;
       rightwing[this.usersService.seasons[curseason][right][track] - 1]++;
     }
@@ -110,8 +113,10 @@ export class StatService {
   //Sorts 'order' by Teams in Alphabetical Order, and Drivers within by Points
   teamsort(curseason: number): void {
     this.order = new Array(this.usersService.seasons[curseason].length);
-        for(let i = 0; i < this.usersService.seasons[curseason].length; i++)
+        for(let i = 0; i < this.usersService.seasons[curseason].length; i++) {
             this.order[i] = this.usersService.seasons[curseason][i].id - 1;
+            console.log(this.usersService.seasons[curseason][i].id + ', ' + curseason + ', ' + i + ';;');
+        }
 
     this.order.sort((li, ri) => {
       let l = this.teams[li][this.columnsService.teamsC[curseason]];
