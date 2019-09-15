@@ -996,6 +996,7 @@ var StandingsComponent = /** @class */ (function () {
                 return -1;
             if (_this.points[l] < _this.points[r])
                 return 1;
+            console.log(_this.teams[r][_this.teamsC[_this.curseason]] + 'o' + l + ', ' + r);
             //Pull Reserve further
             if (_this.teams[r][_this.teamsC[_this.curseason]] == "Reserve")
                 return -1;
@@ -1531,6 +1532,7 @@ var StatService = /** @class */ (function () {
         for (var i = 0; i < this.usersService.seasons[curseason].length; i++)
             this.order[i] = this.usersService.seasons[curseason][i].id - 1;
         this.order.sort(function (li, ri) {
+            console.log();
             var l = _this.teams[li][_this.columnsService.teamsC[curseason]];
             var r = _this.teams[ri][_this.columnsService.teamsC[curseason]];
             if (l == r) {
@@ -1557,6 +1559,7 @@ var StatService = /** @class */ (function () {
             this.teamsort(i);
             var prev = "", k = -1;
             for (var j = 0; j < this.order.length; j++) {
+                console.log(this.teams[this.order[j]][this.columnsService.teamsC[i]] + 'i');
                 var T = this.teams[this.order[j]][this.columnsService.teamsC[i]];
                 //Ignore Users who have not participated in that season
                 if (T == "None")
