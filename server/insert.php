@@ -77,6 +77,7 @@ else if($post->mode == 4) {
 else
     echo 'Invalid Parameters <br><br>';
 
+echo $sql; 
 $result = $conn->multi_query($sql);
 
 if($result)
