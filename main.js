@@ -18,7 +18,7 @@ module.exports = "<!--The content below is only a placeholder and can be replace
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<br />\n\n1. Create a New Season : <br />\nSeason : <input type=\"text\" [(ngModel)]=\"season_name\" /> \n\n<br /><br />\n<button (click)=insertSeason()>  \n  Create New Season : {{ season_name }}  \n</button>\n\n<br /><br /><br />\n\n2. Create a Qualy / Race Table : <br />\nSeason : <input type=\"text\" [(ngModel)]=\"season_name\" /> <br />\nTrack : <input type=\"text\" [(ngModel)]=\"track_name\" /> \n\n<br /><br />\n<button (click)=insertResult(1)>  \n  Create New Qualy Table  \n</button>\n<button (click)=insertResult(2)>  \n  Create New Race Table  \n</button>\n\n<br /><br /><br />\n<input type=\"text\" [(ngModel)]=\"pin\" />\n\n<br /><br />\n{{ status }}\n\n<br /><br /><br />\n"
+module.exports = "<br />\n\n1. Create a New Season : <br />\nSeason : <input type=\"text\" [(ngModel)]=\"season_name\" /> \n\n<br /><br />\n<button (click)=insertSeason()>  \n  Create New Season : {{ season_name }}  \n</button>\n\n<br /><br /><br />\n\n2. Create a Qualy / Race Table : <br />\nSeason : <input type=\"text\" [(ngModel)]=\"season_name\" /> <br />\nTrack : <input type=\"text\" [(ngModel)]=\"track_name\" /> \n\n<br /><br />\n<button (click)=insertResult(1)>  \n  Create New Qualy Table  \n</button>\n<button (click)=insertResult(2)>  \n  Create New Race Table  \n</button>\n\n<br /><br /><br />\n\n3. Create a New User : <br />\nUsername : <input type=\"text\" [(ngModel)]=\"newuser.username\" /> <br />\nName : <input type=\"text\" [(ngModel)]=\"newuser.name\" /> <br />\nDiscord : <input type=\"text\" [(ngModel)]=\"newuser.discord\" /> <br />\nSteam : <input type=\"text\" [(ngModel)]=\"newuser.steam\" /> <br />\nLocation : <input type=\"text\" [(ngModel)]=\"newuser.location\" /> <br />\nNumber : <input type=\"text\" [(ngModel)]=\"newuser.number\" /> <br />\nRole : <input type=\"text\" [(ngModel)]=\"newuser.role\" /> <br />\naka : <input type=\"text\" [(ngModel)]=\"newuser.aka\" /> <br />\n\n<br /><br />\n<button (click)=insertUser()>  \n  Create New User  \n</button>\n\n<br /><br /><br />\n<input type=\"text\" [(ngModel)]=\"pin\" />\n\n<br /><br />\n{{ status }}\n\n<br /><br /><br />\n"
 
 /***/ }),
 
@@ -560,6 +560,14 @@ var AdminComponent = /** @class */ (function () {
         this.status = "";
         this.pin = "Enter 6 Digit PIN Here";
         this.shapin = "f2978ea1ceaef7962f641fec7e7a4f943a821e4a98bb81a70e21419ea839ca7b";
+        this.newuser.username = "example";
+        this.newuser.name = "Example Lastname";
+        this.newuser.discord = "example#1243";
+        this.newuser.steam = "http://steamcommunity.com/id/example";
+        this.newuser.location = "State, City, Place";
+        this.newuser.number = 6969;
+        this.newuser.role = "Nil";
+        this.newuser.aka = "Nein";
     }
     AdminComponent.prototype.insertSeason = function () {
         var _this = this;
@@ -582,6 +590,18 @@ var AdminComponent = /** @class */ (function () {
         else {
             this.status = "Incorrect PIN";
         }
+    };
+    AdminComponent.prototype.insertUser = function () {
+        /*if(CryptoJS.SHA256(this.pin) == this.shapin) {
+          this.usersService.insertUser(this.newuser).subscribe(
+            result => {
+              this.status = "Success";
+            }
+          );
+        } else {
+          this.status = "Incorrect PIN";
+        }*/
+        console.log(this.newuser);
     };
     AdminComponent.prototype.ngOnInit = function () {
     };
@@ -1403,26 +1423,6 @@ var ColumnsService = /** @class */ (function () {
     return ColumnsService;
 }());
 
-/*
-    1 	track   Primary 	varchar(30) 	latin1_swedish_ci 		No 	None
-
-    2 	id 	int(11) 			No 	None 			Change Change 	Drop Drop
-
-    More More
-
-    3 	lap 	int(11) 			No 	None 			Change Change 	Drop Drop
-
-    More More
-
-    4 	time 	varchar(11) 	latin1_swedish_ci 		No 	None 			Change Change 	Drop Drop
-
-    More More
-
-    5 	tyre 	varchar(15) 	latin1_swedish_ci 		No 	None 			Change Change 	Drop Drop
-
-    More More
-
-*/ 
 
 
 /***/ }),
@@ -1707,6 +1707,7 @@ var UsersService = /** @class */ (function () {
         });
         return susers;
     };
+    //Insert Functions
     UsersService.prototype.insertSeason = function (season_name) {
         this.usersfilepath = "server/insert.php";
         var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]();
@@ -1731,6 +1732,30 @@ var UsersService = /** @class */ (function () {
             headers: headers
         });
         return sresult;
+    };
+    UsersService.prototype.insertUser = function (user) {
+        this.usersfilepath = "server/insert.php";
+        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]();
+        headers.append('Content-Type', 'application/json');
+        var req = user;
+        req.mode = 4;
+        req.active = 1;
+        //Object.defineProperties(req, {
+        //    mode: { value: 4 },
+        //    active: { value: 1 },
+        //});
+        console.log(req);
+        //if(user.username) req.username = user.username;
+        //if(user.discord)  req.discord = user.discord;
+        //if(user.steam)    req.steam = user.steam;
+        //if(user.location) req.location = user.location;
+        //if(user.number)   req.number = user.number;
+        //if(user.role)     req.role = user.role;        
+        //if(user.aka)      req.aka = user.aka;
+        var suser = this.http.post(this.usersfilepath, JSON.stringify(req), {
+            headers: headers
+        });
+        return suser;
     };
     //Get Table Functions
     UsersService.prototype.getUsers = function () {
