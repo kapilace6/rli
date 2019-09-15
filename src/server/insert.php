@@ -11,6 +11,16 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+function nil($prop) {
+	if(is_null($prop)) echo "NULL";
+	else echo "'" . $prop . "'";
+}
+
+function niln($num) {
+	if(is_null($num)) echo "NULL";
+	echo $num;
+}
+
 //echo "<script> console.log('PHP Script says Hi!'); </script>";
 $post_data = file_get_contents('php://input');
 $post = json_decode($post_data);
@@ -64,37 +74,19 @@ else if($post->mode == 3) {
    $sql = $sql_flap . $sql_teams . $sql_seasons;
 }
 else if($post->mode == 4) {
-   $username_prefix = $username_suffix = "";
-   $name_prefix = $name_suffix = "";
-   $discord_prefix = $discord_suffix = "";
-   $steam_prefix = $steam_suffix = "";
-   $location_prefix = $location_suffix = "";
-   $number_prefix = $number_suffix = "";
-   $role_prefix = $role_suffix = "";
-   $aka_prefix = $aka_suffix = "";
+   $sql_user = "INSERT INTO `epiz_23890428_fdb`.`users` (`username`, `id`, " . 
+		"`name`, `discord`, `steam`, `location`, `number`, `active`, " .
+		"`role`, `aka`) VALUES (" . nil($post->username) . ", " . $post->id . ", " . nil($post->name) . ", " .
+		nil($post->discord) . ", " . nil($post->steam) . ", " . nil($post->location) . ", " .
+		niln($post->number) . ", " . nil($post->active) . ", " . nil($post->role) . ", " . nil($post->aka) . "); ";
 
-   if(!is_null($post->username)) { $username_prefix = "`username`,"; $username_suffix = "'" . $post->username . "', "; }
-   if(!is_null($post->name)) { $name_prefix = ", `name`"; $name_suffix = ", '" . $post->name . "'"; }
-   if(!is_null($post->discord)) { $discord_prefix = ", `location`"; $discord_suffix = ", '" . $post->discord . "'"; }
-   if(!is_null($post->steam)) { $steam_prefix = ", `steam`"; $steam_suffix = ", '" . $post->steam . "'"; }
-   if(!is_null($post->location)) { $location_prefix = ", `location`"; $location_suffix = ", '" . $post->location . "'"; }
-   if(!is_null($post->number)) { $number_prefix = ", `number`"; $number_suffix = ", " . $post->number; }
-   if(!is_null($post->role)) { $role_prefix = ", `role`"; $role_suffix = ", '" . $post->role . "'"; }
-   if(!is_null($post->aka)) { $aka_prefix = ", `aka`"; $aka_suffix = ", '" . $post->aka . "'"; }
-
-   $sql_user = "INSERT INTO `epiz_23890428_fdb`.`users` (" . $username_prefix . " `id` " . 
-		$name_prefix . $discord_prefix . $steam_prefix . $location_prefix . $number_prefix . 
-		$role_prefix . $aka_prefix . ") VALUES (" . $username_suffix . $post->id . $discord_suffix . 
-		$steam_suffix . $location_suffix . $number_suffix . $role_suffix . $aka_suffix . "); ";
-
-   $sql_teams = "INSERT INTO `epiz_23890428_fdb`.`teams` (`id`) VALUES (" . $post->id . "); ";
+   $sql_teams = "INSERT INTO `teams` (`id`) VALUES (" . $post->id . "); ";
 
    $sql = $sql_user . $sql_teams;
 }
 else
     echo 'Invalid Parameters <br><br>';
 
-echo $sql;
 $result = $conn->multi_query($sql);
 
 if($result)
