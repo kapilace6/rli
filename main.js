@@ -1497,6 +1497,7 @@ var StatService = /** @class */ (function () {
         rightwing.fill(0);
         for (var _i = 0, _a = this.columnsService.seasonsC[curseason]; _i < _a.length; _i++) {
             var track = _a[_i];
+            console.log(left + ' --- ' + right);
             console.log(this.usersService.seasons[curseason][left].id + ', ' + left + ', ' + right + '::' + this.usersService.seasons[curseason][right].id);
             leftwing[this.usersService.seasons[curseason][left][track] - 1]++;
             rightwing[this.usersService.seasons[curseason][right][track] - 1]++;
@@ -1529,11 +1530,10 @@ var StatService = /** @class */ (function () {
         var _this = this;
         this.order = new Array(this.usersService.seasons[curseason].length);
         console.log(this.usersService.seasons[curseason]);
-        for (var i = 0; i < this.usersService.seasons[curseason].length; i++) {
+        for (var i = 0; i < this.usersService.seasons[curseason].length; i++)
             this.order[i] = this.usersService.seasons[curseason][i].id - 1;
-            console.log(this.usersService.seasons[curseason][i].id + ', ' + curseason + ', ' + i + ';;');
-        }
-        console.log('Reached Here');
+        console.log('Order');
+        console.log(this.order);
         this.order.sort(function (li, ri) {
             var l = _this.teams[li][_this.columnsService.teamsC[curseason]];
             var r = _this.teams[ri][_this.columnsService.teamsC[curseason]];
@@ -1587,7 +1587,6 @@ var StatService = /** @class */ (function () {
                 prev = T;
             }
         }
-        console.log('ere too');
         this.sort_teams();
     };
     //Sort the Constructors by Points
