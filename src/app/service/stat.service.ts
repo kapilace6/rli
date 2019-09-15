@@ -60,9 +60,11 @@ export class StatService {
       this.points[i].fill(0);
 
       for(let j = 0; j < this.usersService.seasons[i].length; j++)     
-        for (let track of this.columnsService.seasonsC[i])
+        for (let track of this.columnsService.seasonsC[i]) {
+            console.log(this.usersService.seasons[i][j].id + ', ' + i + ', ' + j);
+            console.log(this.usersService.seasons[i][j][track]);
             this.points[i][this.usersService.seasons[i][j].id - 1] += this.usersService.pointsS[this.usersService.seasons[i][j][track] - 1].feature;
-      
+        }
     }
   
     this.populate_flap();

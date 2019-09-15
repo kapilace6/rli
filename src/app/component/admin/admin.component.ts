@@ -43,7 +43,9 @@ export class AdminComponent implements OnInit {
   }
 
   insertUser(): void {
-    this.newuser.number = +this.newuser.number;
+    if(this.newuser.number) 
+      this.newuser.number = +this.newuser.number;
+
     if(CryptoJS.SHA256(this.pin) == this.shapin) {
       this.usersService.insertUser(this.newuser).subscribe(
         result => {
@@ -53,8 +55,6 @@ export class AdminComponent implements OnInit {
     } else {
       this.status = "Incorrect PIN";
     }
-
-    console.log(this.newuser);
   }
 
   constructor(private usersService: UsersService) {

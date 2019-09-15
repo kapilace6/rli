@@ -122,6 +122,7 @@ export class UsersService {
         headers.append('Content-Type', 'application/json');
 
         const req = user;
+        req.id = this.users.length + 1;
         req.mode = 4;
         req.active = 1;
         //Object.defineProperties(req, {
