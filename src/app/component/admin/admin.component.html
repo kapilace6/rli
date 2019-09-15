@@ -23,6 +23,23 @@ Track : <input type="text" [(ngModel)]="track_name" />
 </button>
 
 <br /><br /><br />
+
+3. Create a New User : <br />
+Username : <input type="text" [(ngModel)]="newuser.username" /> <br />
+Name : <input type="text" [(ngModel)]="newuser.name" /> <br />
+Discord : <input type="text" [(ngModel)]="newuser.discord" /> <br />
+Steam : <input type="text" [(ngModel)]="newuser.steam" /> <br />
+Location : <input type="text" [(ngModel)]="newuser.location" /> <br />
+Number : <input type="text" [(ngModel)]="newuser.number" /> <br />
+Role : <input type="text" [(ngModel)]="newuser.role" /> <br />
+aka : <input type="text" [(ngModel)]="newuser.aka" /> <br />
+
+<br /><br />
+<button (click)=insertUser()>  
+  Create New User  
+</button>
+
+<br /><br /><br />
 <input type="text" [(ngModel)]="pin" />
 
 <br /><br />

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from './service/users.service';
 import { ColumnsService } from './service/columns.service';
-import { StatService } from './service/stat.service'
-import * as CryptoJS from 'crypto-js';
+import { StatService } from './service/stat.service';
 import { TesseractWorker, OSD, PSM } from 'tesseract.js';
 
 @Component({
