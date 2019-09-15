@@ -113,13 +113,7 @@ export class StatService {
         for(let i = 0; i < this.usersService.seasons[curseason].length; i++)
             this.order[i] = this.usersService.seasons[curseason][i].id - 1;
 
-    console.log('Order: ');
-    console.log(this.order);
-
-    console.log('Teams: ' + curseason);
-    console.log(this.teams[curseason]);
     this.order.sort((li, ri) => {
-      console.log('L->' +this.teams[li][this.columnsService.teamsC[curseason]] + '; ' + li + ', ' + ri + '; R->' +this.teams[ri][this.columnsService.teamsC[curseason]]);
       let l = this.teams[li][this.columnsService.teamsC[curseason]];
       let r = this.teams[ri][this.columnsService.teamsC[curseason]];
 
@@ -149,7 +143,6 @@ export class StatService {
 
       let prev = "", k = -1;
       for(let j = 0; j < this.order.length; j++) {
-        console.log(this.teams[this.order[j]][this.columnsService.teamsC[i]] + ', ' + i + ', ' + j + ':: i');
         let T = this.teams[this.order[j]][this.columnsService.teamsC[i]];
 
         //Ignore Users who have not participated in that season
