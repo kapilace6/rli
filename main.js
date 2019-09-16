@@ -1466,6 +1466,8 @@ var StatService = /** @class */ (function () {
         //All Sorting is done by Indices, so a new Array is always Created for each
         for (var i = 0; i < this.users.length; i++)
             this.order.push([i, i]);
+        console.log('Begin');
+        console.log(this.order);
         this.reserves = new Array();
     };
     StatService.prototype.compute_points = function () {
@@ -1527,6 +1529,7 @@ var StatService = /** @class */ (function () {
     //Sorts 'order' by Teams in Alphabetical Order, and Drivers within by Points
     StatService.prototype.teamsort = function (curseason) {
         var _this = this;
+        console.log('Got Hreer');
         this.order = new Array(this.usersService.seasons[curseason].length);
         console.log(this.usersService.seasons[curseason]);
         for (var i = 0; i < this.usersService.seasons[curseason].length; i++)
@@ -1559,6 +1562,7 @@ var StatService = /** @class */ (function () {
             this.reserves[i] = new Array();
             //Sort by Teams for that Season
             this.teamsort(i);
+            console.log('Mena');
             var prev = "", k = -1;
             for (var j = 0; j < this.order.length; j++) {
                 var T = this.teams[this.order[j][0]][this.columnsService.teamsC[i]];
