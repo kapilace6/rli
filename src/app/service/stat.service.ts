@@ -112,9 +112,11 @@ export class StatService {
   teamsort(curseason: number): void {
     console.log(this.usersService.seasons[curseason]);
     this.order = new Array(this.usersService.seasons[curseason].length);
-        for(let i = 0; i < this.usersService.seasons[curseason].length; i++)
-            this.order[i] = [this.usersService.seasons[curseason][i].id - 1, i];
+    for(let i = 0; i < this.usersService.seasons[curseason].length; i++)
+        this.order[i] = [this.usersService.seasons[curseason][i].id - 1, i];
 
+    console.log('Order');
+    console.log(this.order);
     this.order.sort((li, ri) => {
       let l = this.teams[li[0]][this.columnsService.teamsC[curseason]];
       let r = this.teams[ri[0]][this.columnsService.teamsC[curseason]];
