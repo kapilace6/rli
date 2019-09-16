@@ -84,7 +84,7 @@ module.exports = "<p>\n  season1 works!\n</p>\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--<div *ngIf=\"userLoaded\">\r\n    Users : <br />\r\n    {{ users }}\r\n</div>\r\n\r\n<br /><br />\r\n\r\n<div *ngIf=\"seasonLoaded\">\r\n    Season {{ curseason + 1 }} : <br />\r\n    {{ season }}\r\n</div>\r\n\r\n<br /><br />\r\n\r\n<div *ngIf=\"seasonCLoaded\">\r\n    Season {{ curseason + 1 }} Columns : <br />\r\n    {{ seasonC }}\r\n</div>\r\n\r\n<br /><br />\r\n\r\n<div *ngIf=\"ready\">\r\n    <ol>\r\n        <div *ngFor=\"let user of users; index as i\">\r\n            <li *ngIf=\"user.active\"> {{i}} -> {{user.username}} : {{points[user.id - 1]}} </li>\r\n        </div>\r\n    </ol>\r\n</div>\r\n-->\r\n\r\n<br /><br />\r\n\r\n    <h2> Roster for Season {{ curseason + 1 }} </h2>\r\n    \r\n<br /><br />\r\n<table>\r\n    \r\n    <tr>\r\n        <th width=\"75\" style=\"text-align:center\"> Pos. </th>\r\n        <th width=\"250\" style=\"text-align:center\"> Driver </th>\r\n        <th width=\"100\" style=\"text-align:center\"> Points </th>\r\n        <th *ngIf=\"flapdefined\" width=\"75\" style=\"text-align:center\"> F Lap </th>\r\n        <!---<th *ngFor=\"let track of seasonC\" > {{ track }} </th>-->\r\n    </tr>\r\n     \r\n    <tr *ngFor=\"let num of order; index as j\">\r\n            <td width=\"75\" style=\"text-align:center\"> {{ j+1 }}</td>\r\n            <td width=\"250\" style=\"text-align:center\"> {{ users[num].username }} </td>\r\n            <td width=\"100\" style=\"text-align:center\"> {{ points[num] }} </td>\r\n            <td *ngIf=\"flapdefined\" width=\"75\" style=\"text-align:center\"> {{ flapuser[num] }} </td>\r\n            <!---<td *ngFor=\"let track of seasonC\" width=\"150\" style=\"text-align:center\"> {{ season1[j][track] }} </td>-->\r\n    </tr>\r\n</table>\r\n\r\n<br /><br />\r\n\r\nSeasons : <br />\r\n<div *ngFor=\"let season of seasonsT; index as j\">\r\n    <button (click)=changeSeason(j)>  \r\n        {{season | titlecase}}  \r\n    </button>\r\n</div>\r\n\r\n<!--\r\n<br /><br /><br />\r\n<ul>\r\n    <div *ngFor=\"let n of order\">\r\n        <li> {{ n }} </li>\r\n    </div>\r\n</ul>\r\n-->\r\n\r\n <!---\r\n<div *ngFor=\"let user of users; index as j\">\r\n    <tr *ngIf=\"user.active\">\r\n        <td width=\"150\" style=\"text-align:center\"> {{ j+1 }}</td>\r\n        <td width=\"150\" style=\"text-align:center\"> {{ user.username }} </td>\r\n        <td *ngFor=\"let track of season1C\"  width=\"150\" style=\"text-align:center\"> {{ season1[j][track] }}</td>\r\n        <td width=\"150\" style=\"text-align:center\"> {{ points[j] }}</td>\r\n    </tr>\r\n</div>\r\n-->\r\n<br /><br /><br />\r\n\r\n\r\n"
+module.exports = "<!--<div *ngIf=\"userLoaded\">\r\n    Users : <br />\r\n    {{ users }}\r\n</div>\r\n\r\n<br /><br />\r\n\r\n<div *ngIf=\"seasonLoaded\">\r\n    Season {{ curseason + 1 }} : <br />\r\n    {{ season }}\r\n</div>\r\n\r\n<br /><br />\r\n\r\n<div *ngIf=\"seasonCLoaded\">\r\n    Season {{ curseason + 1 }} Columns : <br />\r\n    {{ seasonC }}\r\n</div>\r\n\r\n<br /><br />\r\n\r\n<div *ngIf=\"ready\">\r\n    <ol>\r\n        <div *ngFor=\"let user of users; index as i\">\r\n            <li *ngIf=\"user.active\"> {{i}} -> {{user.username}} : {{points[user.id - 1]}} </li>\r\n        </div>\r\n    </ol>\r\n</div>\r\n-->\r\n\r\n<br /><br />\r\n\r\n    <h2> Roster for Season {{ curseason + 1 }} </h2>\r\n    \r\n<br /><br />\r\n<table>\r\n    \r\n    <tr>\r\n        <th width=\"75\" style=\"text-align:center\"> Pos. </th>\r\n        <th width=\"250\" style=\"text-align:center\"> Driver </th>\r\n        <th width=\"100\" style=\"text-align:center\"> Points </th>\r\n        <th *ngIf=\"flapdefined\" width=\"75\" style=\"text-align:center\"> F Lap </th>\r\n        <th *ngFor=\"let track of seasonC\" width=\"150\" style=\"text-align:center\"> {{ track }} </th>\r\n    </tr>\r\n     \r\n    <tr *ngFor=\"let num of order; index as j\">\r\n        <td width=\"75\" style=\"text-align:center\"> {{ j+1 }}</td>\r\n        <td width=\"250\" style=\"text-align:center\"> {{ users[num].username }} </td>\r\n        <td width=\"100\" style=\"text-align:center\"> {{ points[num] }} </td>\r\n        <td *ngIf=\"flapdefined\" width=\"75\" style=\"text-align:center\"> {{ flapuser[num] }} </td>\r\n        <td *ngFor=\"let track of seasonC\" width=\"150\" style=\"text-align:center\"> {{ season[num][track] }} </td>\r\n    </tr>\r\n</table>\r\n\r\n<br /><br />\r\n\r\nSeasons : <br />\r\n<div *ngFor=\"let season of seasonsT; index as j\">\r\n    <button (click)=changeSeason(j)>  \r\n        {{season | titlecase}}  \r\n    </button>\r\n</div>\r\n\r\n<!--\r\n<br /><br /><br />\r\n<ul>\r\n    <div *ngFor=\"let n of order\">\r\n        <li> {{ n }} </li>\r\n    </div>\r\n</ul>\r\n-->\r\n\r\n <!---\r\n<div *ngFor=\"let user of users; index as j\">\r\n    <tr *ngIf=\"user.active\">\r\n        <td width=\"150\" style=\"text-align:center\"> {{ j+1 }}</td>\r\n        <td width=\"150\" style=\"text-align:center\"> {{ user.username }} </td>\r\n        <td *ngFor=\"let track of season1C\"  width=\"150\" style=\"text-align:center\"> {{ season1[j][track] }}</td>\r\n        <td width=\"150\" style=\"text-align:center\"> {{ points[j] }}</td>\r\n    </tr>\r\n</div>\r\n-->\r\n<br /><br /><br />\r\n\r\n\r\n"
 
 /***/ }),
 
@@ -1486,7 +1486,6 @@ var StatService = /** @class */ (function () {
     };
     //Sort by Points, or Better Finishes
     StatService.prototype.pointsort = function (l0, r0, l1, r1, curseason) {
-        console.log(l0 + 'v' + r0 + +' -> ' + this.points[curseason][l0] + ', ' + this.points[curseason][r0]);
         if (this.points[curseason][l0] > this.points[curseason][r0])
             return -1;
         else if (this.points[curseason][l0] < this.points[curseason][r0])
@@ -1526,14 +1525,12 @@ var StatService = /** @class */ (function () {
     //Sorts 'order' by Teams in Alphabetical Order, and Drivers within by Points
     StatService.prototype.teamsort = function (curseason) {
         var _this = this;
-        console.log(this.usersService.seasons[curseason]);
         this.order = new Array(this.usersService.seasons[curseason].length);
         for (var i = 0; i < this.usersService.seasons[curseason].length; i++)
             this.order[i] = [this.usersService.seasons[curseason][i].id - 1, i];
         this.order.sort(function (li, ri) {
             var l = _this.teams[li[0]][_this.columnsService.teamsC[curseason]];
             var r = _this.teams[ri[0]][_this.columnsService.teamsC[curseason]];
-            console.log((l > r) + l + ' ' + r + li[0] + 'v' + ri[0]);
             if (l == r) {
                 return _this.pointsort(li[0], ri[0], li[1], ri[1], curseason);
             }
@@ -1556,8 +1553,6 @@ var StatService = /** @class */ (function () {
             this.reserves[i] = new Array();
             //Sort by Teams for that Season
             this.teamsort(i);
-            console.log(this.order);
-            console.log(this.points);
             var prev = "", k = -1;
             for (var j = 0; j < this.order.length; j++) {
                 var T = this.teams[this.order[j][0]][this.columnsService.teamsC[i]];
@@ -1580,11 +1575,9 @@ var StatService = /** @class */ (function () {
                         points: 0
                     });
                 }
-                console.log(this.constructors[i][k].points + ' ' + T);
                 //Add the Points of the Driver into the Constructor
                 this.constructors[i][k].points += this.points[i][this.order[j][0]];
                 this.constructors[i][k].member.push(this.order[j][0]);
-                console.log(T + ' ' + this.points[i][this.order[j][0]] + ' ' + i + ' ' + j + ' ' + k + '->' + this.order[j][0] + ' .... ' + this.constructors[i][k].points);
                 prev = T;
             }
         }
