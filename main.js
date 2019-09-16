@@ -1579,7 +1579,7 @@ var StatService = /** @class */ (function () {
                 //Add the Points of the Driver into the Constructor
                 this.constructors[i][k].points += this.points[i][this.order[j][0]];
                 this.constructors[i][k].member.push(this.order[j][0]);
-                console.log(this.constructors[i]);
+                console.log(T + ' ' + this.points[i][this.order[j][0]] + ' ' + i + ' ' + j + k);
                 prev = T;
             }
         }
