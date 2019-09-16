@@ -1525,6 +1525,7 @@ var StatService = /** @class */ (function () {
     //Sorts 'order' by Teams in Alphabetical Order, and Drivers within by Points
     StatService.prototype.teamsort = function (curseason) {
         var _this = this;
+        console.log(this.usersService.seasons[curseason]);
         this.order = new Array(this.usersService.seasons[curseason].length);
         for (var i = 0; i < this.usersService.seasons[curseason].length; i++)
             this.order[i] = [this.usersService.seasons[curseason][i].id - 1, i];
