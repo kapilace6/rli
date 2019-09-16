@@ -171,11 +171,13 @@ export class StatService {
           });
         }  
 
+        console.log(this.constructors[i][k].points + ' ' + T);
+
         //Add the Points of the Driver into the Constructor
         this.constructors[i][k].points += this.points[i][this.order[j][0]];
         this.constructors[i][k].member.push(this.order[j][0]);
 
-        console.log(T + ' ' + this.points[i][this.order[j][0]] + ' ' + i + ' ' + j + ' ' + k + '->' + this.order[j]);
+        console.log(T + ' ' + this.points[i][this.order[j][0]] + ' ' + i + ' ' + j + ' ' + k + '->' + this.order[j][0] + ' .... ' + this.constructors[i][k].points);
         prev = T;
       }
     }
