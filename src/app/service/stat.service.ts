@@ -110,6 +110,7 @@ export class StatService {
 
   //Sorts 'order' by Teams in Alphabetical Order, and Drivers within by Points
   teamsort(curseason: number): void {
+    console.log(this.usersService.seasons[curseason]);
     this.order = new Array(this.usersService.seasons[curseason].length);
         for(let i = 0; i < this.usersService.seasons[curseason].length; i++)
             this.order[i] = [this.usersService.seasons[curseason][i].id - 1, i];
