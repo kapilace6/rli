@@ -28,7 +28,7 @@ export class StatService {
   */
   constructors: any;                //0 based index
   reserves: Array<Array<number>>;   //0 based index
-  order: Array<number>;             //0 based index
+  order: Array<[number, number]>;   //0 based index
 
   constructor(private columnsService: ColumnsService, private usersService: UsersService) { 
   }
@@ -44,9 +44,8 @@ export class StatService {
     this.teams = this.usersService.getTeams();
 
     //All Sorting is done by Indices, so a new Array is always Created for each
-    this.order = new Array(this.users.length);
-        for(let i = 0; i < this.users.length; i++)
-            this.order[i] = i;
+      for(let i = 0; i < this.users.length; i++)
+          this.order.push([i, i]);
 
     this.reserves = new Array();
   }
@@ -116,16 +115,17 @@ export class StatService {
     this.order = new Array(this.usersService.seasons[curseason].length);
     console.log(this.usersService.seasons[curseason]);
         for(let i = 0; i < this.usersService.seasons[curseason].length; i++)
-            this.order[i] = this.usersService.seasons[curseason][i].id - 1;
+            //this.order[i] = this.usersService.seasons[curseason][i].id - 1;
+            this.order[i] = [this.usersService.seasons[curseason][i].id - 1, i];
 
         console.log('Order');
         console.log(this.order);
     this.order.sort((li, ri) => {
-      let l = this.teams[li][this.columnsService.teamsC[curseason]];
-      let r = this.teams[ri][this.columnsService.teamsC[curseason]];
+      let l = this.teams[li[1]][this.columnsService.teamsC[curseason]];
+      let r = this.teams[ri[1]][this.columnsService.teamsC[curseason]];
 
       if(l == r) {
-        return this.pointsort(li, ri, curseason);
+        return this.pointsort(li[1], ri[1], curseason);
       }
       else {
         if(l < r) return -1;
@@ -150,7 +150,7 @@ export class StatService {
 
       let prev = "", k = -1;
       for(let j = 0; j < this.order.length; j++) {
-        let T = this.teams[this.order[j]][this.columnsService.teamsC[i]];
+        let T = this.teams[this.order[j][0]][this.columnsService.teamsC[i]];
 
         //Ignore Users who have not participated in that season
         if(T == "None")
@@ -158,7 +158,7 @@ export class StatService {
 
         //A Separate Array for Reserve Drivers
         if(T == "Reserve") {
-          this.reserves[i].push(this.order[j]);
+          this.reserves[i].push(this.order[j][0]);
           continue;
         }
 
@@ -175,8 +175,8 @@ export class StatService {
         }  
 
         //Add the Points of the Driver into the Constructor
-        this.constructors[i][k].points += this.points[i][this.order[j]];
-        this.constructors[i][k].member.push(this.order[j]);
+        this.constructors[i][k].points += this.points[i][this.order[j][0]];
+        this.constructors[i][k].member.push(this.order[j][0]);
         prev = T;
       }
     }
