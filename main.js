@@ -1553,6 +1553,7 @@ var StatService = /** @class */ (function () {
             this.reserves[i] = new Array();
             //Sort by Teams for that Season
             this.teamsort(i);
+            console.log(this.order);
             var prev = "", k = -1;
             for (var j = 0; j < this.order.length; j++) {
                 var T = this.teams[this.order[j][0]][this.columnsService.teamsC[i]];
@@ -1578,6 +1579,7 @@ var StatService = /** @class */ (function () {
                 //Add the Points of the Driver into the Constructor
                 this.constructors[i][k].points += this.points[i][this.order[j][0]];
                 this.constructors[i][k].member.push(this.order[j][0]);
+                console.log(this.constructors[i]);
                 prev = T;
             }
         }
