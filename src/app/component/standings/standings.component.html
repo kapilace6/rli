@@ -40,7 +40,7 @@
         <th width="250" style="text-align:center"> Driver </th>
         <th width="100" style="text-align:center"> Points </th>
         <th *ngIf="flapdefined" width="75" style="text-align:center"> F Lap </th>
-        <th *ngFor="let track of seasonC" width="150" style="text-align:center"> {{ track }} </th>
+        <!---<th *ngFor="let track of seasonC" width="150" style="text-align:center"> {{ track }} </th> -->
     </tr>
      
     <tr *ngFor="let num of order; index as j">
@@ -48,7 +48,7 @@
         <td width="250" style="text-align:center"> {{ users[num].username }} </td>
         <td width="100" style="text-align:center"> {{ points[num] }} </td>
         <td *ngIf="flapdefined" width="75" style="text-align:center"> {{ flapuser[num] }} </td>
-        <td *ngFor="let track of seasonC" width="150" style="text-align:center"> {{ season[num][track] }} </td>
+        <!---<td *ngFor="let track of seasonC" width="150" style="text-align:center"> {{ season[num][track] }} </td> -->
     </tr>
 </table>
 
