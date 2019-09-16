@@ -1464,9 +1464,8 @@ var StatService = /** @class */ (function () {
         this.users = this.usersService.getUsers();
         this.teams = this.usersService.getTeams();
         //All Sorting is done by Indices, so a new Array is always Created for each
-        this.order = new Array(this.users.length);
         for (var i = 0; i < this.users.length; i++)
-            this.order[i] = i;
+            this.order.push([i, i]);
         this.reserves = new Array();
     };
     StatService.prototype.compute_points = function () {
@@ -1531,14 +1530,15 @@ var StatService = /** @class */ (function () {
         this.order = new Array(this.usersService.seasons[curseason].length);
         console.log(this.usersService.seasons[curseason]);
         for (var i = 0; i < this.usersService.seasons[curseason].length; i++)
-            this.order[i] = this.usersService.seasons[curseason][i].id - 1;
+            //this.order[i] = this.usersService.seasons[curseason][i].id - 1;
+            this.order[i] = [this.usersService.seasons[curseason][i].id - 1, i];
         console.log('Order');
         console.log(this.order);
         this.order.sort(function (li, ri) {
-            var l = _this.teams[li][_this.columnsService.teamsC[curseason]];
-            var r = _this.teams[ri][_this.columnsService.teamsC[curseason]];
+            var l = _this.teams[li[1]][_this.columnsService.teamsC[curseason]];
+            var r = _this.teams[ri[1]][_this.columnsService.teamsC[curseason]];
             if (l == r) {
-                return _this.pointsort(li, ri, curseason);
+                return _this.pointsort(li[1], ri[1], curseason);
             }
             else {
                 if (l < r)
@@ -1561,13 +1561,13 @@ var StatService = /** @class */ (function () {
             this.teamsort(i);
             var prev = "", k = -1;
             for (var j = 0; j < this.order.length; j++) {
-                var T = this.teams[this.order[j]][this.columnsService.teamsC[i]];
+                var T = this.teams[this.order[j][0]][this.columnsService.teamsC[i]];
                 //Ignore Users who have not participated in that season
                 if (T == "None")
                     continue;
                 //A Separate Array for Reserve Drivers
                 if (T == "Reserve") {
-                    this.reserves[i].push(this.order[j]);
+                    this.reserves[i].push(this.order[j][0]);
                     continue;
                 }
                 //Since it is Sorted by Team Name, if the cur`rent team differs from prev,
@@ -1582,8 +1582,8 @@ var StatService = /** @class */ (function () {
                     });
                 }
                 //Add the Points of the Driver into the Constructor
-                this.constructors[i][k].points += this.points[i][this.order[j]];
-                this.constructors[i][k].member.push(this.order[j]);
+                this.constructors[i][k].points += this.points[i][this.order[j][0]];
+                this.constructors[i][k].member.push(this.order[j][0]);
                 prev = T;
             }
         }
