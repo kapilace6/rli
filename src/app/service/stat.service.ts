@@ -44,9 +44,11 @@ export class StatService {
     this.teams = this.usersService.getTeams();
 
     //All Sorting is done by Indices, so a new Array is always Created for each
-      for(let i = 0; i < this.users.length; i++)
-          this.order.push([i, i]);
+    for(let i = 0; i < this.users.length; i++)
+        this.order.push([i, i]);
 
+    console.log('Begin');
+    console.log(this.order);    
     this.reserves = new Array();
   }
 
@@ -112,6 +114,7 @@ export class StatService {
 
   //Sorts 'order' by Teams in Alphabetical Order, and Drivers within by Points
   teamsort(curseason: number): void {
+    console.log('Got Hreer');
     this.order = new Array(this.usersService.seasons[curseason].length);
     console.log(this.usersService.seasons[curseason]);
         for(let i = 0; i < this.usersService.seasons[curseason].length; i++)
@@ -148,6 +151,7 @@ export class StatService {
       //Sort by Teams for that Season
       this.teamsort(i);
 
+      console.log('Mena');
       let prev = "", k = -1;
       for(let j = 0; j < this.order.length; j++) {
         let T = this.teams[this.order[j][0]][this.columnsService.teamsC[i]];
