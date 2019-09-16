@@ -71,7 +71,6 @@ export class StatService {
 
   //Sort by Points, or Better Finishes
   pointsort(l0: number, r0: number, l1: number, r1: number, curseason: number): any {
-    console.log(l0 + 'v' + r0 + + ' -> ' + this.points[curseason][l0] + ', ' + this.points[curseason][r0]);
     if (this.points[curseason][l0] > this.points[curseason][r0]) return -1;
     else if(this.points[curseason][l0] < this.points[curseason][r0]) return 1;
 
@@ -111,7 +110,6 @@ export class StatService {
 
   //Sorts 'order' by Teams in Alphabetical Order, and Drivers within by Points
   teamsort(curseason: number): void {
-    console.log(this.usersService.seasons[curseason]);
     this.order = new Array(this.usersService.seasons[curseason].length);
     for(let i = 0; i < this.usersService.seasons[curseason].length; i++)
       this.order[i] = [this.usersService.seasons[curseason][i].id - 1, i];
@@ -120,7 +118,6 @@ export class StatService {
       let l = this.teams[li[0]][this.columnsService.teamsC[curseason]];
       let r = this.teams[ri[0]][this.columnsService.teamsC[curseason]];
 
-      console.log((l > r)  + l + ' ' + r + li[0] + 'v' + ri[0]);
       if(l == r) {
         return this.pointsort(li[0], ri[0], li[1], ri[1], curseason);
       }
@@ -144,9 +141,6 @@ export class StatService {
 
       //Sort by Teams for that Season
       this.teamsort(i);
-
-      console.log(this.order);
-      console.log(this.points);
 
       let prev = "", k = -1;
       for(let j = 0; j < this.order.length; j++) {
@@ -174,13 +168,10 @@ export class StatService {
           });
         }  
 
-        console.log(this.constructors[i][k].points + ' ' + T);
-
         //Add the Points of the Driver into the Constructor
         this.constructors[i][k].points += this.points[i][this.order[j][0]];
         this.constructors[i][k].member.push(this.order[j][0]);
 
-        console.log(T + ' ' + this.points[i][this.order[j][0]] + ' ' + i + ' ' + j + ' ' + k + '->' + this.order[j][0] + ' .... ' + this.constructors[i][k].points);
         prev = T;
       }
     }
