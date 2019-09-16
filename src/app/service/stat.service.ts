@@ -143,6 +143,7 @@ export class StatService {
       this.teamsort(i);
 
       console.log(this.order);
+      console.log(this.points);
 
       let prev = "", k = -1;
       for(let j = 0; j < this.order.length; j++) {
@@ -174,7 +175,7 @@ export class StatService {
         this.constructors[i][k].points += this.points[i][this.order[j][0]];
         this.constructors[i][k].member.push(this.order[j][0]);
 
-        console.log(T + ' ' + this.points[i][this.order[j][0]] + ' ' + i + ' ' + j + k);
+        console.log(T + ' ' + this.points[i][this.order[j][0]] + ' ' + i + ' ' + j + ' ' + k + '->' + this.order[j]);
         prev = T;
       }
     }
