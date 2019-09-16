@@ -61,7 +61,7 @@ export class AppComponent implements OnInit {
 
         
         //Get Teams Table
-        this.usersService.getO("fdb", "teams").subscribe(
+        this.usersService.getO("fdb", "teams", "id").subscribe(
             teams => {
                 this.usersService.teams = teams;
                 this.usersService.teamsdefined = true;
