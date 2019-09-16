@@ -1486,6 +1486,7 @@ var StatService = /** @class */ (function () {
     };
     //Sort by Points, or Better Finishes
     StatService.prototype.pointsort = function (l0, r0, l1, r1, curseason) {
+        console.log(l0 + 'v' + r0 + +' -> ' + this.points[curseason][l0] + ', ' + this.points[curseason][r0]);
         if (this.points[curseason][l0] > this.points[curseason][r0])
             return -1;
         else if (this.points[curseason][l0] < this.points[curseason][r0])
@@ -1527,15 +1528,12 @@ var StatService = /** @class */ (function () {
         var _this = this;
         console.log(this.usersService.seasons[curseason]);
         this.order = new Array(this.usersService.seasons[curseason].length);
-        for (var i = 0; i < this.usersService.seasons[curseason].length; i++) {
+        for (var i = 0; i < this.usersService.seasons[curseason].length; i++)
             this.order[i] = [this.usersService.seasons[curseason][i].id - 1, i];
-            console.log(i + '::' + (this.usersService.seasons[curseason][i].id - 1));
-        }
-        console.log('Order');
-        console.log(this.order);
         this.order.sort(function (li, ri) {
             var l = _this.teams[li[0]][_this.columnsService.teamsC[curseason]];
             var r = _this.teams[ri[0]][_this.columnsService.teamsC[curseason]];
+            console.log((l > r) + l + ' ' + r + li[0] + 'v' + ri[0]);
             if (l == r) {
                 return _this.pointsort(li[0], ri[0], li[1], ri[1], curseason);
             }
