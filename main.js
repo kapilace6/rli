@@ -1463,9 +1463,11 @@ var StatService = /** @class */ (function () {
     StatService.prototype.init = function () {
         this.users = this.usersService.getUsers();
         this.teams = this.usersService.getTeams();
+        console.log(this.order);
         //All Sorting is done by Indices, so a new Array is always Created for each
+        this.order = new Array(this.users.length);
         for (var i = 0; i < this.users.length; i++)
-            this.order.push([i, i]);
+            this.order[i] = [i, i];
         console.log('Begin');
         console.log(this.order);
         this.reserves = new Array();
