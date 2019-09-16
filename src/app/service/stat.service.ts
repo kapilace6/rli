@@ -43,14 +43,11 @@ export class StatService {
     this.users = this.usersService.getUsers();
     this.teams = this.usersService.getTeams();
 
-    console.log(this.order);
     //All Sorting is done by Indices, so a new Array is always Created for each
     this.order = new Array(this.users.length);
     for(let i = 0; i < this.users.length; i++)
         this.order[i] = [i, i];
-
-    console.log('Begin');
-    console.log(this.order);    
+    
     this.reserves = new Array();
   }
 
@@ -64,7 +61,6 @@ export class StatService {
 
       for(let j = 0; j < this.usersService.seasons[i].length; j++)     
         for (let track of this.columnsService.seasonsC[i]) {
-          console.log(this.usersService.seasons[i][j].id + ', ' + i + ', ' + j + '::');
             this.points[i][this.usersService.seasons[i][j].id - 1] += this.usersService.pointsS[this.usersService.seasons[i][j][track] - 1].feature;
           }
       }
@@ -74,18 +70,16 @@ export class StatService {
   }
 
   //Sort by Points, or Better Finishes
-  pointsort(left: number, right: number, curseason: number): any {
-    if (this.points[curseason][left] > this.points[curseason][right]) return -1;
-    else if(this.points[curseason][left] < this.points[curseason][right]) return 1;
+  pointsort(l0: number, r0: number, l1: number, r1: number, curseason: number): any {
+    if (this.points[curseason][l0] > this.points[curseason][r0]) return -1;
+    else if(this.points[curseason][l0] < this.points[curseason][r0]) return 1;
 
     let leftwing = new Array(22); leftwing.fill(0);
     let rightwing = new Array(22); rightwing.fill(0);
 
     for (let track of this.columnsService.seasonsC[curseason]) {
-      console.log(left + ' --- ' + right);
-      console.log(this.usersService.seasons[curseason][left].id + ', ' + left + ', ' + right + '::' + this.usersService.seasons[curseason][right].id);
-      leftwing[this.usersService.seasons[curseason][left][track] - 1]++;
-      rightwing[this.usersService.seasons[curseason][right][track] - 1]++;
+      leftwing[this.usersService.seasons[curseason][l1][track] - 1]++;
+      rightwing[this.usersService.seasons[curseason][r1][track] - 1]++;
     }
     
     for (let i = 0; i < leftwing.length; ++i) {
@@ -116,21 +110,16 @@ export class StatService {
 
   //Sorts 'order' by Teams in Alphabetical Order, and Drivers within by Points
   teamsort(curseason: number): void {
-    console.log('Got Hreer');
     this.order = new Array(this.usersService.seasons[curseason].length);
-    console.log(this.usersService.seasons[curseason]);
         for(let i = 0; i < this.usersService.seasons[curseason].length; i++)
-            //this.order[i] = this.usersService.seasons[curseason][i].id - 1;
             this.order[i] = [this.usersService.seasons[curseason][i].id - 1, i];
 
-        console.log('Order');
-        console.log(this.order);
     this.order.sort((li, ri) => {
-      let l = this.teams[li[1]][this.columnsService.teamsC[curseason]];
-      let r = this.teams[ri[1]][this.columnsService.teamsC[curseason]];
+      let l = this.teams[li[0]][this.columnsService.teamsC[curseason]];
+      let r = this.teams[ri[0]][this.columnsService.teamsC[curseason]];
 
       if(l == r) {
-        return this.pointsort(li[1], ri[1], curseason);
+        return this.pointsort(li[0], ri[0], li[1], ri[1], curseason);
       }
       else {
         if(l < r) return -1;
@@ -153,7 +142,6 @@ export class StatService {
       //Sort by Teams for that Season
       this.teamsort(i);
 
-      console.log('Mena');
       let prev = "", k = -1;
       for(let j = 0; j < this.order.length; j++) {
         let T = this.teams[this.order[j][0]][this.columnsService.teamsC[i]];

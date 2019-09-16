@@ -30,7 +30,7 @@ export class TeamsComponent implements OnInit {
     points: any;
     ready: boolean = false;
 
-    order: Array<number>;
+    order: Array<[number, number]>;
 
     constructor(private usersService: UsersService, private columnsService: ColumnsService, private statService: StatService) {
         console.log('Calling T C');
@@ -59,7 +59,7 @@ export class TeamsComponent implements OnInit {
 
         this.order = new Array(this.usersService.seasons[this.curseason].length);
         for(let i = 0; i < this.usersService.seasons[this.curseason]; i++)
-            this.order[i] = this.usersService.seasons[this.curseason][i].id - 1;
+            this.order[i] = [this.usersService.seasons[this.curseason][i].id - 1, i];
     }
 
     ngOnInit() {
@@ -71,11 +71,11 @@ export class TeamsComponent implements OnInit {
     sort(): void {
         //Asuuming Teams are Sorted by ID, by stat.reorder_byid()
         this.order.sort((li, ri) => {
-            let l = this.teams[li][this.teamsC[this.curseason]];
-            let r = this.teams[ri][this.teamsC[this.curseason]];
+            let l = this.teams[li[0]][this.teamsC[this.curseason]];
+            let r = this.teams[ri[0]][this.teamsC[this.curseason]];
             
             if(l == r) {
-                return this.statService.pointsort(li, ri, this.curseason);
+                return this.statService.pointsort(li[0], ri[0], li[1], ri[1], this.curseason);
             }
 	    	else {
                 if(l < r) return -1;
