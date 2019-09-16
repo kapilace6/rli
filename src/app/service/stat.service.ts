@@ -142,6 +142,8 @@ export class StatService {
       //Sort by Teams for that Season
       this.teamsort(i);
 
+      console.log(this.order);
+
       let prev = "", k = -1;
       for(let j = 0; j < this.order.length; j++) {
         let T = this.teams[this.order[j][0]][this.columnsService.teamsC[i]];
@@ -171,6 +173,8 @@ export class StatService {
         //Add the Points of the Driver into the Constructor
         this.constructors[i][k].points += this.points[i][this.order[j][0]];
         this.constructors[i][k].member.push(this.order[j][0]);
+
+        console.log(this.constructors[i]);
         prev = T;
       }
     }
