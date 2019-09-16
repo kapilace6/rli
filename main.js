@@ -273,7 +273,7 @@ var AppComponent = /** @class */ (function () {
             _this.computeStats();
         });
         //Get Teams Table
-        this.usersService.getO("fdb", "teams").subscribe(function (teams) {
+        this.usersService.getO("fdb", "teams", "id").subscribe(function (teams) {
             _this.usersService.teams = teams;
             _this.usersService.teamsdefined = true;
             _this.loaded++;
