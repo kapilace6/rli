@@ -1527,8 +1527,10 @@ var StatService = /** @class */ (function () {
         var _this = this;
         console.log(this.usersService.seasons[curseason]);
         this.order = new Array(this.usersService.seasons[curseason].length);
-        for (var i = 0; i < this.usersService.seasons[curseason].length; i++)
+        for (var i = 0; i < this.usersService.seasons[curseason].length; i++) {
             this.order[i] = [this.usersService.seasons[curseason][i].id - 1, i];
+            console.log(i + '::' + (this.usersService.seasons[curseason][i].id - 1));
+        }
         console.log('Order');
         console.log(this.order);
         this.order.sort(function (li, ri) {
