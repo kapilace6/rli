@@ -1529,6 +1529,8 @@ var StatService = /** @class */ (function () {
         this.order = new Array(this.usersService.seasons[curseason].length);
         for (var i = 0; i < this.usersService.seasons[curseason].length; i++)
             this.order[i] = [this.usersService.seasons[curseason][i].id - 1, i];
+        console.log('Order');
+        console.log(this.order);
         this.order.sort(function (li, ri) {
             var l = _this.teams[li[0]][_this.columnsService.teamsC[curseason]];
             var r = _this.teams[ri[0]][_this.columnsService.teamsC[curseason]];
