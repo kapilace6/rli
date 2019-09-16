@@ -71,6 +71,7 @@ export class StatService {
 
   //Sort by Points, or Better Finishes
   pointsort(l0: number, r0: number, l1: number, r1: number, curseason: number): any {
+    console.log(l0 + 'v' + r0 + + ' -> ' + this.points[curseason][l0] + ', ' + this.points[curseason][r0]);
     if (this.points[curseason][l0] > this.points[curseason][r0]) return -1;
     else if(this.points[curseason][l0] < this.points[curseason][r0]) return 1;
 
@@ -112,17 +113,14 @@ export class StatService {
   teamsort(curseason: number): void {
     console.log(this.usersService.seasons[curseason]);
     this.order = new Array(this.usersService.seasons[curseason].length);
-    for(let i = 0; i < this.usersService.seasons[curseason].length; i++) {
+    for(let i = 0; i < this.usersService.seasons[curseason].length; i++)
       this.order[i] = [this.usersService.seasons[curseason][i].id - 1, i];
-      console.log(i + '::' + (this.usersService.seasons[curseason][i].id - 1));
-    }
 
-    console.log('Order');
-    console.log(this.order);
     this.order.sort((li, ri) => {
       let l = this.teams[li[0]][this.columnsService.teamsC[curseason]];
       let r = this.teams[ri[0]][this.columnsService.teamsC[curseason]];
 
+      console.log((l > r)  + l + ' ' + r + li[0] + 'v' + ri[0]);
       if(l == r) {
         return this.pointsort(li[0], ri[0], li[1], ri[1], curseason);
       }
