@@ -96,7 +96,7 @@ export class UsersService {
         return newseason;    
     }
 
-    insertResult(mode: Number, season_name: String, track_name: String): Observable<any> {
+    insertResult(mode: Number, season_name: String, track_name: String, drivers: Array<any>): Observable<any> {
         this.usersfilepath = "server/insert.php";
         
         let headers = new HttpHeaders();
@@ -106,7 +106,8 @@ export class UsersService {
         {
             "mode": mode,
             "season": season_name,
-            "track": track_name
+            "track": track_name,
+            "drivers": drivers
         }), 
         {
             headers: headers

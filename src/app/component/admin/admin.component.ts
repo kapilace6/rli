@@ -17,6 +17,7 @@ export class AdminComponent implements OnInit {
   shapin: String = "f2978ea1ceaef7962f641fec7e7a4f943a821e4a98bb81a70e21419ea839ca7b";
 
   newuser: User;
+  drivers: string;
 
   insertSeason(): void {
     if(CryptoJS.SHA256(this.pin) == this.shapin) {
@@ -32,7 +33,7 @@ export class AdminComponent implements OnInit {
 
   insertResult(mode: Number): void {
     if(CryptoJS.SHA256(this.pin) == this.shapin) {
-      this.usersService.insertResult(mode, this.season_name, this.track_name).subscribe(
+      this.usersService.insertResult(mode, this.season_name, this.track_name, JSON.parse(this.drivers)).subscribe(
         result => {
           this.status = "Success";
         }
