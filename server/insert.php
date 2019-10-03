@@ -26,8 +26,8 @@ $post_data = file_get_contents('php://input');
 $post = json_decode($post_data);
 
 //Create Qualy Table
-if($post->mode == 1)
-    $sql = "CREATE TABLE `epiz_23890428_qualy`.`" . $post->season . "|" . $post->track . "` (" .
+if($post->mode == 1) {
+    $sql_create = "CREATE TABLE `epiz_23890428_qualy`.`" . $post->season . "|" . $post->track . "` (" .
 		"`pos` INT( 6 ) NOT NULL ," .
 		"`id` INT( 11 ) NOT NULL ," .
 		"`team` VARCHAR( 40 ) NULL DEFAULT NULL ," .
@@ -35,11 +35,26 @@ if($post->mode == 1)
 		"`tyre` VARCHAR( 15 ) NOT NULL ," .
 		"PRIMARY KEY ( `pos` ) ," .
 		"UNIQUE (`id`)" .
-		") ENGINE = MYISAM ;";
+		") ENGINE = MYISAM ; ";
+
+	$total = 0;
+	$sql_drivers = "INSERT INTO `epiz_23890428_qualy`.`" . $post->season . "|" . $post->track . "` " .
+		"(`pos`, `id`, `team`, `time`, `tyre`) VALUES ";
+
+	foreach ($post->drivers as $driver) {
+		if($total) $sql_drivers .= ", ";
+		$sql_drivers .= "(" . niln($driver->pos) . ", " . niln($driver->id) . ", " . nil($driver->team) .
+			", " . nil($driver->time) . ", " . nil($driver->tyre) . ")";
+
+		$total++;
+	}
+
+	$sql = $sql_create . $sql_drivers . ";";
+}
 
 //Create Race Table
-else if($post->mode == 2)
-    $sql = "CREATE TABLE `epiz_23890428_race`.`" . $post->season . "|" . $post->track . "` (" .
+else if($post->mode == 2) {
+    $sql_create = "CREATE TABLE `epiz_23890428_race`.`" . $post->season . "|" . $post->track . "` (" .
 		"`pos` INT( 6 ) NOT NULL ," .
 		"`id` INT( 11 ) NOT NULL ," .
 		"`team` VARCHAR( 40 ) NOT NULL ," .
@@ -51,6 +66,22 @@ else if($post->mode == 2)
 		"PRIMARY KEY ( `pos` ) ," .
 		"UNIQUE (`id`)" .
 		") ENGINE = MYISAM ; ";
+
+	$total = 0;
+	$sql_drivers = "INSERT INTO `epiz_23890428_race`.`" . $post->season . "|" . $post->track . "` " .
+		" (`pos`, `id`, `team`, `grid`, `stop`, `best`, `time`) VALUES ";
+
+	foreach ($post->drivers as $driver) {
+		if($total) $sql_drivers .= ", ";
+		$sql_drivers .= "(" . niln($driver->pos) . ", " . niln($driver->id) . ", " . nil($driver->team) .
+			", " . niln($driver->grid) . ", " . niln($driver->stop) . ", " . nil($driver->id) . 
+			", " . nil($driver->time) . ")";
+
+		$total++;
+	}
+
+	$sql = $sql_create . $sql_drivers . ";";
+}
 
 //Create Tables amd Columns for New Season
 else if($post->mode == 3) {

@@ -18,7 +18,7 @@ module.exports = "<!--The content below is only a placeholder and can be replace
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<br />\n\n1. Create a New Season : <br />\nSeason : <input type=\"text\" [(ngModel)]=\"season_name\" /> \n\n<br /><br />\n<button (click)=insertSeason()>  \n  Create New Season : {{ season_name }}  \n</button>\n\n<br /><br /><br />\n\n2. Create a Qualy / Race Table : <br />\nSeason : <input type=\"text\" [(ngModel)]=\"season_name\" /> <br />\nTrack : <input type=\"text\" [(ngModel)]=\"track_name\" /> \n\n<br /><br />\n<button (click)=insertResult(1)>  \n  Create New Qualy Table  \n</button>\n<button (click)=insertResult(2)>  \n  Create New Race Table  \n</button>\n\n<br /><br /><br />\n\n3. Create a New User : <br />\nUsername : <input type=\"text\" [(ngModel)]=\"newuser.username\" /> <br />\nName : <input type=\"text\" [(ngModel)]=\"newuser.name\" /> <br />\nDiscord : <input type=\"text\" [(ngModel)]=\"newuser.discord\" /> <br />\nSteam : <input type=\"text\" [(ngModel)]=\"newuser.steam\" /> <br />\nLocation : <input type=\"text\" [(ngModel)]=\"newuser.location\" /> <br />\nNumber : <input type=\"text\" [(ngModel)]=\"newuser.number\" /> <br />\nRole : <input type=\"text\" [(ngModel)]=\"newuser.role\" /> <br />\naka : <input type=\"text\" [(ngModel)]=\"newuser.aka\" /> <br />\n\n\n<br /><br />\n<button (click)=insertUser()>  \n  Create New User  \n</button>\n\n<br /><br /><br />\n<input type=\"text\" [(ngModel)]=\"pin\" />\n\n<br /><br />\n{{ status }}\n\n<br /><br /><br />\n"
+module.exports = "<br />\n\n1. Create a New Season : <br />\nSeason : <input type=\"text\" [(ngModel)]=\"season_name\" /> \n\n<br /><br />\n<button (click)=insertSeason()>  \n  Create New Season : {{ season_name }}  \n</button>\n\n<br /><br /><br />\n\n2. Create a Qualy / Race Table : <br />\nSeason : <input type=\"text\" [(ngModel)]=\"season_name\" /> <br />\nTrack : <input type=\"text\" [(ngModel)]=\"track_name\" /> <br />\nDrivers : <input type=\"text\" [(ngModel)]=\"drivers\" />\n\n<br /><br />\n<button (click)=insertResult(1)>  \n  Create New Qualy Table  \n</button>\n<button (click)=insertResult(2)>  \n  Create New Race Table  \n</button>\n\n<br /><br /><br />\n\n3. Create a New User : <br />\nUsername : <input type=\"text\" [(ngModel)]=\"newuser.username\" /> <br />\nName : <input type=\"text\" [(ngModel)]=\"newuser.name\" /> <br />\nDiscord : <input type=\"text\" [(ngModel)]=\"newuser.discord\" /> <br />\nSteam : <input type=\"text\" [(ngModel)]=\"newuser.steam\" /> <br />\nLocation : <input type=\"text\" [(ngModel)]=\"newuser.location\" /> <br />\nNumber : <input type=\"text\" [(ngModel)]=\"newuser.number\" /> <br />\nRole : <input type=\"text\" [(ngModel)]=\"newuser.role\" /> <br />\naka : <input type=\"text\" [(ngModel)]=\"newuser.aka\" /> <br />\n\n\n<br /><br />\n<button (click)=insertUser()>  \n  Create New User  \n</button>\n\n<br /><br /><br />\n<input type=\"text\" [(ngModel)]=\"pin\" />\n\n<br /><br />\n{{ status }}\n\n<br /><br /><br />\n"
 
 /***/ }),
 
@@ -585,7 +585,7 @@ var AdminComponent = /** @class */ (function () {
     AdminComponent.prototype.insertResult = function (mode) {
         var _this = this;
         if (crypto_js__WEBPACK_IMPORTED_MODULE_3__["SHA256"](this.pin) == this.shapin) {
-            this.usersService.insertResult(mode, this.season_name, this.track_name).subscribe(function (result) {
+            this.usersService.insertResult(mode, this.season_name, this.track_name, JSON.parse(this.drivers)).subscribe(function (result) {
                 _this.status = "Success";
             });
         }
@@ -1723,14 +1723,15 @@ var UsersService = /** @class */ (function () {
         });
         return newseason;
     };
-    UsersService.prototype.insertResult = function (mode, season_name, track_name) {
+    UsersService.prototype.insertResult = function (mode, season_name, track_name, drivers) {
         this.usersfilepath = "server/insert.php";
         var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]();
         headers.append('Content-Type', 'application/json');
         var sresult = this.http.post(this.usersfilepath, JSON.stringify({
             "mode": mode,
             "season": season_name,
-            "track": track_name
+            "track": track_name,
+            "drivers": drivers
         }), {
             headers: headers
         });
